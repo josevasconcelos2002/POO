@@ -33,6 +33,20 @@ public class Sapatilha{
         this.preço = umaSapatilha.getPreço(); 
     }
 
+    public float preçoUsada(Sapatilha umaSapatilha){
+        float resultado = (float)0.0;
+        float preço = this.getPreço();
+        int n_donos = this.getNdonos();
+        float estado = this.getAvaliaçao();
+        if(!this.getPremium()){
+            resultado = preço-(preço/(n_donos * estado));
+        }
+        else{
+            resultado = preço+(preço/(n_donos * estado));
+        }
+        return resultado;
+    }
+
     public void setCodigo(String codigo){
         this.codigo = codigo;
     }
@@ -58,6 +72,9 @@ public class Sapatilha{
 
     public void setNdonos(int n_donos){
         if(!this.getNovo() && n_donos > 0){
+            this.n_donos = n_donos;
+        }
+        if(this.getNovo() && n_donos == 0){
             this.n_donos = n_donos;
         }
     }
