@@ -157,4 +157,6 @@ public class Artigo {
                 ", precoCorrigido=" + precoCorrigido +
                 '}';
     }
+
+    // testing branch
 }
