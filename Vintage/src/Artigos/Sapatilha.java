@@ -1,10 +1,17 @@
+package Artigos;
+
+import java.util.Date;
+
 public class Sapatilha{
 
-    private String codigo;
+    private final String codigo;
     private int tamanho;
+    private boolean atacadores; //Boolean????
+    private String cor;
+    private Date dataColecao;
     private boolean novo;
     private int n_donos; // 0 ou n
-    private float avaliaçao; // 0 a 5 ?
+    private float avaliacao; // 0 a 5 ?
     private boolean premium;
     private String marca;
     private String descriçao;
@@ -25,7 +32,7 @@ public class Sapatilha{
         this.tamanho = umaSapatilha.getTamanho();
         this.novo = umaSapatilha.getNovo();
         this.n_donos = umaSapatilha.getNdonos();
-        this.avaliaçao = umaSapatilha.getAvaliaçao();
+        this.avaliacao = umaSapatilha.getAvaliaçao();
         this.premium = umaSapatilha.getPremium();
         this.marca = umaSapatilha.getMarca();
         this.descriçao = umaSapatilha.getDescriçao();
