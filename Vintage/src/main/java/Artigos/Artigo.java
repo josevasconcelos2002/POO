@@ -1,12 +1,8 @@
 package Artigos;
 
-import com.sun.jdi.event.StepEvent;
-
-import java.util.Objects;
-
 public class Artigo {
 
-    private enum Estado {
+    protected enum Estado {
         NOVO,
         USADO
     }
@@ -157,4 +153,7 @@ public class Artigo {
                 ", precoCorrigido=" + precoCorrigido +
                 '}';
     }
+
+    // testing branch
+    // testing artigos branch
 }
