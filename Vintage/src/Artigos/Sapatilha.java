@@ -2,25 +2,23 @@ package Artigos;
 
 import java.util.Date;
 
-public class Sapatilha{
+public class Sapatilha extends Artigo{
 
-    private final String codigo;
+    private enum Edicao{
+        STANDARD,
+        PREMIUM
+    }
+
     private int tamanho;
-    private boolean atacadores; //Boolean????
+    private boolean atacadores;
     private String cor;
     private Date dataColecao;
-    private boolean novo;
-    private int n_donos; // 0 ou n
-    private float avaliacao; // 0 a 5 ?
-    private boolean premium;
-    private String marca;
-    private String descriçao;
-    private int desconto;
-    private float preço;
-
+    private int desconto; // só em sapatilhas usadas, e definido pelo vendedor && sapatilhas novas acima de 45
+    private Edicao edicao; // para estes casos o valor desconto é acrescentado
+/*
     public Sapatilha(){
         this.tamanho = 0;
-        this.n_donos = 0;
+        super.n_donos = 0;
         //this.avaliaçao = 0;
         this.premium = false;
         this.desconto = 0;
@@ -28,10 +26,10 @@ public class Sapatilha{
     }
 
     public Sapatilha(Sapatilha umaSapatilha){
-        this.codigo = umaSapatilha.getCodigo();
+        super.codigo = umaSapatilha.getCodigo();
         this.tamanho = umaSapatilha.getTamanho();
-        this.novo = umaSapatilha.getNovo();
-        this.n_donos = umaSapatilha.getNdonos();
+        super.novo = umaSapatilha.getNovo();
+        super.n_donos = umaSapatilha.getNdonos();
         this.avaliacao = umaSapatilha.getAvaliaçao();
         this.premium = umaSapatilha.getPremium();
         this.marca = umaSapatilha.getMarca();
@@ -125,4 +123,5 @@ public class Sapatilha{
     public String getMarca(){
         return this.marca;
     }
+    */
 } 
