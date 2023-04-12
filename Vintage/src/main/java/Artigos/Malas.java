@@ -1,7 +1,7 @@
 package Artigos;
 
 import java.time.LocalDate;
-import java.util.Date;
+//import java.util.Date;
 import java.util.Objects;
 
 public class Malas extends Artigo{
@@ -39,7 +39,7 @@ public class Malas extends Artigo{
     }
 
     public double getLargura() {
-        return largura;
+        return this.largura;
     }
 
     public void setLargura(double largura) {
@@ -47,7 +47,7 @@ public class Malas extends Artigo{
     }
 
     public double getAltura() {
-        return altura;
+        return this.altura;
     }
 
     public void setAltura(double altura) {
@@ -55,7 +55,7 @@ public class Malas extends Artigo{
     }
 
     public int getDesconto() {
-        return desconto;
+        return this.desconto;
     }
 
     public void setDesconto(int desconto) {
@@ -63,7 +63,7 @@ public class Malas extends Artigo{
     }
 
     public String getMaterial() {
-        return material;
+        return this.material;
     }
 
     public void setMaterial(String material) {
@@ -71,7 +71,7 @@ public class Malas extends Artigo{
     }
 
     public LocalDate getDataColecao() {
-        return dataColecao;
+        return this.dataColecao;
     }
 
     public void setDataColecao(LocalDate dataColecao) {
@@ -79,7 +79,7 @@ public class Malas extends Artigo{
     }
 
     public Edicao getEdicao() {
-        return edicao;
+        return this.edicao;
     }
 
     public void setEdicao(Edicao edicao) {
@@ -89,17 +89,17 @@ public class Malas extends Artigo{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
         Malas malas = (Malas) o;
 
-        if (Double.compare(malas.largura, largura) != 0) return false;
-        if (Double.compare(malas.altura, altura) != 0) return false;
-        if (desconto != malas.desconto) return false;
-        if (!Objects.equals(material, malas.material)) return false;
-        if (!Objects.equals(dataColecao, malas.dataColecao)) return false;
-        return edicao == malas.edicao;
+        if (Double.compare(malas.largura, this.largura) != 0) return false;
+        if (Double.compare(malas.altura, this.altura) != 0) return false;
+        if (this.desconto != malas.desconto) return false;
+        if (!Objects.equals(this.material, malas.material)) return false;
+        if (!Objects.equals(this.dataColecao, malas.dataColecao)) return false;
+        return this.edicao == malas.edicao;
     }
 
     @Override
@@ -123,12 +123,12 @@ public class Malas extends Artigo{
                 "Mala{" +
                 super.toString() +
                 "Malas{" +
-                "largura=" + largura +
-                ", altura=" + altura +
-                ", desconto=" + desconto +
-                ", material='" + material + '\'' +
-                ", dataColecao=" + dataColecao +
-                ", edicao=" + edicao +
+                "largura=" + this.largura +
+                ", altura=" + this.altura +
+                ", desconto=" + this.desconto +
+                ", material='" + this.material + '\'' +
+                ", dataColecao=" + this.dataColecao +
+                ", edicao=" + this.edicao +
                 '}';
     }
 }

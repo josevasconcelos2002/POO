@@ -46,7 +46,7 @@ public class Artigo {
     }
 
     public String getCodigo() {
-        return codigo;
+        return this.codigo;
     }
 
     public void setCodigo(String codigo) {
@@ -54,7 +54,7 @@ public class Artigo {
     }
 
     public Estado getEstado() {
-        return estado;
+        return this.estado;
     }
 
     public void setEstado(Estado estado) {
@@ -62,7 +62,7 @@ public class Artigo {
     }
 
     public double getAvaliacao() {
-        return avaliacao;
+        return this.avaliacao;
     }
 
     public void setAvaliacao(double avaliacao) {
@@ -70,7 +70,7 @@ public class Artigo {
     }
 
     public int getnDonos() {
-        return nDonos;
+        return this.nDonos;
     }
 
     public void setnDonos(int nDonos) {
@@ -78,7 +78,7 @@ public class Artigo {
     }
 
     public String getDescricao() {
-        return descricao;
+        return this.descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -86,7 +86,7 @@ public class Artigo {
     }
 
     public String getMarca() {
-        return marca;
+        return this.marca;
     }
 
     public void setMarca(String marca) {
@@ -94,7 +94,7 @@ public class Artigo {
     }
 
     public double getPrecoBase() {
-        return precoBase;
+        return this.precoBase;
     }
 
     public void setPrecoBase(double precoBase) {
@@ -102,22 +102,22 @@ public class Artigo {
     }
 
     public double getPrecoCorrigido() {
-        return precoCorrigido;
+        return this.precoCorrigido;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
 
         Artigo artigo = (Artigo) o;
 
         if (Double.compare(artigo.avaliacao, avaliacao) != 0) return false;
-        if (nDonos != artigo.nDonos) return false;
-        if (Double.compare(artigo.precoBase, precoBase) != 0) return false;
-        if (Double.compare(artigo.precoCorrigido, precoCorrigido) != 0) return false;
+        if (this.nDonos != artigo.nDonos) return false;
+        if (Double.compare(artigo.precoBase, this.precoBase) != 0) return false;
+        if (Double.compare(artigo.precoCorrigido, this.precoCorrigido) != 0) return false;
         if (!codigo.equals(artigo.codigo)) return false;
-        if (estado != artigo.estado) return false;
+        if (this.estado != artigo.estado) return false;
         if (!descricao.equals(artigo.descricao)) return false;
         return marca.equals(artigo.marca);
     }
@@ -143,14 +143,14 @@ public class Artigo {
     @Override
     public String toString() {
         return "Artigo{" +
-                "codigo='" + codigo + '\'' +
-                ", estado=" + estado +
-                ", avaliacao=" + avaliacao +
-                ", nDonos=" + nDonos +
-                ", descricao='" + descricao + '\'' +
-                ", marca='" + marca + '\'' +
-                ", precoBase=" + precoBase +
-                ", precoCorrigido=" + precoCorrigido +
+                "codigo='" + this.codigo + '\'' +
+                ", estado=" + this.estado +
+                ", avaliacao=" + this.avaliacao +
+                ", nDonos=" + this.nDonos +
+                ", descricao='" + this.descricao + '\'' +
+                ", marca='" + this.marca + '\'' +
+                ", precoBase=" + this.precoBase +
+                ", precoCorrigido=" + this.precoCorrigido +
                 '}';
     }
 
