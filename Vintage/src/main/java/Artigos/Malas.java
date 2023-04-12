@@ -120,15 +120,15 @@ public class Malas extends Artigo{
     @Override
     public String toString() {
         return
-                "Mala{" +
+                "Mala {" +
                 super.toString() +
-                "Malas{" +
-                "largura=" + this.largura +
-                ", altura=" + this.altura +
-                ", desconto=" + this.desconto +
-                ", material='" + this.material + '\'' +
-                ", dataColecao=" + this.dataColecao +
-                ", edicao=" + this.edicao +
+                "Malas {" +
+                "largura = " + this.largura +
+                ", altura = " + this.altura +
+                ", desconto = " + this.desconto +
+                ", material = '" + this.material + '\'' +
+                ", dataColecao = " + this.dataColecao +
+                ", edicao = " + this.edicao +
                 '}';
     }
 }

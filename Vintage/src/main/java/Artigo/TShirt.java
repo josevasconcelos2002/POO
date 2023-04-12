@@ -1,5 +1,6 @@
 package Artigos;
 
+
 public class TShirt extends Artigo{
 
     private enum Tamanho{
@@ -55,5 +56,17 @@ public class TShirt extends Artigo{
 
     public void setDesconto(int desconto){
         this.desconto = desconto;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        TShirt tshirt = (TShirt) o;
+
+        if (this.desconto != tshirt.desconto) return false;
+        return (this.padrao == tshirt.padrao && this.tamanho == tshirt.tamanho);
     }
 }
