@@ -69,4 +69,6 @@ public class TShirt extends Artigo{
         if (this.desconto != tshirt.desconto) return false;
         return (this.padrao == tshirt.padrao && this.tamanho == tshirt.tamanho);
     }
+
+    
 }

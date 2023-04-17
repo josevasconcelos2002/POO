@@ -154,6 +154,11 @@ public class Artigo {
                 '}';
     }
 
+    @Override
+    public Object clone(){
+        // clone object 
+    }
+
     // testing branch
     // testing artigos branch
 }
