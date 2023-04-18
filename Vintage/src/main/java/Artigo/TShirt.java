@@ -70,5 +70,8 @@ public class TShirt extends Artigo{
         return (this.padrao == tshirt.padrao && this.tamanho == tshirt.tamanho);
     }
 
-    
+    @Override
+    public Object clone(Object o){
+        
+    }
 }

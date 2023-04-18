@@ -1,6 +1,6 @@
 package Artigos;
 
-public class Artigo {
+public abstract class Artigo {
 
     protected enum Estado {
         NOVO,
@@ -155,9 +155,9 @@ public class Artigo {
     }
 
     @Override
-    public Object clone(){
-        // clone object 
-    }
+    public abstract Object clone(Object o);
+
+    public abstract double calculaPrecoCorrigido(Object o);
 
     // testing branch
     // testing artigos branch
