@@ -72,6 +72,16 @@ public class TShirt extends Artigo{
 
     @Override
     public Object clone(Object o){
-        
+        return new Object();
+    }
+
+    @Override
+    public double calculaPrecoCorrigido(Object o){
+        double preco_final = 0.0;
+        TShirt t = (TShirt) o;
+        if(Estado.USADO == super.getEstado())
+        if(t.getPadrao() == Padrao.LISO) preco_final = t.getPrecoBase();
+
+        return preco_final;
     }
 }
