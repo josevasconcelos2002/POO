@@ -83,45 +83,21 @@ public class Sapatilha extends Artigo{
     public void setEdicao(Edicao edicao){
         this.edicao = edicao;
     }
-    /* 
-    public float preçoUsada(Sapatilha umaSapatilha){
-        float resultado = (float)0.0;
-        float preço = this.getPreço();
-        int n_donos = this.getNdonos();
-        float estado = this.getAvaliaçao();
-        if(!this.getPremium()){
-            resultado = preço-(preço/(n_donos * estado));
-        }
-        else{
-            resultado = preço+(preço/(n_donos * estado));
-        }
-        return resultado;
+  
+    @Override
+    public Sapatilha clone(){
+        Sapatilha s = new Sapatilha(super.getCodigo(), super.getAvaliacao(), super.getnDonos(), super.getDescricao(), super.getMarca(), super.getPrecoBase(), this.getTamanho(), this.getAtacadores(), this.getCor(), this.getDataColecao(), this.getDesconto(), this.getEdicao());
+        return s;
     }
 
-    
-
-    public void setNovo(Boolean novo){
-        if(this.getNdonos() > 0 && novo == false){
-            this.novo = novo;
-        }
-        if(novo == true && this.getNdonos()>0){
-            this.novo = novo;
-            this.n_donos = 0;
-        }
-        if(novo == false && this.getNdonos() == 0){
-            this.novo = novo;
-            this.n_donos = 1;   //depois o utilizador tem que atualizar este valor
+    @Override
+    public void setPrecoCorrigido(){
+        Sapatilha m = (Sapatilha) this;
+        if(Estado.USADO == super.getEstado()){
+            if(m.getEdicao() == Edicao.STANDARD) super.setPrecoCorrigido(super.getPrecoBase() - (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));
+            else{
+                super.setPrecoCorrigido(super.getPrecoBase() + (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));   // que algoritmo usar?
+            }
         }
     }
-
-
-    public void setNdonos(int n_donos){
-        if(!this.getNovo() && n_donos > 0){
-            this.n_donos = n_donos;
-        }
-        if(this.getNovo() && n_donos == 0){
-            this.n_donos = n_donos;
-        }
-    }
-    */   
 } 

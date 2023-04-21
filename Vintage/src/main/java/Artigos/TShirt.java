@@ -71,17 +71,20 @@ public class TShirt extends Artigo{
     }
 
     @Override
-    public Object clone(Object o){
-        return new Object();
+    public TShirt clone(){
+        TShirt t = new TShirt(super.getCodigo(), super.getAvaliacao(), super.getnDonos(), super.getDescricao(), super.getMarca(), super.getPrecoBase(), this.getTamanho(), this.getPadrao(), this.getDesconto());
+        return t;
     }
 
-    @Override
-    public double calculaPrecoCorrigido(Object o){
-        double preco_final = 0.0;
-        TShirt t = (TShirt) o;
-        if(Estado.USADO == super.getEstado())
-        if(t.getPadrao() == Padrao.LISO) preco_final = t.getPrecoBase();
 
-        return preco_final;
+    @Override
+    public void setPrecoCorrigido(){
+        TShirt t = (TShirt) this;
+        if(Estado.USADO == super.getEstado()){
+            if(t.getPadrao() == Padrao.LISO) super.setPrecoCorrigido(super.getPrecoBase());
+            else{
+                super.setPrecoCorrigido(0.5 * super.getPrecoBase());
+            }
+        }
     }
 }

@@ -105,6 +105,10 @@ public abstract class Artigo {
         return this.precoCorrigido;
     }
 
+    public void setPrecoCorrigido(double precoCorrigido) {
+        this.precoCorrigido = precoCorrigido;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -155,9 +159,9 @@ public abstract class Artigo {
     }
 
     @Override
-    public abstract Object clone(Object o);
+    public abstract Object clone();
 
-    public abstract double calculaPrecoCorrigido(Object o);
+    public abstract void setPrecoCorrigido();
 
     // testing branch
     // testing artigos branch

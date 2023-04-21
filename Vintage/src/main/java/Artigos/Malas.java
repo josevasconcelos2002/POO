@@ -131,4 +131,21 @@ public class Malas extends Artigo{
                 ", edicao = " + this.edicao +
                 '}';
     }
+
+    @Override
+    public Malas clone(){
+        Malas m = new Malas(super.getCodigo(), super.getAvaliacao(), super.getnDonos(), super.getDescricao(), super.getMarca(), super.getPrecoBase(), this.getLargura(), this.getAltura(), this.getDesconto(), this.getMaterial(), this.getDataColecao(), this.getEdicao());
+        return m;
+    }
+
+    @Override
+    public void setPrecoCorrigido(){
+        Malas m = (Malas) this;
+        if(Estado.USADO == super.getEstado()){
+            if(m.getEdicao() == Edicao.STANDARD) super.setPrecoCorrigido(super.getPrecoBase() - (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));
+            else{
+                super.setPrecoCorrigido(super.getPrecoBase() + (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));     // que algoritmo usar para valorizar x% ao ano?
+            }
+        }
+    }
 }
