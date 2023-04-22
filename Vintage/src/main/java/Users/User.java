@@ -106,4 +106,12 @@ public class User {
     public void setInfoVendas(String infoVendas){
         this.infoVendas = infoVendas;
     }
+
+    public double getValorVendas(){
+        return this.valorVendas;
+    }
+
+    public void setValorVendas(double valorVendas){
+        this.valorVendas = valorVendas;
+    }
 }
