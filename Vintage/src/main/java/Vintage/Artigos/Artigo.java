@@ -1,6 +1,9 @@
-package Artigos;
+package Vintage.Artigos;
 
-public abstract class Artigo {
+import Vintage.IArtigo;
+import Vintage.Vintage;
+
+public abstract class Artigo extends Vintage implements IArtigo {
 
     protected enum Estado {
         NOVO,
@@ -45,6 +48,7 @@ public abstract class Artigo {
         this.precoBase = precoBase;
     }
 
+    @Override
     public String getCodigo() {
         return this.codigo;
     }
@@ -61,6 +65,7 @@ public abstract class Artigo {
         this.estado = estado;
     }
 
+    @Override
     public double getAvaliacao() {
         return this.avaliacao;
     }
@@ -69,6 +74,7 @@ public abstract class Artigo {
         this.avaliacao = avaliacao;
     }
 
+    @Override
     public int getnDonos() {
         return this.nDonos;
     }
@@ -77,6 +83,7 @@ public abstract class Artigo {
         this.nDonos = nDonos;
     }
 
+    @Override
     public String getDescricao() {
         return this.descricao;
     }
@@ -85,6 +92,7 @@ public abstract class Artigo {
         this.descricao = descricao;
     }
 
+    @Override
     public String getMarca() {
         return this.marca;
     }
@@ -93,6 +101,7 @@ public abstract class Artigo {
         this.marca = marca;
     }
 
+    @Override
     public double getPrecoBase() {
         return this.precoBase;
     }
@@ -101,6 +110,7 @@ public abstract class Artigo {
         this.precoBase = precoBase;
     }
 
+    @Override
     public double getPrecoCorrigido() {
         return this.precoCorrigido;
     }

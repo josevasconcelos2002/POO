@@ -1,8 +1,14 @@
-package Encomendas;
+package Vintage.Encomendas;
 
 import java.time.LocalDate;
 
-public class Encomendas {
+import Vintage.IArtigo;
+//import Artigos.Artigo;
+import Vintage.Vintage;
+
+
+
+public class Encomendas extends Vintage{
     
     protected enum Dimensao{
         GRANDE,
@@ -15,24 +21,34 @@ public class Encomendas {
         FINALIZADA,
         EXPEDIDA
     }
-
+    private IArtigo[] artigos;
     private Estado estado;
     private Dimensao dimensao;
     private double precoFinal;
     private LocalDate dataExpedicao;
 
     public Encomendas(){
+        this.artigos = null;
         this.precoFinal = 0.0;
-        //this.dataExpedicao =
+        this.dataExpedicao = LocalDate.now();
         this.estado = Estado.PENDENTE;
         this.dimensao = Dimensao.MEDIA;
     }
 
-    public Encomendas(Estado estado, Dimensao dimensao, double precoFinal, LocalDate dataExpedicao){
+    public Encomendas(IArtigo[] artigos,Estado estado, Dimensao dimensao, double precoFinal, LocalDate dataExpedicao){
+        this.artigos = artigos;
         this.estado = estado;
         this.dimensao = dimensao;
         this.precoFinal = precoFinal;
         this.dataExpedicao = dataExpedicao;
+    }
+
+    public IArtigo[] getArtigos(){
+        return this.artigos;
+    }
+
+    public void setArtigos(IArtigo[] artigos){
+        this.artigos = artigos;
     }
 
     public Estado getEstado(){
@@ -89,6 +105,13 @@ public class Encomendas {
         if(this.dimensao != encomenda.dimensao) resultado = false;
         if(Double.compare(this.precoFinal, encomenda.precoFinal) != 0) resultado = false;
         if(this.dataExpedicao.equals(encomenda.dataExpedicao) == false) resultado = false;
+        return resultado;
+    }
+
+    public double calculaPrecoFinal(){
+        // por cada artigo do array, se artigo.getEstado() == NOVO    + 0.5
+        // se for usado, + 0.25
+        double resultado = 0.0;
         return resultado;
     }
 }
