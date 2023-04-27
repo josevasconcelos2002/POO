@@ -1,6 +1,7 @@
 package Artigos;
 
 import Vintage.Artigos.Malas;
+import Vintage.Artigos.Malas.Edicao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,6 +28,13 @@ class MalasTest {
         Malas mala = new Malas();
         mala.setDesconto(20);
         assertEquals(20, mala.getDesconto());
+    }
+
+    @Test
+    public void testSetEdicao(){
+        Malas mala = new Malas();
+        mala.setEdicao(Edicao.PREMIUM);
+        assertEquals(Edicao.PREMIUM, mala.getEdicao());
     }
 
     @Test

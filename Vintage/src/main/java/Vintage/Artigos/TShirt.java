@@ -3,14 +3,14 @@ package Vintage.Artigos;
 
 public class TShirt extends Artigo{
 
-    private enum Tamanho{
+    public /*private*/ enum Tamanho{
         S,
         M,
         L,
         XL
     }
 
-    private enum Padrao{
+    public /*private*/ enum Padrao{
         LISO,
         RISCAS,
         PALMEIRAS
@@ -19,6 +19,10 @@ public class TShirt extends Artigo{
     private Tamanho tamanho;
     private Padrao padrao;
     private int desconto; //só existe em padrões riscas e palmeiras e é fixo a 50%
+
+    public TShirt(){
+        super();
+    }
 
     public TShirt(String codigo, String descricao, String marca, double precoBase, Tamanho tamanho, Padrao padrao, int desconto){
         super(codigo,descricao,marca,precoBase);
@@ -72,7 +76,10 @@ public class TShirt extends Artigo{
 
     @Override
     public TShirt clone(){
-        TShirt t = new TShirt(super.getCodigo(), super.getAvaliacao(), super.getnDonos(), super.getDescricao(), super.getMarca(), super.getPrecoBase(), this.getTamanho(), this.getPadrao(), this.getDesconto());
+        TShirt t = new TShirt();
+        t.padrao = this.padrao;
+        t.tamanho = this.tamanho;
+        t.desconto = this.desconto;
         return t;
     }
 
