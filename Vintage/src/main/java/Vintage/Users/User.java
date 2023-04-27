@@ -22,6 +22,14 @@ public class User {
         this.valorVendas = 0.0;
     }
 
+    public User(int codigo, String email, String nome, String morada, String nif){
+        this.codigo = codigo;
+        this.email = email;
+        this.nome = nome;
+        this.morada = morada;
+        this.nif = nif;
+    }
+
     public User(int codigo, String email, String nome, String morada, String nif, String[] produtosVendidos, String[] produtosVenda, String[] produtosComprados, String infoVendas, double valorVendas){
         this.codigo = codigo;
         this.email = email;
