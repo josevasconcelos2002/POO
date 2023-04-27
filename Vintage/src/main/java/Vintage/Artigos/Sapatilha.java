@@ -1,10 +1,11 @@
 package Vintage.Artigos;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Sapatilha extends Artigo{
 
-    private enum Edicao{
+    public /*private*/ enum Edicao{
         STANDARD,
         PREMIUM
     }
@@ -12,11 +13,21 @@ public class Sapatilha extends Artigo{
     private int tamanho;
     private boolean atacadores;
     private String cor;
-    private Date dataColecao;
+    private LocalDate dataColecao;
     private int desconto; // só em sapatilhas usadas, e definido pelo vendedor && sapatilhas novas acima de 45
     private Edicao edicao; // para estes casos o valor desconto é acrescentado
 
-    public Sapatilha(String codigo,String descricao, String marca, double precoBase, int tamanho, boolean atacadores, String cor, Date dataColecao, int desconto, Edicao edicao){
+    public Sapatilha(){
+        super();
+        this.tamanho = 38;
+        this.atacadores = true;
+        this.cor = "red";
+        this.dataColecao = LocalDate.now();
+        this.desconto = 0;
+        this.edicao = Edicao.STANDARD;
+    }
+
+    public Sapatilha(String codigo,String descricao, String marca, double precoBase, int tamanho, boolean atacadores, String cor, LocalDate dataColecao, int desconto, Edicao edicao){
         super(codigo, descricao, marca, precoBase);
         this.tamanho = tamanho;
         this.atacadores = atacadores;
@@ -26,7 +37,7 @@ public class Sapatilha extends Artigo{
         this.edicao = edicao;
     }
 
-    public Sapatilha(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, int tamanho, boolean atacadores, String cor, Date dataColecao, int desconto, Edicao edicao) {
+    public Sapatilha(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, int tamanho, boolean atacadores, String cor, LocalDate dataColecao, int desconto, Edicao edicao) {
         super(codigo, avaliacao, nDonos, descricao, marca, precoBase);
         this.tamanho = tamanho;
         this.atacadores = atacadores;
@@ -60,11 +71,11 @@ public class Sapatilha extends Artigo{
         this.cor = cor;
     }
 
-    public Date getDataColecao(){
+    public LocalDate getDataColecao(){
         return this.dataColecao;
     }
 
-    public void setDataColecao(Date dataColecao){
+    public void setDataColecao(LocalDate dataColecao){
         this.dataColecao = dataColecao;
     }
 
@@ -86,15 +97,21 @@ public class Sapatilha extends Artigo{
   
     @Override
     public Sapatilha clone(){
-        Sapatilha s = new Sapatilha(super.getCodigo(), super.getAvaliacao(), super.getnDonos(), super.getDescricao(), super.getMarca(), super.getPrecoBase(), this.getTamanho(), this.getAtacadores(), this.getCor(), this.getDataColecao(), this.getDesconto(), this.getEdicao());
+        Sapatilha s = new Sapatilha();
+        s.atacadores = this.atacadores;
+        s.cor = this.cor;
+        s.dataColecao = this.dataColecao;
+        s.desconto = this.desconto;
+        s.edicao = this.edicao;
+        s.tamanho = this.tamanho;
         return s;
     }
 
     @Override
     public void setPrecoCorrigido(){
-        Sapatilha m = (Sapatilha) this;
+        Sapatilha s = (Sapatilha) this;
         if(Estado.USADO == super.getEstado()){
-            if(m.getEdicao() == Edicao.STANDARD) super.setPrecoCorrigido(super.getPrecoBase() - (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));
+            if(s.getEdicao() == Edicao.STANDARD) super.setPrecoCorrigido(super.getPrecoBase() - (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));
             else{
                 super.setPrecoCorrigido(super.getPrecoBase() + (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));   // que algoritmo usar?
             }
