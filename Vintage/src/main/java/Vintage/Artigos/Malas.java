@@ -1,4 +1,4 @@
-package Artigos;
+package Vintage.Artigos;
 
 import java.time.LocalDate;
 //import java.util.Date;
@@ -17,6 +17,10 @@ public class Malas extends Artigo{
     private String material;
     private LocalDate dataColecao;
     private Edicao edicao; // aumenta o valor X% ao ano (dependendo do tipo de mala)
+
+    public Malas(){
+        super();
+    }
 
     public Malas(String codigo, String descricao, String marca, double precoBase, double largura, double altura, int desconto, String material, LocalDate dataColecao, Edicao edicao) {
         super(codigo, descricao, marca, precoBase);
@@ -134,7 +138,13 @@ public class Malas extends Artigo{
 
     @Override
     public Malas clone(){
-        Malas m = new Malas(super.getCodigo(), super.getAvaliacao(), super.getnDonos(), super.getDescricao(), super.getMarca(), super.getPrecoBase(), this.getLargura(), this.getAltura(), this.getDesconto(), this.getMaterial(), this.getDataColecao(), this.getEdicao());
+        Malas m = new Malas();
+        m.altura = this.altura;
+        m.dataColecao = this.dataColecao;
+        m.desconto = this.desconto;
+        m.edicao = this.edicao;
+        m.largura = this.largura;
+        m.material = this.material;
         return m;
     }
 

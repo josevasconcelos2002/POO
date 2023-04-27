@@ -1,4 +1,4 @@
-package Users;
+package Vintage.Users;
 
 public class User {
     private int codigo;

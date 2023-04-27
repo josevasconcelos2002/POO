@@ -1,4 +1,4 @@
-import Artigos.Malas;
+import Vintage.Artigos.Malas;
 
 import java.time.LocalDate;
 //import java.util.Date;

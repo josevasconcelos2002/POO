@@ -1,4 +1,4 @@
-package Artigos;
+package Vintage.Artigos;
 
 import java.util.Date;
 

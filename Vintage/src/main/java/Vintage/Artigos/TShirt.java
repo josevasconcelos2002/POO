@@ -1,4 +1,4 @@
-package Artigos;
+package Vintage.Artigos;
 
 
 public class TShirt extends Artigo{

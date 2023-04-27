@@ -27,7 +27,7 @@ public abstract class Artigo extends Vintage implements IArtigo {
         this.descricao = "";
         this.marca = "";
         this.precoBase = -1;
-        this.precoCorrigido = -1;
+        this.precoCorrigido = -1.0;
     }
 
     public Artigo(String codigo, String descricao, String marca, double precoBase) {
@@ -36,6 +36,7 @@ public abstract class Artigo extends Vintage implements IArtigo {
         this.descricao = descricao;
         this.marca = marca;
         this.precoBase = precoBase;
+        this.precoCorrigido = -1.0;
     }
 
     public Artigo(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase) {
@@ -46,6 +47,7 @@ public abstract class Artigo extends Vintage implements IArtigo {
         this.descricao = descricao;
         this.marca = marca;
         this.precoBase = precoBase;
+        this.precoCorrigido = -1.0;
     }
 
     @Override
