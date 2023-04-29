@@ -4,6 +4,9 @@ import Vintage.Users.User;
 import Vintage.Users.Users;
 import Vintage.Vintage;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class ControllerVintage {
     public static void run() {
         Vintage vintage = new Vintage();
@@ -30,16 +33,25 @@ public class ControllerVintage {
                     Menu.pressToContinue();
                     break;
                 case 4:
-                    // Guardar estado
-                    System.out.println("Falta implementar(Guardar estado)");
+                    Menu.limpaTerminal();
+                    String saveName = Menu.save();
+                    try{vintage.guardaEstado(saveName);System.out.println("Ficheiros salvos com sucesso!!!\n");}
+                    catch (FileNotFoundException e) {Menu.errors(2);}
+                    catch (IOException e) {Menu.errors(3);}
+                    Menu.pressToContinue();
                     break;
                 case 5:
-                    // Carregar estado
-                    System.out.println("Falta implementar(Carregar estado)");
+                    Menu.limpaTerminal();
+                    String loadName = Menu.load();
+                    try {vintage.carregaEstado(loadName);System.out.println("Ficheiros carregados com sucesso!!!\n");}
+                    catch (FileNotFoundException e) {Menu.errors(2);}
+                    catch (IOException e) {Menu.errors(4);}
+                    catch (ClassNotFoundException e) {Menu.errors(5);}
+                    Menu.pressToContinue();
                     break;
                 case 6:
-                    // Estatisticas
-                    System.out.println("Falta implementar(Estatisticas)");
+                    ControllerStats.run(vintage);
+                    //System.out.println("Falta implementar(Estatisticas)");
                     break;
                 case 0:
                     System.exit(0);

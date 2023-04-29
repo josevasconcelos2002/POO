@@ -1,9 +1,10 @@
 package Vintage;
 
 import Vintage.Users.User;
-import Vintage.Users.Users;
 
-public class Vintage {
+import java.io.*;
+
+public class Vintage implements Serializable {
     private User user;
     private Estado estado;
 
@@ -34,4 +35,12 @@ public class Vintage {
     /*public void mostrarLogs() {
         estado.loadEstadoLogs();
     }*/
+
+    public void guardaEstado(String saveName) throws IOException {
+        this.estado.guardarEstado(saveName);
+    }
+
+    public void carregaEstado(String loadName) throws IOException, ClassNotFoundException {
+        this.estado.carregaEstado(loadName);
+    }
 }

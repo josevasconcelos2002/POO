@@ -141,8 +141,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "codigo=" + codigo +
+        return "{Codigo=" + codigo +
                 ", email='" + email + '\'' +
                 ", nome='" + nome + '\'' +
                 ", morada='" + morada + '\'' +

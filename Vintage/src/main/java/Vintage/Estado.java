@@ -21,6 +21,12 @@ public class Estado implements Serializable {
         this.listaDeArtigos = new Artigos();
     }
 
+    public Estado(Estado es) {
+        this.listaDeUtilizadores = es.listaDeUtilizadores;
+        this.listaDeEncomendas = es.listaDeEncomendas;
+        this.listaDeArtigos = es.listaDeArtigos;
+    }
+
     public int getNewUserCode(){
         return listaDeUtilizadores.size() + 1;
     }
@@ -38,9 +44,25 @@ public class Estado implements Serializable {
     }
 
     // Função que guarda o estado da aplicação(guarda os objetos)
-    public void guardarEstado(String nomeFicheiro){
+    public void guardarEstado(String nomeFicheiro) throws IOException {
         FileOutputStream fileOut = new FileOutputStream(nomeFicheiro);
         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(this);
+        out.close();
+        fileOut.close();
 
+        System.out.println("Estado guardado com sucesso!!");
+    }
+
+    public void carregaEstado(String nomeFicheiro) throws IOException, ClassNotFoundException {
+        FileInputStream fileIn = new FileInputStream(nomeFicheiro);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        Estado estado = (Estado) in.readObject();
+        in.close();
+        fileIn.close();
+
+        this.listaDeUtilizadores = estado.listaDeUtilizadores;
+        this.listaDeEncomendas = estado.listaDeEncomendas;
+        this.listaDeArtigos = estado.listaDeArtigos;
     }
 }
