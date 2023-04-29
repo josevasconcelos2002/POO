@@ -4,11 +4,9 @@ import java.time.LocalDate;
 
 import Vintage.IArtigo;
 //import Artigos.Artigo;
-import Vintage.Vintage;
 
 
-
-public class Encomendas extends Vintage{
+public class Encomendas {
     
     protected enum Dimensao{
         GRANDE,

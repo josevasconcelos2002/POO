@@ -1,5 +1,7 @@
 package Vintage.Users;
 
+import java.util.Arrays;
+
 public class User {
     private int codigo;
     private String email;
@@ -121,5 +123,21 @@ public class User {
 
     public void setValorVendas(double valorVendas){
         this.valorVendas = valorVendas;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "codigo=" + codigo +
+                ", email='" + email + '\'' +
+                ", nome='" + nome + '\'' +
+                ", morada='" + morada + '\'' +
+                ", nif='" + nif + '\'' +
+                ", produtosVendidos=" + Arrays.toString(produtosVendidos) +
+                ", produtosVenda=" + Arrays.toString(produtosVenda) +
+                ", produtosComprados=" + Arrays.toString(produtosComprados) +
+                ", infoVendas='" + infoVendas + '\'' +
+                ", valorVendas=" + valorVendas +
+                '}';
     }
 }

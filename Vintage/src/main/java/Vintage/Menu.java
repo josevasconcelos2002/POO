@@ -1,3 +1,5 @@
+package Vintage;
+
 import Vintage.Users.User;
 
 import java.io.IOException;
@@ -37,7 +39,7 @@ public class Menu {
         sb.append("[3] - Listar as encomendas emitidas por um vendedor.\n");
         sb.append("[4] - Fornecer uma ordenação dos maiores compradores/vendedores" +
                   "do sistema durante um período a determinar.\n");
-        sb.append("[5] - Determinar quanto dinheiro ganhou o Vintage no seu funcionamento.");
+        sb.append("[5] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.");
         Scanner input = new Scanner(System.in);
         return input.nextInt();
     }
@@ -93,5 +95,13 @@ public class Menu {
         String nif = input.nextLine();
 
         return new User(codigo, email, nome, morada, nif);
+    }
+
+    public static void errors(int i){
+        limpaTerminal();
+        StringBuilder sb = new StringBuilder();
+        if (i == 1) sb.append("***Primeiro erro***\n");
+        System.out.println(sb.toString());
+        pressToContinue();
     }
 }

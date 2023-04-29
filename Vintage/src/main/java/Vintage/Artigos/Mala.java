@@ -4,7 +4,7 @@ import java.time.LocalDate;
 //import java.util.Date;
 import java.util.Objects;
 
-public class Malas extends Artigo{
+public class Mala extends Artigo{
 
     public enum Edicao{
         STANDARD,
@@ -18,11 +18,11 @@ public class Malas extends Artigo{
     private LocalDate dataColecao;
     private Edicao edicao; // aumenta o valor X% ao ano (dependendo do tipo de mala)
 
-    public Malas(){
+    public Mala(){
         super();
     }
 
-    public Malas(String codigo, String descricao, String marca, double precoBase, double largura, double altura, int desconto, String material, LocalDate dataColecao, Edicao edicao) {
+    public Mala(String codigo, String descricao, String marca, double precoBase, double largura, double altura, int desconto, String material, LocalDate dataColecao, Edicao edicao) {
         super(codigo, descricao, marca, precoBase);
         this.largura = largura;
         this.altura = altura;
@@ -32,7 +32,7 @@ public class Malas extends Artigo{
         this.edicao = edicao;
     }
 
-    public Malas(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, double largura, double altura, int desconto, String material, LocalDate dataColecao, Edicao edicao) {
+    public Mala(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, double largura, double altura, int desconto, String material, LocalDate dataColecao, Edicao edicao) {
         super(codigo, avaliacao, nDonos, descricao, marca, precoBase);
         this.largura = largura;
         this.altura = altura;
@@ -96,14 +96,14 @@ public class Malas extends Artigo{
         if (o == null || this.getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        Malas malas = (Malas) o;
+        Mala mala = (Mala) o;
 
-        if (Double.compare(malas.largura, this.largura) != 0) return false;
-        if (Double.compare(malas.altura, this.altura) != 0) return false;
-        if (this.desconto != malas.desconto) return false;
-        if (!Objects.equals(this.material, malas.material)) return false;
-        if (!Objects.equals(this.dataColecao, malas.dataColecao)) return false;
-        return this.edicao == malas.edicao;
+        if (Double.compare(mala.largura, this.largura) != 0) return false;
+        if (Double.compare(mala.altura, this.altura) != 0) return false;
+        if (this.desconto != mala.desconto) return false;
+        if (!Objects.equals(this.material, mala.material)) return false;
+        if (!Objects.equals(this.dataColecao, mala.dataColecao)) return false;
+        return this.edicao == mala.edicao;
     }
 
     @Override
@@ -137,8 +137,8 @@ public class Malas extends Artigo{
     }
 
     @Override
-    public Malas clone(){
-        Malas m = new Malas();
+    public Mala clone(){
+        Mala m = new Mala();
         m.altura = this.altura;
         m.dataColecao = this.dataColecao;
         m.desconto = this.desconto;
@@ -148,13 +148,12 @@ public class Malas extends Artigo{
         return m;
     }
 
-    @Override
-    public void setPrecoCorrigido(){
-        Malas m = (Malas) this;
-        if(Estado.USADO == super.getEstado()){
-            if(m.getEdicao() == Edicao.STANDARD) super.setPrecoCorrigido(super.getPrecoBase() - (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));
+    public void calculaPrecoMala(){
+        Mala m = (Mala) this;
+        if(Estado.USADO == this.getEstado()){
+            if(m.getEdicao() == Edicao.STANDARD) m.setPrecoCorrigido(m.getPrecoBase() - (m.getPrecoBase() / m.getnDonos() * m.getAvaliacao()));
             else{
-                super.setPrecoCorrigido(super.getPrecoBase() + (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));     // que algoritmo usar para valorizar x% ao ano?
+                m.setPrecoCorrigido(m.getPrecoBase() + (m.getPrecoBase() / m.getnDonos() * m.getAvaliacao()));
             }
         }
     }

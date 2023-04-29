@@ -11,7 +11,7 @@ public class Users {
         this.users = new HashMap<String,User>();
     }
 
-    public int getNewCode(){
-        return 0;
+    public int size(){
+        return users.size();
     }
 }

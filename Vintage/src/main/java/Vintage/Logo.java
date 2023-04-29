@@ -1,3 +1,7 @@
+package Vintage;
+
+import Vintage.Menu;
+
 public class Logo {
     public static void logo(){
         Menu.limpaTerminal();

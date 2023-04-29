@@ -83,8 +83,6 @@ public class TShirt extends Artigo{
         return t;
     }
 
-
-    @Override
     public void setPrecoCorrigido(){
         TShirt t = (TShirt) this;
         if(Estado.USADO == super.getEstado()){

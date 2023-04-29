@@ -1,5 +1,8 @@
+package Vintage;
+
 import Vintage.Users.User;
 import Vintage.Users.Users;
+import Vintage.Vintage;
 
 public class ControllerVintage {
     public static void run(){
@@ -17,9 +20,10 @@ public class ControllerVintage {
                 System.out.println("Falta implementar(Iniciar sessão)");
                 break;
             case 2:
-                User novoUser = Menu.registarNovoUser(Users.getNewCode);
-
-                System.out.println("Falta implementar(Registar conta)");
+                Menu.limpaTerminal();
+                User novoUser = Menu.registarNovoUser(vintage.newUserCode());
+                System.out.println(novoUser.toString());
+                //System.out.println("Falta implementar(Registar conta)");
                 break;
             case 3:
                 // Mostrar logs

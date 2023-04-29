@@ -1,9 +1,8 @@
 package Vintage.Artigos;
 
 import Vintage.IArtigo;
-import Vintage.Vintage;
 
-public abstract class Artigo extends Vintage implements IArtigo {
+public abstract class Artigo implements IArtigo {
 
     protected enum Estado {
         NOVO,
@@ -172,9 +171,4 @@ public abstract class Artigo extends Vintage implements IArtigo {
 
     @Override
     public abstract Object clone();
-
-    public abstract void setPrecoCorrigido();
-
-    // testing branch
-    // testing artigos branch
 }
