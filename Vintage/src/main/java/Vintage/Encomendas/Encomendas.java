@@ -1,12 +1,12 @@
 package Vintage.Encomendas;
 
+import java.io.*;
 import java.time.LocalDate;
 
 import Vintage.IArtigo;
 //import Artigos.Artigo;
 
-
-public class Encomendas {
+public class Encomendas implements Serializable {
     
     protected enum Dimensao{
         GRANDE,

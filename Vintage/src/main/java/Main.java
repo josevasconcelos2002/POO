@@ -6,7 +6,7 @@ import Vintage.Menu;
 public class Main {
     public static void main(String[] args)
     {
-        Menu.printLogo();
+        //Menu.printLogo();
         ControllerVintage.run();
     }
 }

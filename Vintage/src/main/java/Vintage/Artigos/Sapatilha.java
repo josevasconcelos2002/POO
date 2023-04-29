@@ -1,8 +1,9 @@
 package Vintage.Artigos;
 
+import java.io.*;
 import java.time.LocalDate;
 
-public class Sapatilha extends Artigo{
+public class Sapatilha extends Artigo implements Serializable {
 
     public enum Edicao{
         STANDARD,

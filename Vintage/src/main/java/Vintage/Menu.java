@@ -100,7 +100,7 @@ public class Menu {
     public static void errors(int i){
         limpaTerminal();
         StringBuilder sb = new StringBuilder();
-        if (i == 1) sb.append("***Primeiro erro***\n");
+        if (i == 1) sb.append("***Email ja existe***\n");
         System.out.println(sb.toString());
         pressToContinue();
     }

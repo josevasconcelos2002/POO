@@ -2,7 +2,9 @@ package Vintage.Artigos;
 
 import Vintage.IArtigo;
 
-public abstract class Artigo implements IArtigo {
+import java.io.*;
+
+public abstract class Artigo implements IArtigo, Serializable {
 
     protected enum Estado {
         NOVO,

@@ -1,10 +1,10 @@
 package Vintage.Artigos;
 
+import java.io.*;
 import java.time.LocalDate;
-//import java.util.Date;
 import java.util.Objects;
 
-public class Mala extends Artigo{
+public class Mala extends Artigo implements Serializable {
 
     public enum Edicao{
         STANDARD,
@@ -124,8 +124,7 @@ public class Mala extends Artigo{
     @Override
     public String toString() {
         return
-                "Mala {" +
-                super.toString() +
+                "Mala {" + super.toString() +
                 "Malas {" +
                 "largura = " + this.largura +
                 ", altura = " + this.altura +

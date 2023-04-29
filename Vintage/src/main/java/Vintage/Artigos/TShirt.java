@@ -1,7 +1,8 @@
 package Vintage.Artigos;
 
+import java.io.*;
 
-public class TShirt extends Artigo{
+public class TShirt extends Artigo implements Serializable {
 
     public /*private*/ enum Tamanho{
         S,
