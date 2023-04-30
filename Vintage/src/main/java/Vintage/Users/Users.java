@@ -3,11 +3,8 @@ package Vintage.Users;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
-<<<<<<< HEAD
-//import java.util.Set;
-=======
 import java.util.stream.Collectors;
->>>>>>> refs/remotes/origin/main
+
 
 public class Users implements Serializable {
     private Map<String, User> users;
@@ -16,13 +13,11 @@ public class Users implements Serializable {
         this.users = new HashMap<String,User>();
     }
 
-<<<<<<< HEAD
     public static int getNewCode(){
         return 0;
-=======
+    }
     public Users(Map<String,User> Users){
         this.setUsers(Users);
->>>>>>> refs/remotes/origin/main
     }
 
     public Users(Users us){
