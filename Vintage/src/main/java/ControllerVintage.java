@@ -17,7 +17,7 @@ public class ControllerVintage {
                 System.out.println("Falta implementar(Iniciar sessão)");
                 break;
             case 2:
-                User novoUser = Menu.registarNovoUser(Users.getNewCode);
+                User novoUser = Menu.registarNovoUser(Users.getNewCode());
 
                 System.out.println("Falta implementar(Registar conta)");
                 break;
