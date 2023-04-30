@@ -1,9 +1,15 @@
+package Vintage;
+
 import Vintage.Users.User;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+
+
     public static void printLogo(){
         Logo.logo();
         try{
@@ -32,12 +38,16 @@ public class Menu {
     public static int menuStats(){
         limpaTerminal();
         StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU ESTATISTICAS-\n\n");
-        sb.append("[1] - Qual o vendedor que mais facturou num período ou desde sempre.\n");
-        sb.append("[2] - Qual o transportador com maior volume de facturação.\n");
-        sb.append("[3] - Listar as encomendas emitidas por um vendedor.\n");
-        sb.append("[4] - Fornecer uma ordenação dos maiores compradores/vendedores" +
+        sb.append("[1] - Listar utilizadores.\n");
+        sb.append("[2] - Listar Artigos.\n");
+        sb.append("[3] - Qual o vendedor que mais facturou num período ou desde sempre.\n");
+        sb.append("[4] - Qual o transportador com maior volume de facturacao.\n");
+        sb.append("[5] - Listar as encomendas emitidas por um vendedor.\n");
+        sb.append("[6] - Fornecer uma ordenacao dos maiores compradores/vendedores" +
                   "do sistema durante um período a determinar.\n");
-        sb.append("[5] - Determinar quanto dinheiro ganhou o Vintage no seu funcionamento.");
+        sb.append("[7] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.\n");
+        sb.append("[0] - Sair.\n\n");
+        System.out.println(sb.toString());
         Scanner input = new Scanner(System.in);
         return input.nextInt();
     }
@@ -93,5 +103,29 @@ public class Menu {
         String nif = input.nextLine();
 
         return new User(codigo, email, nome, morada, nif);
+    }
+
+    public static String save(){
+        System.out.println("Escreve o nome do ficheiro onde vao ser guardados os dados: ");
+        Scanner input = new Scanner(System.in);
+        return input.nextLine();
+    }
+
+    public static String load(){
+        System.out.println("Escreve o nome do ficheiro de onde vao ser carregados os dados: ");
+        Scanner input = new Scanner(System.in);
+        return input.nextLine();
+    }
+
+    public static void errors(int i){
+        limpaTerminal();
+        StringBuilder sb = new StringBuilder();
+        if (i == 1) sb.append(ANSI_RED).append("!!!! Email ja existe !!!!\n").append(ANSI_RESET);
+        else if(i == 2) sb.append(ANSI_RED).append("!!!! Erro a encotrar o ficheiro !!!!\n").append(ANSI_RESET);
+        else if(i == 3) sb.append(ANSI_RED).append("!!!! Nao foi possivel guardar o estado !!!!\n").append(ANSI_RESET);
+        else if(i == 4) sb.append(ANSI_RED).append("!!!! Erro associado a classes !!!!\n").append(ANSI_RESET);
+        else if(i == 5) sb.append(ANSI_RED).append("!!!! Não foi possivel carregar o estado !!!!\n").append(ANSI_RESET);
+        System.out.println(sb.toString());
+        pressToContinue();
     }
 }

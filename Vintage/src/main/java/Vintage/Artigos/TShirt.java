@@ -1,7 +1,8 @@
 package Vintage.Artigos;
 
+import java.io.*;
 
-public class TShirt extends Artigo{
+public class TShirt extends Artigo implements Serializable {
 
     public /*private*/ enum Tamanho{
         S,
@@ -83,8 +84,6 @@ public class TShirt extends Artigo{
         return t;
     }
 
-
-    @Override
     public void setPrecoCorrigido(){
         TShirt t = (TShirt) this;
         if(Estado.USADO == super.getEstado()){

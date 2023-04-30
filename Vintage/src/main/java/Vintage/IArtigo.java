@@ -1,10 +1,10 @@
 package Vintage;
-//import Vintage.Artigos.Artigo;
+//import Vintage.Vintage.Artigos.Artigo;
 
 
 public interface IArtigo {
     public String getCodigo();
-    //public Artigo.Estado getEstado();
+    //public Artigo.Vintage.Estado getEstado();
     public double getAvaliacao();
     public int getnDonos();
     public String getDescricao();

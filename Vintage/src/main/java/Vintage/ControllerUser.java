@@ -1,4 +1,7 @@
-public class CrontrollerUser {
+package Vintage;
+
+
+public class ControllerUser {
     public static void run(Vintage vintage){
 
         boolean exit = false;

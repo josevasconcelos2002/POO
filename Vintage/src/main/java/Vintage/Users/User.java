@@ -1,6 +1,9 @@
 package Vintage.Users;
 
-public class User {
+import java.io.*;
+import java.util.Arrays;
+
+public class User implements Serializable {
     private int codigo;
     private String email;
     private String nome;
@@ -41,6 +44,19 @@ public class User {
         this.produtosComprados = produtosComprados;
         this.infoVendas = infoVendas;
         this.valorVendas = valorVendas;
+    }
+
+    public User(User u){
+        this.codigo = u.getCodigo();
+        this.email = u.getEmail();
+        this.nome = u.getNome();
+        this.morada = u.getMorada();
+        this.nif = u.getNif();
+        this.produtosVendidos = u.getProdutosVendidos();
+        this.produtosVenda = u.getProdutosVenda();
+        this.produtosComprados = u.getProdutosComprados();
+        this.infoVendas = u.getInfoVendas();
+        this.valorVendas = u.getValorVendas();
     }
 
     public int getCodigo(){
@@ -121,5 +137,25 @@ public class User {
 
     public void setValorVendas(double valorVendas){
         this.valorVendas = valorVendas;
+    }
+
+    @Override
+    public String toString() {
+        return "{Codigo=" + codigo +
+                ", email='" + email + '\'' +
+                ", nome='" + nome + '\'' +
+                ", morada='" + morada + '\'' +
+                ", nif='" + nif + '\'' +
+                ", produtosVendidos=" + Arrays.toString(produtosVendidos) +
+                ", produtosVenda=" + Arrays.toString(produtosVenda) +
+                ", produtosComprados=" + Arrays.toString(produtosComprados) +
+                ", infoVendas='" + infoVendas + '\'' +
+                ", valorVendas=" + valorVendas +
+                "}";
+    }
+
+    @Override
+    public User clone(){
+        return new User(this);
     }
 }

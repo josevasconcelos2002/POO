@@ -1,10 +1,11 @@
 package Vintage.Artigos;
 
+import java.io.*;
 import java.time.LocalDate;
 
-public class Sapatilha extends Artigo{
+public class Sapatilha extends Artigo implements Serializable {
 
-    public /*private*/ enum Edicao{
+    public enum Edicao{
         STANDARD,
         PREMIUM
     }
@@ -106,13 +107,13 @@ public class Sapatilha extends Artigo{
         return s;
     }
 
-    @Override
-    public void setPrecoCorrigido(){
+    public void calculaPrecoSapatilha(){
         Sapatilha s = (Sapatilha) this;
-        if(Estado.USADO == super.getEstado()){
-            if(s.getEdicao() == Edicao.STANDARD) super.setPrecoCorrigido(super.getPrecoBase() - (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));
-            else{
-                super.setPrecoCorrigido(super.getPrecoBase() + (super.getPrecoBase()/super.getnDonos()*super.getAvaliacao()));   // que algoritmo usar?
+        if(Estado.USADO == s.getEstado()) {
+            if (s.getEdicao() == Edicao.STANDARD)
+                s.setPrecoCorrigido(s.getPrecoBase() - (s.getPrecoBase() / s.getnDonos() * s.getAvaliacao()));
+            else {
+                s.setPrecoCorrigido(s.getPrecoBase() + (s.getPrecoBase() / s.getnDonos() * s.getAvaliacao()));   // que algoritmo usar?
             }
         }
     }
