@@ -53,7 +53,6 @@ public class ControllerVintage {
                     break;
                 case 6:
                     ControllerStats.run(vintage);
-                    //System.out.println("Falta implementar(Estatisticas)");
                     break;
                 case 0:
                     System.exit(0);
