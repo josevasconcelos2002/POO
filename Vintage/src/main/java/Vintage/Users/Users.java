@@ -13,9 +13,10 @@ public class Users implements Serializable {
         this.users = new HashMap<String,User>();
     }
 
-    public static int getNewCode(){
+    public int getNewCode(){
         return 0;
     }
+
     public Users(Map<String,User> Users){
         this.setUsers(Users);
     }

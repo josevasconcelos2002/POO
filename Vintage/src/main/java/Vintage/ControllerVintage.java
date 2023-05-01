@@ -11,7 +11,9 @@ public class ControllerVintage {
     public static void run() {
         Vintage vintage = new Vintage();
 
-        //boolean Erro = false; //Em caso de termos erros
+        boolean Erro = false;
+
+        Menu.printLogo();
 
         while (true) {
             int opcao = -1;
