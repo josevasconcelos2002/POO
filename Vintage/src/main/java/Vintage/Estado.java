@@ -6,12 +6,14 @@ import Vintage.Users.User;
 import Vintage.Users.Users;
 
 import java.io.*;
+import java.time.LocalDate;
 
 public class Estado implements Serializable {
     private Users listaDeUtilizadores;
     private Encomendas listaDeEncomendas;
     private Artigos listaDeArtigos;
-    //private Transportadoras listaDeTransportadoras;
+    private Transportadoras listaDeTransportadoras;
+    private LocalDate tempoAtual;
 
     // AQUI VÃO ESTAR AS FUNÇÕES SOBRE OS LOGS E FICHEIROS E ESTADO DO PROGRAMA... GUARDAR OS USERS, CRIAR ARTIGOS, ETC.
 
@@ -64,5 +66,21 @@ public class Estado implements Serializable {
         this.listaDeUtilizadores = estado.listaDeUtilizadores;
         this.listaDeEncomendas = estado.listaDeEncomendas;
         this.listaDeArtigos = estado.listaDeArtigos;
+    }
+
+
+    // escrever em ficheiros
+    public static void writeOnFile(String file){
+        try{
+            File myFile = new File(file);
+            if(myFile.createNewFile()){
+                System.out.println("File created: " + myFile.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+
+        }catch (IOException e){
+            System.out.println("Nao se consegui escrever num ficheiro");
+        }
     }
 }

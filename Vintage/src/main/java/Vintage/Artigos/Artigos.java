@@ -1,5 +1,7 @@
 package Vintage.Artigos;
 
+import Vintage.Users.User;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,6 +57,7 @@ public class Artigos implements Serializable {
             return (Artigo) this.listaDeArtigos.get(codigo).clone();
         return null;
     }
+
     /*
     public Artigo getUserByCode(int code){
         User conta = this.users.values().stream()
