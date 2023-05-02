@@ -1,5 +1,6 @@
 package Vintage;
 
+import Vintage.Users.Users;
 import Vintage.Users.User;
 
 import java.io.IOException;
@@ -63,6 +64,16 @@ public class Menu {
             // handle exceptions (fazer depois)
         }
     }
+
+    public static void login(){
+        System.out.println("Introduza o seu email: ");
+        Scanner input = new Scanner(System.in);
+        String email = input.nextLine();
+        if(Users.existeEmail(email)) menuUser();
+        else System.out.println("User com email " + email + "não existe!");
+    }
+
+    
 
     public static String pressToContinue(){
         System.out.println("Para continuar pressione qualquer tecla...");

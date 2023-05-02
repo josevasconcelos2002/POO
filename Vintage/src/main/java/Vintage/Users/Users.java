@@ -64,12 +64,11 @@ public class Users implements Serializable {
         else return null;
     }
 
-    public boolean existeEmail(String email){
+    public static boolean existeEmail(String email){
         return this.users.containsKey(email);
     }
 
     public int size(){
         return users.size();
     }
-
 }

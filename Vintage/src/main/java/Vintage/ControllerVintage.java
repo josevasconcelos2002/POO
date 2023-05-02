@@ -21,7 +21,9 @@ public class ControllerVintage {
             switch (opcao) {
                 case 1:
                     // Iniciar sessao;
-                    System.out.println("Falta implementar(Iniciar sessão)");
+                    //System.out.println("Falta implementar(Iniciar sessão)");
+                    Menu.limpaTerminal();
+                    Menu.login();
                     break;
                 case 2:
                     Menu.limpaTerminal();
