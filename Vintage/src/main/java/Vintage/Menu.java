@@ -60,7 +60,7 @@ public class Menu {
                 System.out.flush();
             }
         } catch (IOException | InterruptedException ex) {
-            // handle exception
+            // handle exceptions (fazer depois)
         }
     }
 

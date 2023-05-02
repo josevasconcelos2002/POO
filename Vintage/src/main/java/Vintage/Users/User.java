@@ -2,6 +2,7 @@ package Vintage.Users;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class User implements Serializable {
     private int codigo;
@@ -152,6 +153,23 @@ public class User implements Serializable {
                 ", infoVendas='" + infoVendas + '\'' +
                 ", valorVendas=" + valorVendas +
                 "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return codigo == user.codigo && Double.compare(user.valorVendas, valorVendas) == 0 && Objects.equals(email, user.email) && Objects.equals(nome, user.nome) && Objects.equals(morada, user.morada) && Objects.equals(nif, user.nif) && Arrays.equals(produtosVendidos, user.produtosVendidos) && Arrays.equals(produtosVenda, user.produtosVenda) && Arrays.equals(produtosComprados, user.produtosComprados) && Objects.equals(infoVendas, user.infoVendas);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(codigo, email, nome, morada, nif, infoVendas, valorVendas);
+        result = 31 * result + Arrays.hashCode(produtosVendidos);
+        result = 31 * result + Arrays.hashCode(produtosVenda);
+        result = 31 * result + Arrays.hashCode(produtosComprados);
+        return result;
     }
 
     @Override

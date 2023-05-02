@@ -2,6 +2,7 @@ package Vintage;
 
 import Vintage.Artigos.Artigos;
 import Vintage.Encomendas.Encomendas;
+import Vintage.Transportadoras.Transportadoras;
 import Vintage.Users.User;
 import Vintage.Users.Users;
 
@@ -66,6 +67,8 @@ public class Estado implements Serializable {
         this.listaDeUtilizadores = estado.listaDeUtilizadores;
         this.listaDeEncomendas = estado.listaDeEncomendas;
         this.listaDeArtigos = estado.listaDeArtigos;
+        this.listaDeTransportadoras = estado.listaDeTransportadoras;
+        this.tempoAtual = estado.tempoAtual;
     }
 
 

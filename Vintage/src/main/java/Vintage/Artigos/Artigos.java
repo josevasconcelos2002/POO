@@ -8,10 +8,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Artigos implements Serializable {
-    private Map<Object, Object> listaDeArtigos;
+    private Map<String, Artigo> listaDeArtigos;
 
     public Artigos(){
-        this.listaDeArtigos = new HashMap<Object,Object>();
+        this.listaDeArtigos = new HashMap<>();
     }
 
     public Artigos(Map<String, Artigo> listaDeArtigos){
@@ -26,7 +26,7 @@ public class Artigos implements Serializable {
         return 0;
     }
 
-    public Map<Object, Object> getListaDeArtigos() {
+    public Map<String, Artigo> getListaDeArtigos() {
         return this.listaDeArtigos.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a,b) -> a, HashMap::new));
     }
 

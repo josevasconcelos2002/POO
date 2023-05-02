@@ -172,5 +172,5 @@ public abstract class Artigo implements IArtigo, Serializable {
     }
 
     @Override
-    public abstract Object clone();
+    public abstract Artigo clone();
 }
