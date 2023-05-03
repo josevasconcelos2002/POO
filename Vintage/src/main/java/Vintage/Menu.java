@@ -21,36 +21,51 @@ public class Menu {
 
     public static int menuPrincipal(){
         limpaTerminal();
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU INICIAL-\n\n");
-        sb.append("[1] - Iniciar a sessao.\n");
-        sb.append("[2] - Registar conta.\n");
-        sb.append("[3] - Mostrar Logs.\n");
-        sb.append("[4] - Guardar estado.\n");
-        sb.append("[5] - Carregar estado.\n");
-        sb.append("[6] - Estatisticas.\n");
-        sb.append("[0] - Sair.\n\n");
-        sb.append("Selecione a opcao pretendida: ");
-        System.out.println(sb.toString());
-        Scanner input = new Scanner(System.in);
-        return input.nextInt();
+        int i = 0; // default value for i
+        try{
+            StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU INICIAL-\n\n");
+            sb.append("[1] - Iniciar a sessao.\n");
+            sb.append("[2] - Registar conta.\n");
+            sb.append("[3] - Mostrar Logs.\n");
+            sb.append("[4] - Guardar estado.\n");
+            sb.append("[5] - Carregar estado.\n");
+            sb.append("[6] - Estatisticas.\n");
+            sb.append("[0] - Sair.\n\n");
+            sb.append("Selecione a opcao pretendida: ");
+            System.out.println(sb.toString());
+            Scanner input = new Scanner(System.in);
+            i = input.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(7);
+        }
+        return i;
     }
+    
 
     public static int menuStats(){
         limpaTerminal();
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU ESTATISTICAS-\n\n");
-        sb.append("[1] - Listar utilizadores.\n");
-        sb.append("[2] - Listar Artigos.\n");
-        sb.append("[3] - Qual o vendedor que mais facturou num período ou desde sempre.\n");
-        sb.append("[4] - Qual o transportador com maior volume de facturacao.\n");
-        sb.append("[5] - Listar as encomendas emitidas por um vendedor.\n");
-        sb.append("[6] - Fornecer uma ordenacao dos maiores compradores/vendedores" +
-                  "do sistema durante um período a determinar.\n");
-        sb.append("[7] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.\n");
-        sb.append("[0] - Sair.\n\n");
-        sb.append("Selecione a opcao pretendida: ");
-        System.out.println(sb.toString());
-        Scanner input = new Scanner(System.in);
-        return input.nextInt();
+        int i = 0;
+        try{
+            StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU ESTATISTICAS-\n\n");
+            sb.append("[1] - Listar utilizadores.\n");
+            sb.append("[2] - Listar Artigos.\n");
+            sb.append("[3] - Qual o vendedor que mais facturou num período ou desde sempre.\n");
+            sb.append("[4] - Qual o transportador com maior volume de facturacao.\n");
+            sb.append("[5] - Listar as encomendas emitidas por um vendedor.\n");
+            sb.append("[6] - Fornecer uma ordenacao dos maiores compradores/vendedores" +
+                    "do sistema durante um período a determinar.\n");
+            sb.append("[7] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.\n");
+            sb.append("[0] - Sair.\n\n");
+            sb.append("Selecione a opcao pretendida: ");
+            System.out.println(sb.toString());
+            Scanner input = new Scanner(System.in);
+            i = input.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(7);
+        }
+        return i;
     }
 
     public static void limpaTerminal(){
@@ -80,15 +95,22 @@ public class Menu {
 
     public static int menuUser(String name){
         limpaTerminal();
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
-        sb.append("[1] Gerir vendas.\n");
-        sb.append("[2] Gerir compras.\n");
-        sb.append("[3] Gerir perfil.\n");
-        sb.append("[0] Logout.\n\n");
-        sb.append("Selecione a opcao pretendida: ");
-        System.out.println(sb.toString());
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        int i = 0;
+        try{
+            StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
+            sb.append("[1] Gerir vendas.\n");
+            sb.append("[2] Gerir compras.\n");
+            sb.append("[3] Gerir perfil.\n");
+            sb.append("[0] Logout.\n\n");
+            sb.append("Selecione a opcao pretendida: ");
+            System.out.println(sb.toString());
+            Scanner scanner = new Scanner(System.in);
+            i = scanner.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(7);
+        }
+        return i;
     }
 
     public static User registarNovoUser(int codigo){
@@ -115,25 +137,39 @@ public class Menu {
 
     public static int venderArtigo(String name){
         limpaTerminal();
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
-        sb.append("[1] Vender Mala.\n");
-        sb.append("[2] Vender T-Shirt.\n");
-        sb.append("[3] Vender Sapatilha.\n");
-        sb.append("[0] Cancelar.\n\n");
-        sb.append("Selecione a opcao pretendida: ");
-        System.out.println(sb.toString());
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        int i = 0;
+        try{
+            StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
+            sb.append("[1] Vender Mala.\n");
+            sb.append("[2] Vender T-Shirt.\n");
+            sb.append("[3] Vender Sapatilha.\n");
+            sb.append("[0] Cancelar.\n\n");
+            sb.append("Selecione a opcao pretendida: ");
+            System.out.println(sb.toString());
+            Scanner scanner = new Scanner(System.in);
+            i = scanner.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(7);
+        }
+        return i;
     }
 
     public static int comprarArtigo(String name){
         limpaTerminal();
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
-        sb.append("[1] Listar os artigos que pode comprar.");
-        sb.append("[0] Cancelar.\n\n");
-        System.out.println(sb.toString());
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        int i = 0;
+        try{
+            StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
+            sb.append("[1] Listar os artigos que pode comprar.");
+            sb.append("[0] Cancelar.\n\n");
+            System.out.println(sb.toString());
+            Scanner scanner = new Scanner(System.in);
+            i = scanner.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(7);
+        }
+        return i;
     }
 
     public static String save(){
@@ -157,6 +193,7 @@ public class Menu {
         else if(i == 4) sb.append(ANSI_RED).append("!!!! Erro associado a classes !!!!\n").append(ANSI_RESET);
         else if(i == 5) sb.append(ANSI_RED).append("!!!! Não foi possivel carregar o estado !!!!\n").append(ANSI_RESET);
         else if(i == 6) sb.append(ANSI_RED).append("!!!! Email nao encontrado !!!!\n").append(ANSI_RESET);
+        else if(i == 7) sb.append(ANSI_RED).append("!!!! Introduza uma opção válida !!!!\n").append(ANSI_RESET);
         System.out.println(sb.toString());
         pressToContinue();
     }
