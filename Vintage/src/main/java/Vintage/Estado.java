@@ -46,6 +46,18 @@ public class Estado implements Serializable {
         return listaDeUtilizadores.toString();
     }
 
+    public String printAllArtigos(){
+        return listaDeArtigos.toString();
+    }
+
+    public String getUserNameByKey(String email){
+        return listaDeUtilizadores.getUserNameByKey(email);
+    }
+
+    public User getUserByEmail(String email){
+        return this.listaDeUtilizadores.getUserByEmail(email);
+    }
+
     // Função que guarda o estado da aplicação(guarda os objetos)
     public void guardarEstado(String nomeFicheiro) throws IOException {
         FileOutputStream fileOut = new FileOutputStream(nomeFicheiro);

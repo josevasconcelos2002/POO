@@ -19,21 +19,29 @@ public class ControllerStats {
                     Menu.pressToContinue();
                     break;
                 case 2:
-                    System.out.println("Não implementado");
+                    Menu.limpaTerminal();
+                    System.out.println("Todos os artigos:\n");
+                    System.out.println(vintage.printAllUsers());
+                    Menu.pressToContinue();
                     break;
                 case 3:
+                    Menu.limpaTerminal();
                     System.out.println("Não implementado");
                     break;
                 case 4:
+                    Menu.limpaTerminal();
                     System.out.println("Não implementado");
                     break;
                 case 5:
+                    Menu.limpaTerminal();
                     System.out.println("Não implementado");
                     break;
                 case 6:
+                    Menu.limpaTerminal();
                     System.out.println("Não implementado");
                     break;
                 case 7:
+                    Menu.limpaTerminal();
                     System.out.println("Não implementado");
                     break;
                 case 0:

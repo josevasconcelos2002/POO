@@ -1,6 +1,6 @@
 package Vintage;
 
-import Vintage.Users.Users;
+import Vintage.Artigos.Artigo;
 import Vintage.Users.User;
 
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class Menu {
         sb.append("[5] - Carregar estado.\n");
         sb.append("[6] - Estatisticas.\n");
         sb.append("[0] - Sair.\n\n");
-        sb.append("Seleciona o numero pretendido: ");
+        sb.append("Selecione a opcao pretendida: ");
         System.out.println(sb.toString());
         Scanner input = new Scanner(System.in);
         return input.nextInt();
@@ -47,6 +47,7 @@ public class Menu {
                   "do sistema durante um período a determinar.\n");
         sb.append("[7] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.\n");
         sb.append("[0] - Sair.\n\n");
+        sb.append("Selecione a opcao pretendida: ");
         System.out.println(sb.toString());
         Scanner input = new Scanner(System.in);
         return input.nextInt();
@@ -65,15 +66,11 @@ public class Menu {
         }
     }
 
-    public static void login(){
+    public static String login(){
         System.out.println("Introduza o seu email: ");
         Scanner input = new Scanner(System.in);
-        String email = input.nextLine();
-        if(Users.existeEmail(email)) menuUser();
-        else System.out.println("User com email " + email + "não existe!");
+        return input.nextLine();
     }
-
-    
 
     public static String pressToContinue(){
         System.out.println("Para continuar pressione qualquer tecla...");
@@ -81,13 +78,14 @@ public class Menu {
         return input.nextLine();
     }
 
-    public static int menuUser(){
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR-\n\n");
-        sb.append("1) Gerir vendas.\n");
-        sb.append("2) Gerir compras.\n");
-        sb.append("3) Gerir perfil.\n");
-        sb.append("0) Logout.\n\n");
-        sb.append("Selecione a opção pretendida: ");
+    public static int menuUser(String name){
+        limpaTerminal();
+        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
+        sb.append("[1] Gerir vendas.\n");
+        sb.append("[2] Gerir compras.\n");
+        sb.append("[3] Gerir perfil.\n");
+        sb.append("[0] Logout.\n\n");
+        sb.append("Selecione a opcao pretendida: ");
         System.out.println(sb.toString());
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
@@ -115,6 +113,29 @@ public class Menu {
         return new User(codigo, email, nome, morada, nif);
     }
 
+    public static int venderArtigo(String name){
+        limpaTerminal();
+        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
+        sb.append("[1] Vender Mala.\n");
+        sb.append("[2] Vender T-Shirt.\n");
+        sb.append("[3] Vender Sapatilha.\n");
+        sb.append("[0] Cancelar.\n\n");
+        sb.append("Selecione a opcao pretendida: ");
+        System.out.println(sb.toString());
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
+    public static int comprarArtigo(String name){
+        limpaTerminal();
+        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
+        sb.append("[1] Listar os artigos que pode comprar.");
+        sb.append("[0] Cancelar.\n\n");
+        System.out.println(sb.toString());
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
     public static String save(){
         System.out.println("Escreve o nome do ficheiro onde vao ser guardados os dados: ");
         Scanner input = new Scanner(System.in);
@@ -135,6 +156,7 @@ public class Menu {
         else if(i == 3) sb.append(ANSI_RED).append("!!!! Nao foi possivel guardar o estado !!!!\n").append(ANSI_RESET);
         else if(i == 4) sb.append(ANSI_RED).append("!!!! Erro associado a classes !!!!\n").append(ANSI_RESET);
         else if(i == 5) sb.append(ANSI_RED).append("!!!! Não foi possivel carregar o estado !!!!\n").append(ANSI_RESET);
+        else if(i == 6) sb.append(ANSI_RED).append("!!!! Email nao encontrado !!!!\n").append(ANSI_RESET);
         System.out.println(sb.toString());
         pressToContinue();
     }

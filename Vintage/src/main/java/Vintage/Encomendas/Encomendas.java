@@ -102,7 +102,7 @@ public class Encomendas implements Serializable {
         if(this.estado != encomenda.estado) resultado = false;
         if(this.dimensao != encomenda.dimensao) resultado = false;
         if(Double.compare(this.precoFinal, encomenda.precoFinal) != 0) resultado = false;
-        if(this.dataExpedicao.equals(encomenda.dataExpedicao) == false) resultado = false;
+        if(!this.dataExpedicao.equals(encomenda.dataExpedicao)) resultado = false;
         return resultado;
     }
 

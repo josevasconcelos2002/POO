@@ -53,7 +53,7 @@ public class Users implements Serializable {
 
     public User getUserByEmail(String email){
         if (this.users.containsKey(email))
-            return this.users.get(email).clone();
+            return this.users.get(email);  //IMPORTANTE!!! USAR .clone() ou não!
         return null;
     }
 
@@ -64,7 +64,11 @@ public class Users implements Serializable {
         else return null;
     }
 
-    public static boolean existeEmail(String email){
+    public String getUserNameByKey(String email){
+        return getUserByEmail(email).getNome();
+    }
+
+    public boolean existeEmail(String email){
         return this.users.containsKey(email);
     }
 

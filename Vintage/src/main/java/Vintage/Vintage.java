@@ -28,9 +28,14 @@ public class Vintage implements Serializable {
         }
     }
 
+    public String getUserNameByKey(String email){
+        return this.estado.getUserNameByKey(email);
+    }
+
     public String printAllUsers(){
         return estado.printAllUsers();
     }
+
 
     /*public void mostrarLogs() {
         estado.loadEstadoLogs();
@@ -42,5 +47,26 @@ public class Vintage implements Serializable {
 
     public void carregaEstado(String loadName) throws IOException, ClassNotFoundException {
         this.estado.carregaEstado(loadName);
+    }
+
+    public boolean login(String email){
+        if(this.estado.existeEmail(email)){
+            this.user = this.estado.getUserByEmail(email);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void logout(){
+        this.user = null;
+    }
+
+    public void adicionaArtigoParaVenda(){
+
+    }
+
+    public String printAllArtigos(){
+        return estado.printAllArtigos();
     }
 }

@@ -20,10 +20,13 @@ public class ControllerVintage {
             }
             switch (opcao) {
                 case 1:
-                    // Iniciar sessao;
-                    //System.out.println("Falta implementar(Iniciar sessão)");
                     Menu.limpaTerminal();
-                    Menu.login();
+                    String email = Menu.login();
+                    if(vintage.login(email)){
+                        ControllerUser.run(vintage, email);
+                    } else {
+                        Menu.errors(6);
+                    };
                     break;
                 case 2:
                     Menu.limpaTerminal();
@@ -57,6 +60,7 @@ public class ControllerVintage {
                     Menu.pressToContinue();
                     break;
                 case 6:
+                    Menu.limpaTerminal();
                     ControllerStats.run(vintage);
                     break;
                 case 0:
