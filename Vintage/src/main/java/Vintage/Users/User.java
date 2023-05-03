@@ -9,7 +9,7 @@ public class User implements Serializable {
     private String email;
     private String nome;
     private String morada;
-    private String nif;
+    private int nif;
     private String [] produtosVendidos; // mudar para map ou list???
     private String [] produtosVenda;    // mudar para map ou list???
     private String [] produtosComprados;// mudar para map ou list???
@@ -21,12 +21,12 @@ public class User implements Serializable {
         this.email = "";
         this.nome = "";
         this.morada = "";
-        this.nif = "";
+        this.nif = 0;
         this.infoVendas = "";
         this.valorVendas = 0.0;
     }
 
-    public User(int codigo, String email, String nome, String morada, String nif){
+    public User(int codigo, String email, String nome, String morada, int nif){
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
@@ -34,7 +34,7 @@ public class User implements Serializable {
         this.nif = nif;
     }
 
-    public User(int codigo, String email, String nome, String morada, String nif, String[] produtosVendidos, String[] produtosVenda, String[] produtosComprados, String infoVendas, double valorVendas){
+    public User(int codigo, String email, String nome, String morada, int nif, String[] produtosVendidos, String[] produtosVenda, String[] produtosComprados, String infoVendas, double valorVendas){
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
@@ -92,11 +92,11 @@ public class User implements Serializable {
         this.morada = morada;
     }
 
-    public String getNif(){
+    public int getNif(){
         return this.nif;
     }
 
-    public void setNif(String nif){
+    public void setNif(int nif){
         this.nif = nif;
     }
 

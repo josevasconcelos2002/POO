@@ -130,8 +130,13 @@ public class Menu {
         String morada = input.nextLine();
 
         System.out.println("NIF: ");
-        String nif = input.nextLine();
-
+        int nif = 0;
+        try{
+            nif = input.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(8);
+        }
         return new User(codigo, email, nome, morada, nif);
     }
 
@@ -194,7 +199,8 @@ public class Menu {
         else if(i == 5) sb.append(ANSI_RED).append("!!!! Não foi possivel carregar o estado !!!!\n").append(ANSI_RESET);
         else if(i == 6) sb.append(ANSI_RED).append("!!!! Email nao encontrado !!!!\n").append(ANSI_RESET);
         else if(i == 7) sb.append(ANSI_RED).append("!!!! Introduza uma opção válida !!!!\n").append(ANSI_RESET);
+        else if(i == 8) sb.append(ANSI_RED).append("!!!! NIF inválido. Altere este campo mais tarde. !!!!\n").append(ANSI_RESET);
         System.out.println(sb.toString());
-        pressToContinue();
+        if(i != 8)pressToContinue();
     }
 }
