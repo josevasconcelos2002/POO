@@ -33,8 +33,9 @@ public class Menu {
             sb.append("[0] - Sair.\n\n");
             sb.append("Selecione a opcao pretendida: ");
             System.out.println(sb.toString());
-            Scanner input = new Scanner(System.in);
-            i = input.nextInt();
+            try (Scanner input = new Scanner(System.in)) {
+                i = input.nextInt();
+            }
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(7);
@@ -59,8 +60,9 @@ public class Menu {
             sb.append("[0] - Sair.\n\n");
             sb.append("Selecione a opcao pretendida: ");
             System.out.println(sb.toString());
-            Scanner input = new Scanner(System.in);
-            i = input.nextInt();
+            try (Scanner input = new Scanner(System.in)) {
+                i = input.nextInt();
+            }
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(7);
@@ -83,14 +85,36 @@ public class Menu {
 
     public static String login(){
         System.out.println("Introduza o seu email: ");
-        Scanner input = new Scanner(System.in);
-        return input.nextLine();
+        try (Scanner input = new Scanner(System.in)) {
+            return input.nextLine();
+        }
+    }
+
+    public static void menuGerirPerfil(User user){
+        StringBuilder sb = new StringBuilder("\t\t\t\t\t -GERIR PERFIL-\n\n");
+        sb.append("\t DADOS DO UTILIZADOR: \n");
+        sb.append("Email: " + user.getEmail() + "\n");
+        sb.append("Nome: " + user.getNome() + "\n");
+        sb.append("Morada: " + user.getMorada() + "\n");
+        sb.append("[1] Alterar nome.\n");
+        sb.append("[2] Alterar morada.\n");
+        sb.append("[3] Alterar NIF.\n");
+        sb.append("[0] Logout.\n\n");
+        sb.append("Selecione a opcao pretendida: ");
+        System.out.println(sb.toString());
+        try (Scanner scanner = new Scanner(System.in)) {
+            scanner.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(7);
+        }
     }
 
     public static String pressToContinue(){
         System.out.println("Para continuar pressione qualquer tecla...");
-        Scanner input = new Scanner(System.in);
-        return input.nextLine();
+        try (Scanner input = new Scanner(System.in)) {
+            return input.nextLine();
+        }
     }
 
     public static int menuUser(String name){
@@ -104,8 +128,9 @@ public class Menu {
             sb.append("[0] Logout.\n\n");
             sb.append("Selecione a opcao pretendida: ");
             System.out.println(sb.toString());
-            Scanner scanner = new Scanner(System.in);
-            i = scanner.nextInt();
+            try (Scanner scanner = new Scanner(System.in)) {
+                i = scanner.nextInt();
+            }
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(7);
@@ -116,34 +141,35 @@ public class Menu {
     public static User registarNovoUser(int codigo){
         StringBuilder sb = new StringBuilder("\t\t\t\t\t -REGISTAR NOVO UTILIZADOR-\n\n");
 
-        Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) {
+            sb.append("Introduza os dados pedidos.\n\n");
+            sb.append("Email: ");
+            System.out.println(sb.toString());
+            String email = input.nextLine();
 
-        sb.append("Introduza os dados pedidos.\n\n");
-        sb.append("Email: ");
-        System.out.println(sb.toString());
-        String email = input.nextLine();
+            System.out.println("Nome: ");
+            String nome = input.nextLine();
 
-        System.out.println("Nome: ");
-        String nome = input.nextLine();
+            System.out.println("Morada: ");
+            String morada = input.nextLine();
 
-        System.out.println("Morada: ");
-        String morada = input.nextLine();
-
-        int nif = 0;
-        while (nif <= 0){
-            nif = nifValido(nif);
+            int nif = 0;
+            while (nif <= 0){
+                nif = nifValido(nif);
+            }
+            return new User(codigo, email, nome, morada, nif);
         }
-        return new User(codigo, email, nome, morada, nif);
     }
 
     public static int nifValido(int nif){
-        Scanner input = new Scanner(System.in);
-        System.out.println("NIF: ");
-        try{
-            nif = input.nextInt();
-        }
-        catch(java.util.InputMismatchException e){
-            Menu.errors(8);
+        try (Scanner input = new Scanner(System.in)) {
+            System.out.println("NIF: ");
+            try{
+                nif = input.nextInt();
+            }
+            catch(java.util.InputMismatchException e){
+                Menu.errors(8);
+            }
         }
         return nif;
     }
@@ -159,8 +185,9 @@ public class Menu {
             sb.append("[0] Cancelar.\n\n");
             sb.append("Selecione a opcao pretendida: ");
             System.out.println(sb.toString());
-            Scanner scanner = new Scanner(System.in);
-            i = scanner.nextInt();
+            try (Scanner scanner = new Scanner(System.in)) {
+                i = scanner.nextInt();
+            }
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(7);
@@ -176,8 +203,9 @@ public class Menu {
             sb.append("[1] Listar os artigos que pode comprar.");
             sb.append("[0] Cancelar.\n\n");
             System.out.println(sb.toString());
-            Scanner scanner = new Scanner(System.in);
-            i = scanner.nextInt();
+            try (Scanner scanner = new Scanner(System.in)) {
+                i = scanner.nextInt();
+            }
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(7);
@@ -187,14 +215,16 @@ public class Menu {
 
     public static String save(){
         System.out.println("Escreve o nome do ficheiro onde vao ser guardados os dados: ");
-        Scanner input = new Scanner(System.in);
-        return input.nextLine();
+        try (Scanner input = new Scanner(System.in)) {
+            return input.nextLine();
+        }
     }
 
     public static String load(){
         System.out.println("Escreve o nome do ficheiro de onde vao ser carregados os dados: ");
-        Scanner input = new Scanner(System.in);
-        return input.nextLine();
+        try (Scanner input = new Scanner(System.in)) {
+            return input.nextLine();
+        }
     }
 
     public static void errors(int i){

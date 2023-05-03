@@ -1,15 +1,15 @@
 package Vintage;
 
-import Vintage.Users.User;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import Vintage.Users.User;
 
 public class ControllerVintage {
     public static void run() {
         Vintage vintage = new Vintage();
 
-        boolean Erro = false;
+        //boolean Erro = false;
 
         Menu.printLogo();
 

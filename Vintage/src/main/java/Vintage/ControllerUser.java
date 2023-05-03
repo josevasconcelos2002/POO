@@ -32,7 +32,7 @@ public class ControllerUser {
                     break;
                 case 3:
                     Menu.limpaTerminal();
-                    System.out.println("Não implementado (Gerir perfil)");
+                    Menu.menuGerirPerfil(vintage.getUserByEmail(email));
                     break;
                 case 0:
                     exit = true;

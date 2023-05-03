@@ -32,6 +32,10 @@ public class Vintage implements Serializable {
         return this.estado.getUserNameByKey(email);
     }
 
+    public User getUserByEmail(String email){
+        return this.estado.getUserByEmail(email);
+    }
+
     public String printAllUsers(){
         return estado.printAllUsers();
     }
