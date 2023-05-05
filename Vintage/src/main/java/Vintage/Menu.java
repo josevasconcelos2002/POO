@@ -146,7 +146,7 @@ public class Menu {
 
         try (Scanner input = new Scanner(System.in)) {
             sb.append("Introduza os dados pedidos.\n\n");
-            sb.append("Email: ");
+            System.out.println("Email: ");
             System.out.println(sb.toString());
             String email = input.nextLine();
 
