@@ -1,6 +1,6 @@
 package Vintage;
 
-
+import Vintage.Users.User;
 public class ControllerUser {
     public static void run(Vintage vintage, String email){
 
@@ -32,7 +32,7 @@ public class ControllerUser {
                     break;
                 case 3:
                     Menu.limpaTerminal();
-                    Menu.menuGerirPerfil(vintage.getUserByEmail(email));
+                    ControllerPerfil.run(vintage, vintage.getUserByEmail(email));
                     break;
                 case 0:
                     exit = true;

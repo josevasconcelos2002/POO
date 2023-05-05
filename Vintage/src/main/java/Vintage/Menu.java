@@ -90,7 +90,8 @@ public class Menu {
         }
     }
 
-    public static void menuGerirPerfil(User user){
+    public static int menuGerirPerfil(User user){
+        int i = 0;
         StringBuilder sb = new StringBuilder("\t\t\t\t\t -GERIR PERFIL-\n\n");
         sb.append("\t DADOS DO UTILIZADOR: \n");
         sb.append("Email: " + user.getEmail() + "\n");
@@ -99,15 +100,17 @@ public class Menu {
         sb.append("[1] Alterar nome.\n");
         sb.append("[2] Alterar morada.\n");
         sb.append("[3] Alterar NIF.\n");
-        sb.append("[0] Logout.\n\n");
+        sb.append("[4] Salvar alterações.\n");
+        sb.append("[0] Voltar.\n\n");
         sb.append("Selecione a opcao pretendida: ");
         System.out.println(sb.toString());
         try (Scanner scanner = new Scanner(System.in)) {
-            scanner.nextInt();
+            i  = scanner.nextInt();
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(7);
         }
+        return i;
     }
 
     public static String pressToContinue(){
@@ -238,6 +241,7 @@ public class Menu {
         else if(i == 6) sb.append(ANSI_RED).append("!!!! Email nao encontrado !!!!\n").append(ANSI_RESET);
         else if(i == 7) sb.append(ANSI_RED).append("!!!! Introduza uma opção valida !!!!\n").append(ANSI_RESET);
         else if(i == 8) sb.append(ANSI_RED).append("!!!! NIF invalido. Altere este campo. !!!!\n").append(ANSI_RESET);
+        else if(i == 9) sb.append(ANSI_RED).append("!!!! Erro ao atualizar o nome !!!!\n").append(ANSI_RESET);
         System.out.println(sb.toString());
         if(i != 8)pressToContinue();
     }

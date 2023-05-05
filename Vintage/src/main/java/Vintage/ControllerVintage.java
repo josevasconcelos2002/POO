@@ -45,7 +45,8 @@ public class ControllerVintage {
                         catch (FileNotFoundException e) {
                             Menu.errors(2);}
                         catch (IOException e) {
-                            Menu.errors(3);}
+                            Menu.errors(3);
+                        }
                         Menu.pressToContinue();
                         break;
                     case 5:
@@ -53,11 +54,14 @@ public class ControllerVintage {
                         String loadName = Menu.load();
                         try {vintage.carregaEstado(loadName);System.out.println("Ficheiros carregados com sucesso!!!\n");}
                         catch (FileNotFoundException e) {
-                            Menu.errors(2);}
+                            Menu.errors(2);
+                        }
                         catch (IOException e) {
-                            Menu.errors(4);}
+                            Menu.errors(4);
+                        }
                         catch (ClassNotFoundException e) {
-                            Menu.errors(5);}
+                            Menu.errors(5);
+                        }
                         Menu.pressToContinue();
                         break;
                     case 6:
