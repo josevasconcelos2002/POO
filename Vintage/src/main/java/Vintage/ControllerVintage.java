@@ -23,11 +23,7 @@ public class ControllerVintage {
                     case 1:
                         Menu.limpaTerminal();
                         String email = Menu.login();
-                        if(vintage.login(email)){
-                            ControllerUser.run(vintage, email);
-                        } else {
-                            Menu.errors(6);
-                        };
+                        ControllerUser.run(vintage, email);
                         break;
                     case 2:
                         Menu.limpaTerminal();

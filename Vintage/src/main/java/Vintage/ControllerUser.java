@@ -32,12 +32,13 @@ public class ControllerUser {
                     break;
                 case 3:
                     Menu.limpaTerminal();
-                    ControllerPerfil.run(vintage, vintage.getUserByEmail(email));
+                    ControllerPerfil.run(vintage, vintage.getUserByEmail(email), email);
                     break;
                 case 0:
                     exit = true;
                     vintage.logout();
                     Menu.limpaTerminal();
+                    Menu.menuPrincipal();
                     break;
             }
         }
