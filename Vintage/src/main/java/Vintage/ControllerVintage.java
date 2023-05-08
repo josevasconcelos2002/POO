@@ -3,12 +3,24 @@ package Vintage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import Vintage.Artigos.Artigo;
+import Vintage.Artigos.Mala;
+import Vintage.Artigos.Sapatilha;
+import Vintage.Artigos.TShirt;
 import Vintage.Users.User;
 
 public class ControllerVintage {
     public static void run() {
         Vintage vintage = new Vintage();
-
+        // colocar isto num ficheiro à parte?
+        User user1 = new User(1,"pedro02@gmail.com","Pedro","---", 264333300);
+        vintage.addUser(user1);
+        Artigo artigo1 = new Mala();
+        Artigo artigo2 = new TShirt();
+        Artigo artigo3 = new Sapatilha();
+        vintage.addProdutoComprado(artigo1,user1.getEmail());
+        vintage.addProdutoVendido(artigo2,user1.getEmail());
+        vintage.addProdutoVenda(artigo3,user1.getEmail());
         //boolean Erro = false;
 
         Menu.printLogo();

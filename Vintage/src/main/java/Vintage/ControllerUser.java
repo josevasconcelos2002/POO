@@ -2,11 +2,14 @@ package Vintage;
 
 import Vintage.Artigos.Artigo;
 import Vintage.Users.User;
+
+import java.util.Scanner;
+
 public class ControllerUser {
     public static void run(Vintage vintage, String email){
 
         boolean exit = false;
-
+        Scanner input = new Scanner(System.in);
         while(!exit){
             int opcao = -1;
             while (opcao < 0 || opcao > 3){
@@ -26,10 +29,13 @@ public class ControllerUser {
                         // listar Artigos disponíveis para venda e pedir para o user dizer qual quer vender
                     }
                     if (i == 2) {
+                        Menu.limpaTerminal();
                         System.out.println("Artigos vendidos pelo utilizador: \n");
-                        vintage.printProdutosUser(email);
+                        String resultado = vintage.printProdutosVendidos(email);
+                        System.out.println(resultado);
+                        input.nextLine();
+                        Menu.pressToContinue();
                     }
-                    
                     break;
                 case 3:
                     Menu.limpaTerminal();

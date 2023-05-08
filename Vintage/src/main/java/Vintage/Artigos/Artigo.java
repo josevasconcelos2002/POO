@@ -22,7 +22,7 @@ public abstract class Artigo implements IArtigo, Serializable {
 
     public Artigo(){
         this.codigo = "";
-        this.estado = null;
+        this.estado = Estado.NOVO;
         this.avaliacao = -1;
         this.nDonos = -1;
         this.descricao = "";

@@ -67,6 +67,39 @@ public class Estado implements Serializable {
         listaDeUtilizadores.getUserByEmail(email).removeProdutoVendido(artigo);
     }
 
+    public String printProdutosComprados(String email){
+        String resultado = "A lista está vazia!\n";
+        try{
+            resultado = listaDeUtilizadores.getUserByEmail(email).stringProdutosComprados();
+        }
+        catch(java.lang.NullPointerException e){
+            resultado = "A lista está vazia!\n";
+        }
+        return resultado;
+    }
+
+    public String printProdutosVendidos(String email){
+        String resultado = "A lista está vazia!\n";
+        try{
+            resultado = listaDeUtilizadores.getUserByEmail(email).stringProdutosVendidos();
+        }
+        catch(java.lang.NullPointerException e){
+            resultado = "A lista está vazia!\n";
+        }
+        return resultado;
+    }
+
+    public String printProdutosVenda(String email){
+        String resultado = "A lista está vazia!\n";
+        try{
+            resultado = listaDeUtilizadores.getUserByEmail(email).stringProdutosVenda();
+        }
+        catch(java.lang.NullPointerException e){
+            resultado = "A lista está vazia!\n";
+        }
+        return resultado;
+    }
+
     public String printAllUsers(){
         return listaDeUtilizadores.toString();
     }

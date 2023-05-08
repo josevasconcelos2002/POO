@@ -37,6 +37,9 @@ public class User implements Serializable {
         this.nome = nome;
         this.morada = morada;
         this.nif = nif;
+        this.produtosVendidos = new ArrayList<Artigo>();
+        this.produtosVenda = new ArrayList<Artigo>();
+        this.produtosComprados = new ArrayList<Artigo>();
     }
 
     public User(int codigo, String email, String nome, String morada, int nif, ArrayList<Artigo> produtosVendidos,
@@ -189,6 +192,18 @@ public class User implements Serializable {
                 ", infoVendas='" + infoVendas + '\'' +
                 ", valorVendas=" + valorVendas +
                 "}";
+    }
+
+    public String stringProdutosComprados(){
+        return produtosComprados.toString();
+    }
+
+    public String stringProdutosVendidos(){
+        return produtosVendidos.toString();
+    }
+
+    public String stringProdutosVenda(){
+        return produtosVenda.toString();
     }
 
     @Override

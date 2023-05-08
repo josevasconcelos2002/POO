@@ -66,7 +66,26 @@ public class Vintage implements Serializable {
     }
 
     public String printProdutosUser(String email){
-        return estado.getUserByEmail(email).toString();
+        String resultado = "Lista de produtos vazia\n";
+        try {
+            resultado = estado.getUserByEmail(email).toString();
+        }
+        catch(java.lang.NullPointerException e){
+            resultado = "A lista está vazia!\n";
+        }
+        return resultado;
+    }
+
+    public String printProdutosComprados(String email){
+        return estado.printProdutosComprados(email);
+    }
+
+    public String printProdutosVendidos(String email){
+        return estado.printProdutosVendidos(email);
+    }
+
+    public String printProdutosVenda(String email){
+        return estado.printProdutosVenda(email);
     }
 
 
