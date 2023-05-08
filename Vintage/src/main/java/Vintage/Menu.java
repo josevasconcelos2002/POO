@@ -1,6 +1,5 @@
 package Vintage;
 
-import Vintage.Artigos.Artigo;
 import Vintage.Users.User;
 
 import java.io.IOException;
@@ -23,16 +22,19 @@ public class Menu {
     public static int menuPrincipal(){
         limpaTerminal();
         int i = 0; // default value for i
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU INICIAL-\n\n");
-        sb.append("[1] - Iniciar a sessao.\n");
-        sb.append("[2] - Registar conta.\n");
-        sb.append("[3] - Mostrar Logs.\n");
-        sb.append("[4] - Guardar estado.\n");
-        sb.append("[5] - Carregar estado.\n");
-        sb.append("[6] - Estatisticas.\n");
-        sb.append("[0] - Sair.\n\n");
-        sb.append("Selecione a opcao pretendida: ");
-        System.out.println(sb.toString());
+        String sb = """
+                \t\t\t\t\t -MENU INICIAL-
+
+                [1] - Iniciar a sessao.
+                [2] - Registar conta.
+                [3] - Mostrar Logs.
+                [4] - Guardar estado.
+                [5] - Carregar estado.
+                [6] - Estatisticas.
+                [0] - Sair.
+
+                Selecione a opcao pretendida:\s""";
+        System.out.println(sb);
         try{
             i = input.nextInt();
         }
@@ -46,18 +48,20 @@ public class Menu {
     public static int menuStats(){
         limpaTerminal();
         int i = 0;
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU ESTATISTICAS-\n\n");
-        sb.append("[1] - Listar utilizadores.\n");
-        sb.append("[2] - Listar Artigos.\n");
-        sb.append("[3] - Qual o vendedor que mais facturou num período ou desde sempre.\n");
-        sb.append("[4] - Qual o transportador com maior volume de facturacao.\n");
-        sb.append("[5] - Listar as encomendas emitidas por um vendedor.\n");
-        sb.append("[6] - Fornecer uma ordenacao dos maiores compradores/vendedores" +
-                "do sistema durante um período a determinar.\n");
-        sb.append("[7] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.\n");
-        sb.append("[0] - Sair.\n\n");
-        sb.append("Selecione a opcao pretendida: ");
-        System.out.println(sb.toString());
+        String sb = """
+                \t\t\t\t\t -MENU ESTATISTICAS-
+
+                [1] - Listar utilizadores.
+                [2] - Listar Artigos.
+                [3] - Qual o vendedor que mais facturou num período ou desde sempre.
+                [4] - Qual o transportador com maior volume de facturacao.
+                [5] - Listar as encomendas emitidas por um vendedor.
+                [6] - Fornecer uma ordenacao dos maiores compradores/vendedoresdo sistema durante um período a determinar.
+                [7] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.
+                [0] - Sair.
+
+                Selecione a opcao pretendida:\s""";
+        System.out.println(sb);
         try{
             if(input.hasNextInt())
                 i = input.nextInt();
@@ -98,44 +102,47 @@ public class Menu {
     public static int menuGerirPerfil(User user){
         int i = 0;
         limpaTerminal();
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -GERIR PERFIL-\n\n");
-        sb.append("DADOS DO UTILIZADOR: \n\n");
-        sb.append("EMAIL: " + user.getEmail() + "\n\n");
-        sb.append("NOME: " + user.getNome() + "\n\n");
-        sb.append("MORADA: " + user.getMorada() + "\n\n");
-        sb.append("NIF: " + Integer.toString(user.getNif()) + "\n\n");
-        sb.append("[1] Alterar NOME.\n");
-        sb.append("[2] Alterar MORADA.\n");
-        sb.append("[3] Alterar NIF.\n");
-        sb.append("[4] Salvar alterações.\n");
-        sb.append("[0] Voltar.\n\n");
-        sb.append("Selecione a opcao pretendida: ");
-        System.out.println(sb.toString());
+        String sb = "\t\t\t\t\t -GERIR PERFIL-\n\n" + "DADOS DO UTILIZADOR: \n\n" +
+                "EMAIL: " + user.getEmail() + "\n\n" +
+                "NOME: " + user.getNome() + "\n\n" +
+                "MORADA: " + user.getMorada() + "\n\n" +
+                "NIF: " + user.getNif() + "\n\n" +
+                "[1] Alterar NOME.\n" +
+                "[2] Alterar MORADA.\n" +
+                "[3] Alterar NIF.\n" +
+                "[4] Salvar alterações.\n" +
+                "[0] Voltar.\n\n" +
+                "Selecione a opcao pretendida: ";
+        System.out.println(sb);
         try{
             if(input.hasNextInt())
                 i  = input.nextInt();
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(7);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e1){
+                e.printStackTrace();
+            }
         }
         return i;
     }
 
-    public static String pressToContinue(){
+    public static void pressToContinue(){
         System.out.println("Para continuar pressione qualquer tecla...");
-        return input.nextLine();
+        input.nextLine();
     }
 
     public static int menuUser(String name){
         limpaTerminal();
         int i = 0;
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
-        sb.append("[1] Gerir vendas.\n");
-        sb.append("[2] Gerir compras.\n");
-        sb.append("[3] Gerir perfil.\n");
-        sb.append("[0] Logout.\n\n");
-        sb.append("Selecione a opcao pretendida: ");
-        System.out.println(sb.toString());
+        String sb = "\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n" + "[1] Gerir vendas.\n" +
+                "[2] Gerir compras.\n" +
+                "[3] Gerir perfil.\n" +
+                "[0] Logout.\n\n" +
+                "Selecione a opcao pretendida: ";
+        System.out.println(sb);
         try{
             if(input.hasNextInt())
                 i = input.nextInt();
@@ -173,13 +180,19 @@ public class Menu {
     }
 
     public static int nifValido(int nif){
-        System.out.println("NIF: ");
+        System.out.println("\nNIF: ");
+        input.nextLine();
         try{
             if(input.hasNextInt())
                 nif = input.nextInt();
         }
         catch(java.util.InputMismatchException e){
-            Menu.errors(8);
+            Menu.errors(11);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e1){
+                e.printStackTrace();
+            }
         }
         return nif;
     }
@@ -187,12 +200,11 @@ public class Menu {
     public static int menuVenderArtigo(String name){
         limpaTerminal();
         int i = 0;
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU VENDAS (Nome: " + name + ")-\n\n");
-        sb.append("[1] Vender Artigo.\n");
-        sb.append("[2] Listar Artigos vendidos por mim.\n");
-        sb.append("[0] Cancelar.\n\n");
-        sb.append("Selecione a opcao pretendida: ");
-        System.out.println(sb.toString());
+        String sb = "\t\t\t\t\t -MENU VENDAS (Nome: " + name + ")-\n\n" + "[1] Vender Artigo.\n" +
+                "[2] Listar Artigos vendidos por mim.\n" +
+                "[0] Cancelar.\n\n" +
+                "Selecione a opcao pretendida: ";
+        System.out.println(sb);
         try{
             if(input.hasNextInt())
                 i = input.nextInt();
@@ -208,10 +220,9 @@ public class Menu {
     public static int menuComprarArtigo(String name){
         limpaTerminal();
         int i = 0;
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU COMPRAS (Nome: " + name + ")-\n\n");
-        sb.append("[1] Listar os artigos que pode comprar.");
-        sb.append("[0] Cancelar.\n\n");
-        System.out.println(sb.toString());
+        String sb = "\t\t\t\t\t -MENU COMPRAS (Nome: " + name + ")-\n\n" + "[1] Listar os artigos que pode comprar." +
+                "[0] Cancelar.\n\n";
+        System.out.println(sb);
         try{
             if(input.hasNextInt())
                 i = input.nextInt();
@@ -251,7 +262,8 @@ public class Menu {
         else if(i == 8) sb.append(ANSI_RED).append("!!!! Erro ao atualizar o NOME !!!!\n").append(ANSI_RESET);
         else if(i == 9) sb.append(ANSI_RED).append("!!!! Erro ao atualizar a MORADA !!!!\n").append(ANSI_RESET);
         else if(i == 10) sb.append(ANSI_RED).append("!!!! Erro ao atualizar o NIF !!!!\n").append(ANSI_RESET);
-        System.out.println(sb.toString());
+        else if(i == 11) sb.append(ANSI_RED).append("!!!! Volte a introduzir o NIF !!!!\n").append(ANSI_RESET);
+        System.out.println(sb);
     }
 
     public static void success(int i){
@@ -267,6 +279,6 @@ public class Menu {
         //else if(i == 8) sb.append(ANSI_GREEN).append("!!!! Erro ao atualizar o NOME !!!!\n").append(ANSI_RESET);
         //else if(i == 9) sb.append(ANSI_GREEN).append("!!!! Erro ao atualizar a MORADA !!!!\n").append(ANSI_RESET);
         //else if(i == 10) sb.append(ANSI_GREEN).append("!!!! Erro ao atualizar o NIF !!!!\n").append(ANSI_RESET);
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 }
