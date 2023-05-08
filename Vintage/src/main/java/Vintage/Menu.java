@@ -155,12 +155,12 @@ public class Menu {
         if(input.hasNextLine())
             email = input.nextLine();
 
-        System.out.println("Nome: ");
+        System.out.println("\nNome: ");
         String nome = "---";
         if(input.hasNextLine())
             nome = input.nextLine();
 
-        System.out.println("Morada: ");
+        System.out.println("\nMorada: ");
         String morada = "---";
         if(input.hasNextLine())
             morada = input.nextLine();
@@ -184,13 +184,12 @@ public class Menu {
         return nif;
     }
 
-    public static int venderArtigo(String name){
+    public static int menuVenderArtigo(String name){
         limpaTerminal();
         int i = 0;
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
-        sb.append("[1] Vender Mala.\n");
-        sb.append("[2] Vender T-Shirt.\n");
-        sb.append("[3] Vender Sapatilha.\n");
+        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU VENDAS (Nome: " + name + ")-\n\n");
+        sb.append("[1] Vender Artigo.\n");
+        sb.append("[2] Listar Artigos vendidos por mim.\n");
         sb.append("[0] Cancelar.\n\n");
         sb.append("Selecione a opcao pretendida: ");
         System.out.println(sb.toString());
@@ -204,10 +203,12 @@ public class Menu {
         return i;
     }
 
-    public static int comprarArtigo(String name){
+    //public static 
+
+    public static int menuComprarArtigo(String name){
         limpaTerminal();
         int i = 0;
-        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n");
+        StringBuilder sb = new StringBuilder("\t\t\t\t\t -MENU COMPRAS (Nome: " + name + ")-\n\n");
         sb.append("[1] Listar os artigos que pode comprar.");
         sb.append("[0] Cancelar.\n\n");
         System.out.println(sb.toString());

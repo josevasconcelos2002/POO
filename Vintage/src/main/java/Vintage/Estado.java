@@ -1,5 +1,6 @@
 package Vintage;
 
+import Vintage.Artigos.Artigo;
 import Vintage.Artigos.Artigos;
 import Vintage.Encomendas.Encomendas;
 import Vintage.Transportadoras.Transportadoras;
@@ -40,6 +41,30 @@ public class Estado implements Serializable {
 
     public boolean existeEmail(String email){
         return listaDeUtilizadores.existeEmail(email);
+    }
+
+    public void addProdutoComprado(Artigo artigo, String email){
+        listaDeUtilizadores.getUserByEmail(email).addProdutoComprado(artigo);
+    }
+
+    public void addProdutoVenda(Artigo artigo, String email){
+        listaDeUtilizadores.getUserByEmail(email).addProdutoVenda(artigo);
+    }
+
+    public void addProdutoVendido(Artigo artigo, String email){
+        listaDeUtilizadores.getUserByEmail(email).addProdutoVendido(artigo);
+    }
+
+    public void removeProdutoComprado(Artigo artigo, String email){
+        listaDeUtilizadores.getUserByEmail(email).removeProdutoComprado(artigo);
+    }
+
+    public void removeProdutoVenda(Artigo artigo, String email){
+        listaDeUtilizadores.getUserByEmail(email).removeProdutoVenda(artigo);
+    }
+
+    public void removeProdutoVendido(Artigo artigo, String email){
+        listaDeUtilizadores.getUserByEmail(email).removeProdutoVendido(artigo);
     }
 
     public String printAllUsers(){

@@ -1,8 +1,10 @@
 package Vintage.Users;
 
 import java.io.*;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Objects;
+
+import Vintage.Artigos.Artigo;
 
 public class User implements Serializable {
     private int codigo;
@@ -10,23 +12,26 @@ public class User implements Serializable {
     private String nome;
     private String morada;
     private int nif;
-    private String [] produtosVendidos; // mudar para map ou list???
-    private String [] produtosVenda;    // mudar para map ou list???
-    private String [] produtosComprados;// mudar para map ou list???
+    private ArrayList<Artigo> produtosVendidos;
+    private ArrayList<Artigo> produtosVenda;
+    private ArrayList<Artigo> produtosComprados;
     private String infoVendas; // não tenho a certeza de como fazer isto
     private double valorVendas;
 
-    public User(){
+    public User() {
         this.codigo = -1;
         this.email = "";
         this.nome = "";
         this.morada = "";
         this.nif = 0;
+        this.produtosVendidos = new ArrayList<Artigo>();
+        this.produtosVenda = new ArrayList<Artigo>();
+        this.produtosComprados = new ArrayList<Artigo>();
         this.infoVendas = "";
         this.valorVendas = 0.0;
     }
 
-    public User(int codigo, String email, String nome, String morada, int nif){
+    public User(int codigo, String email, String nome, String morada, int nif) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
@@ -34,7 +39,8 @@ public class User implements Serializable {
         this.nif = nif;
     }
 
-    public User(int codigo, String email, String nome, String morada, int nif, String[] produtosVendidos, String[] produtosVenda, String[] produtosComprados, String infoVendas, double valorVendas){
+    public User(int codigo, String email, String nome, String morada, int nif, ArrayList<Artigo> produtosVendidos,
+    ArrayList<Artigo> produtosVenda, ArrayList<Artigo> produtosComprados, String infoVendas, double valorVendas) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
@@ -47,7 +53,7 @@ public class User implements Serializable {
         this.valorVendas = valorVendas;
     }
 
-    public User(User u){
+    public User(User u) {
         this.codigo = u.getCodigo();
         this.email = u.getEmail();
         this.nome = u.getNome();
@@ -60,83 +66,113 @@ public class User implements Serializable {
         this.valorVendas = u.getValorVendas();
     }
 
-    public int getCodigo(){
+    public void addProdutoVendido(Artigo artigo){
+        this.produtosVendidos.add(artigo);
+    }
+
+    public void removeProdutoVendido(Artigo artigo){
+        if(this.produtosVendidos.contains(artigo)){
+            this.produtosVendidos.remove(artigo);
+        }
+    }
+
+    public void addProdutoVenda(Artigo artigo){
+        this.produtosVenda.add(artigo);
+    }
+
+    public void removeProdutoVenda(Artigo artigo){
+        if(this.produtosVenda.contains(artigo)){
+            this.produtosVenda.remove(artigo);
+        }
+    }
+
+    public void addProdutoComprado(Artigo artigo){
+        this.produtosComprados.add(artigo);
+    }
+
+    public void removeProdutoComprado(Artigo artigo){
+        if(this.produtosComprados.contains(artigo)){
+            this.produtosComprados.remove(artigo);
+        }
+    }
+
+    public int getCodigo() {
         return this.codigo;
     }
 
-    public void setCodigo(int codigo){
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return this.email;
     }
 
-    public void setEmail(String email){
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getNome(){
+    public String getNome() {
         return this.nome;
     }
 
-    public void setNome(String nome){
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String getMorada(){
+    public String getMorada() {
         return this.morada;
     }
 
-    public void setMorada(String morada){
+    public void setMorada(String morada) {
         this.morada = morada;
     }
 
-    public int getNif(){
+    public int getNif() {
         return this.nif;
     }
 
-    public void setNif(int nif){
+    public void setNif(int nif) {
         this.nif = nif;
     }
 
-    public String[] getProdutosVendidos(){
+    public ArrayList<Artigo> getProdutosVendidos() {
         return this.produtosVendidos;
     }
 
-    public void setProdutosVendidos(String[] produtosVendidos){
+    public void setProdutosVendidos(ArrayList<Artigo> produtosVendidos) {
         this.produtosVendidos = produtosVendidos;
     }
 
-    public String[] getProdutosVenda(){
+    public ArrayList<Artigo> getProdutosVenda() {
         return this.produtosVenda;
     }
 
-    public void setProdutosVenda(String[] produtosVenda){
+    public void setProdutosVenda(ArrayList<Artigo> produtosVenda) {
         this.produtosVenda = produtosVenda;
     }
 
-    public String[] getProdutosComprados(){
+    public ArrayList<Artigo> getProdutosComprados() {
         return this.produtosComprados;
     }
 
-    public void setProdutosComprados(String[] produtosComprados){
+    public void setProdutosComprados(ArrayList<Artigo> produtosComprados) {
         this.produtosComprados = produtosComprados;
     }
 
-    public String getInfoVendas(){
+    public String getInfoVendas() {
         return this.infoVendas;
     }
 
-    public void setInfoVendas(String infoVendas){
+    public void setInfoVendas(String infoVendas) {
         this.infoVendas = infoVendas;
     }
 
-    public double getValorVendas(){
+    public double getValorVendas() {
         return this.valorVendas;
     }
 
-    public void setValorVendas(double valorVendas){
+    public void setValorVendas(double valorVendas) {
         this.valorVendas = valorVendas;
     }
 
@@ -147,9 +183,9 @@ public class User implements Serializable {
                 ", nome='" + nome + '\'' +
                 ", morada='" + morada + '\'' +
                 ", nif='" + nif + '\'' +
-                ", produtosVendidos=" + Arrays.toString(produtosVendidos) +
-                ", produtosVenda=" + Arrays.toString(produtosVenda) +
-                ", produtosComprados=" + Arrays.toString(produtosComprados) +
+                ", produtosVendidos=" + produtosVendidos.toString() +
+                ", produtosVenda=" + produtosVenda.toString() +
+                ", produtosComprados=" + produtosComprados.toString() +
                 ", infoVendas='" + infoVendas + '\'' +
                 ", valorVendas=" + valorVendas +
                 "}";
@@ -157,12 +193,21 @@ public class User implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         User user = (User) o;
-        return codigo == user.codigo && Double.compare(user.valorVendas, valorVendas) == 0 && Objects.equals(email, user.email) && Objects.equals(nome, user.nome) && Objects.equals(morada, user.morada) && Objects.equals(nif, user.nif) && Arrays.equals(produtosVendidos, user.produtosVendidos) && Arrays.equals(produtosVenda, user.produtosVenda) && Arrays.equals(produtosComprados, user.produtosComprados) && Objects.equals(infoVendas, user.infoVendas);
+        return codigo == user.codigo && Double.compare(user.valorVendas, valorVendas) == 0
+                && Objects.equals(email, user.email) && Objects.equals(nome, user.nome)
+                && Objects.equals(morada, user.morada) && Objects.equals(nif, user.nif)
+                && produtosVendidos.equals(user.produtosVendidos)
+                && produtosVenda.equals(user.produtosVenda)
+                && produtosComprados.equals(user.produtosComprados)
+                && Objects.equals(infoVendas, user.infoVendas);
     }
 
+    /* 
     @Override
     public int hashCode() {
         int result = Objects.hash(codigo, email, nome, morada, nif, infoVendas, valorVendas);
@@ -171,9 +216,9 @@ public class User implements Serializable {
         result = 31 * result + Arrays.hashCode(produtosComprados);
         return result;
     }
-
+    */
     @Override
-    public User clone(){
+    public User clone() {
         return new User(this);
     }
 }

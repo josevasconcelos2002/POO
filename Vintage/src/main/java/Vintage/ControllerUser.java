@@ -1,5 +1,6 @@
 package Vintage;
 
+import Vintage.Artigos.Artigo;
 import Vintage.Users.User;
 public class ControllerUser {
     public static void run(Vintage vintage, String email){
@@ -15,20 +16,20 @@ public class ControllerUser {
             switch(opcao){
                 case 1:
                     Menu.limpaTerminal();
-                    Menu.comprarArtigo(vintage.getUserNameByKey(email));
+                    Menu.menuComprarArtigo(vintage.getUserNameByKey(email));
                     System.out.println("Não implementado (Gerir compras)");
                     break;
                 case 2:
                     Menu.limpaTerminal();
-                    int i = Menu.venderArtigo(vintage.getUserNameByKey(email));
+                    int i = Menu.menuVenderArtigo(vintage.getUserNameByKey(email));
                     if(i == 1){
-                        System.out.println("adicionar mala");
-                    } else if(i == 2) {
-                        System.out.println("adicionar t-shirt");
-                    } else if(i == 3) {
-                        System.out.println("adicionar sapatilha");
+                        // listar Artigos disponíveis para venda e pedir para o user dizer qual quer vender
                     }
-                    System.out.println("Não implementado (Gerir vendas)");
+                    if (i == 2) {
+                        System.out.println("Artigos vendidos pelo utilizador: \n");
+                        vintage.printProdutosUser(email);
+                    }
+                    
                     break;
                 case 3:
                     Menu.limpaTerminal();
