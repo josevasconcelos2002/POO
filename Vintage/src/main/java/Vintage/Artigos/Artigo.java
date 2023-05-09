@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.UUID;
 public abstract class Artigo implements IArtigo, Serializable {
 
-    protected enum Estado {
+    public enum Estado {
         NOVO,
         USADO
     }

@@ -2,11 +2,11 @@ package Vintage.Encomendas;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
-import Vintage.IArtigo;
-//import Artigos.Artigo;
+import Vintage.Artigos.Artigo;
 
-public class Encomendas implements Serializable {
+public class Encomenda implements Serializable {
     
     protected enum Dimensao{
         GRANDE,
@@ -19,21 +19,21 @@ public class Encomendas implements Serializable {
         FINALIZADA,
         EXPEDIDA
     }
-    private IArtigo[] artigos;
+    private ArrayList<Artigo> artigos;
     private Estado estado;
     private Dimensao dimensao;
     private double precoFinal;
     private LocalDate dataExpedicao;
 
-    public Encomendas(){
-        this.artigos = null;
+    public Encomenda(){
+        this.artigos = new ArrayList<Artigo>();;
         this.precoFinal = 0.0;
         this.dataExpedicao = LocalDate.now();
         this.estado = Estado.PENDENTE;
         this.dimensao = Dimensao.MEDIA;
     }
 
-    public Encomendas(IArtigo[] artigos,Estado estado, Dimensao dimensao, double precoFinal, LocalDate dataExpedicao){
+    public Encomenda(ArrayList<Artigo> artigos, Estado estado, Dimensao dimensao, double precoFinal, LocalDate dataExpedicao){
         this.artigos = artigos;
         this.estado = estado;
         this.dimensao = dimensao;
@@ -41,12 +41,28 @@ public class Encomendas implements Serializable {
         this.dataExpedicao = dataExpedicao;
     }
 
-    public IArtigo[] getArtigos(){
+    public Encomenda(Encomenda e){
+        this.artigos = e.getArtigos();
+        this.estado = e.getEstado();
+        this.precoFinal = e.getPrecoFinal();
+        this.dimensao = e.getDimensao();
+        this.dataExpedicao = e.getDataExpedicao();
+    }
+
+    public ArrayList<Artigo> getArtigos(){
         return this.artigos;
     }
 
-    public void setArtigos(IArtigo[] artigos){
+    public void setArtigos(ArrayList<Artigo> artigos){
         this.artigos = artigos;
+    }
+
+    public void addArtigoEncomenda(Artigo artigo){
+        this.artigos.add(artigo);
+    }
+
+    public void removeArtigoEncomenda(Artigo artigo){
+        this.artigos.remove(artigo);
     }
 
     public Estado getEstado(){
@@ -65,7 +81,7 @@ public class Encomendas implements Serializable {
         this.dimensao = dimensao;
     }
 
-    public double getPrecoFInal(){
+    public double getPrecoFinal(){
         return this.precoFinal;
     }
 
@@ -84,6 +100,7 @@ public class Encomendas implements Serializable {
     @Override
     public String toString(){
         return "Encomenda{" +
+                "produtos= " + artigos.toString() +
                 "estado='" + this.estado + '\'' +
                 ", dimensao=" + this.dimensao +
                 ", precoFinal=" + this.precoFinal +
@@ -97,8 +114,9 @@ public class Encomendas implements Serializable {
         if(this == o) resultado = true;
         if(o == null || this.getClass() != o.getClass()) resultado = false;
 
-        Encomendas encomenda = (Encomendas) o;
+        Encomenda encomenda = (Encomenda) o;
 
+        if(!artigos.equals(encomenda.artigos)) resultado = false;
         if(this.estado != encomenda.estado) resultado = false;
         if(this.dimensao != encomenda.dimensao) resultado = false;
         if(Double.compare(this.precoFinal, encomenda.precoFinal) != 0) resultado = false;
@@ -107,9 +125,17 @@ public class Encomendas implements Serializable {
     }
 
     public double calculaPrecoFinal(){
-        // por cada artigo do array, se artigo.getEstado() == NOVO    + 0.5
-        // se for usado, + 0.25
+        // falta ter em conta os precos de cada transportadora (colocar uma Transportadora associada a encomenda?)
         double resultado = 0.0;
+        for(Artigo artigo : artigos){
+            if(artigo.getEstado() == Artigo.Estado.NOVO) resultado += 0.5;
+            if(artigo.getEstado() == Artigo.Estado.USADO) resultado += 0.25;
+        }
         return resultado;
+    }
+
+    @Override
+    public Encomenda clone(){
+        return new Encomenda(this);
     }
 }
