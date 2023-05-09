@@ -33,6 +33,6 @@ public class Logo {
                 "\t                                                                                                                                      \n"+
                 "\t                                                                                                                                      \n"+
                 "\t                                                                                                                by Ana, Jose and Paulo\n";
-        System.out.println(logo);
+        System.out.println(Menu.ANSI_GOLD + logo + Menu.ANSI_RESET);
     }
 }

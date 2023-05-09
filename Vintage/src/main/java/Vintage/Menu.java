@@ -9,6 +9,7 @@ public class Menu {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN =  "\u001B[32m";
+    public static final String ANSI_GOLD = "\u001B[38;5;220m";
     static Scanner input = new Scanner(System.in);
     public static void printLogo(){
         Logo.logo();
@@ -51,13 +52,14 @@ public class Menu {
         String sb = """
                 \t\t\t\t\t -MENU ESTATISTICAS-
 
-                [1] - Listar utilizadores.
-                [2] - Listar Artigos.
-                [3] - Qual o vendedor que mais facturou num período ou desde sempre.
-                [4] - Qual o transportador com maior volume de facturacao.
-                [5] - Listar as encomendas emitidas por um vendedor.
-                [6] - Fornecer uma ordenacao dos maiores compradores/vendedoresdo sistema durante um período a determinar.
-                [7] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.
+                [1] - Listar Utilizadores.
+                [2] - Listar Artigos disponiveis para venda.
+                [3] - Listar Transportadoras.
+                [4] - Qual o vendedor que mais facturou num período ou desde sempre.
+                [5] - Qual o transportador com maior volume de facturacao.
+                [6] - Listar as encomendas emitidas por um vendedor.
+                [7] - Fornecer uma ordenacao dos maiores compradores/vendedoresdo sistema durante um período a determinar.
+                [8] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.
                 [0] - Sair.
 
                 Selecione a opcao pretendida:\s""";
@@ -263,6 +265,7 @@ public class Menu {
         else if(i == 9) sb.append(ANSI_RED).append("!!!! Erro ao atualizar a MORADA !!!!\n").append(ANSI_RESET);
         else if(i == 10) sb.append(ANSI_RED).append("!!!! Erro ao atualizar o NIF !!!!\n").append(ANSI_RESET);
         else if(i == 11) sb.append(ANSI_RED).append("!!!! Volte a introduzir o NIF !!!!\n").append(ANSI_RESET);
+        else if (i == 12) sb.append(ANSI_RED).append("!!!! Nome de Transportadora ja existe !!!!\n").append(ANSI_RESET);
         System.out.println(sb);
     }
 
@@ -273,6 +276,8 @@ public class Menu {
         else if(i == 2) sb.append(ANSI_GREEN).append("--- MORADA atualizado com sucesso! ---\n").append(ANSI_RESET);
         else if(i == 3) sb.append(ANSI_GREEN).append("--- NIF atualizado com sucesso! ---\n").append(ANSI_RESET);
         else if(i == 4) sb.append(ANSI_GREEN).append("--- Alteracoes guardadas com sucesso! ---\n").append(ANSI_RESET);
+        else if(i == 5) sb.append(ANSI_GREEN).append("--Transportadora adicionado com successo!--\n").append(ANSI_RESET);
+        else if(i == 6) sb.append(ANSI_GREEN).append("--Utilizador adicionado com successo!--\n").append(ANSI_RESET);
         //else if(i == 4) sb.append(ANSI_GREEN).append("!!!! Erro associado a classes !!!!\n").append(ANSI_RESET);
         //else if(i == 5) sb.append(ANSI_GREEN).append("!!!! Não foi possivel carregar o estado !!!!\n").append(ANSI_RESET);
         //else if(i == 6) sb.append(ANSI_GREEN).append("!!!! Email nao encontrado !!!!\n").append(ANSI_RESET);

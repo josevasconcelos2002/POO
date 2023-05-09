@@ -1,6 +1,7 @@
 package Vintage;
 
 import Vintage.Artigos.Artigo;
+import Vintage.Transportadoras.Transportadora;
 import Vintage.Users.User;
 
 import java.io.*;
@@ -21,7 +22,7 @@ public class Vintage implements Serializable {
     public void addUser(User u){
         if(!estado.existeEmail(u.getEmail())){
             estado.addUser(u);
-            System.out.println("--User adicionado com successo!--");
+            Menu.success(6);
             Menu.pressToContinue();
         } else {
             Menu.limpaTerminal();
@@ -44,6 +45,31 @@ public class Vintage implements Serializable {
     public String printAllUsers(){
         return estado.printAllUsers();
     }
+
+
+
+
+    // TRANSPORTADORA(s)
+    public void addTransportadora(Transportadora t){
+        if(!estado.existeTransportadoraNome(t.getNome())){
+            estado.addTransportadora(t);
+            Menu.success(5);
+            Menu.pressToContinue();
+        } else {
+            Menu.limpaTerminal();
+            Menu.errors(12);
+        }
+    }
+
+    public void removeTransportadora(Transportadora t){
+        estado.removeTransportadora(t);
+    }
+
+    public String printTransportadoras(){
+        return estado.printTransportadoras();
+    }
+
+
 
     public void addProdutoComprado(Artigo artigo, String email){
         estado.getUserByEmail(email).addProdutoComprado(artigo);
@@ -95,6 +121,7 @@ public class Vintage implements Serializable {
     public String produtosVendaUsers(){
         return estado.produtosVendaUsers();
     }
+
 
     /*public void mostrarLogs() {
         estado.loadEstadoLogs();

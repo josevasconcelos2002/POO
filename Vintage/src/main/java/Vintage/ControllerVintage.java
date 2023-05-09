@@ -7,6 +7,7 @@ import Vintage.Artigos.Artigo;
 import Vintage.Artigos.Mala;
 import Vintage.Artigos.Sapatilha;
 import Vintage.Artigos.TShirt;
+import Vintage.Transportadoras.Transportadora;
 import Vintage.Users.User;
 
 public class ControllerVintage {
@@ -14,7 +15,9 @@ public class ControllerVintage {
         Vintage vintage = new Vintage();
         // colocar isto num ficheiro à parte?
         User user1 = new User(1,"pedro02@gmail.com","Pedro","---", 264333300);
+        Transportadora t = new Transportadora("DHL", 5.0);
         vintage.addUser(user1);
+        vintage.addTransportadora(t);
         Artigo artigo1 = new Mala();
         Artigo artigo2 = new TShirt();
         Artigo artigo3 = new Sapatilha();

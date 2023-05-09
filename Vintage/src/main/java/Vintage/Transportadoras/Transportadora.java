@@ -62,4 +62,8 @@ public class Transportadora implements Serializable {
     public Transportadora clone(){
         return new Transportadora(this);
     }
+
+    public String stringTransportadora(){
+        return "{ Transportadora: " + this.nome + "}";
+    }
 }

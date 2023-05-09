@@ -3,6 +3,7 @@ package Vintage;
 import Vintage.Artigos.Artigo;
 import Vintage.Artigos.Artigos;
 import Vintage.Encomendas.Encomendas;
+import Vintage.Transportadoras.Transportadora;
 import Vintage.Transportadoras.Transportadoras;
 import Vintage.Users.User;
 import Vintage.Users.Users;
@@ -23,16 +24,38 @@ public class Estado implements Serializable {
         this.listaDeUtilizadores = new Users();
         this.listaDeEncomendas = new Encomendas();
         this.listaDeArtigos = new Artigos();
+        this.listaDeTransportadoras = new Transportadoras();
     }
 
     public Estado(Estado es) {
         this.listaDeUtilizadores = es.listaDeUtilizadores;
         this.listaDeEncomendas = es.listaDeEncomendas;
         this.listaDeArtigos = es.listaDeArtigos;
+        this.listaDeTransportadoras = es.listaDeTransportadoras;
     }
 
+
+
+    // TRANSPORTADORAS
+    public void addTransportadora(Transportadora t){
+        listaDeTransportadoras.addTransportadora(t);
+    }
+
+    public void removeTransportadora(Transportadora t){
+        listaDeTransportadoras.removeTransportadora(t);
+    }
+
+    public String printTransportadoras(){
+        return this.listaDeTransportadoras.printTransportadoras();
+    }
+
+    public boolean existeTransportadoraNome(String nome){
+        return listaDeTransportadoras.existeTransportadoraNome(nome);
+    }
+
+    // USER(s)
     public int getNewUserCode(){
-        return listaDeUtilizadores.size() + 1;
+        return listaDeUtilizadores.sizeUsers() + 1;
     }
 
     public void addUser(User u){
@@ -103,14 +126,9 @@ public class Estado implements Serializable {
     public String printAllUsers(){
         return listaDeUtilizadores.stringUsers();
     }
-
     public String produtosVendaUsers(){
         return listaDeUtilizadores.produtosVendaUsers();
     }
-    public String printAllArtigos(){
-        return listaDeArtigos.toString();
-    }
-
     public String getUserNameByKey(String email){
         return listaDeUtilizadores.getUserNameByKey(email);
     }
@@ -123,7 +141,19 @@ public class Estado implements Serializable {
         this.listaDeUtilizadores.addUser(getUserByEmail(email));
     }
 
-    // Função que guarda o estado da aplicação(guarda os objetos)
+
+
+
+    // ARTIGO(s)
+    public String printAllArtigos(){
+        return listaDeArtigos.toString();
+    }
+
+
+
+
+
+    // GUARDAR
     public void guardarEstado(String nomeFicheiro) throws IOException {
         FileOutputStream fileOut = new FileOutputStream(nomeFicheiro);
         ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -148,8 +178,6 @@ public class Estado implements Serializable {
         this.tempoAtual = estado.tempoAtual;
     }
 
-
-    // escrever em ficheiros
     public static void writeOnFile(String file){
         try{
             File myFile = new File(file);

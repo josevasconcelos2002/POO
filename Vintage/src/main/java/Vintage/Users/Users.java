@@ -33,10 +33,6 @@ public class Users implements Serializable {
         this.users = users.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e->e.getValue().clone(), (a,b)->a, HashMap::new));
     }
 
-    public void addUser(User us){
-        this.users.put(us.getEmail(), us.clone());
-    }
-
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Contas {\n");
@@ -49,7 +45,7 @@ public class Users implements Serializable {
 
     public String stringUsers(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Contas:\n");
+        sb.append("Contas: \n");
         for (User user : users.values()) {
             sb.append("\t").append(user.stringUser()).append("\n");
         }
@@ -90,7 +86,15 @@ public class Users implements Serializable {
         return this.users.containsKey(email);
     }
 
-    public int size(){
+    public void addUser(User us){
+        this.users.put(us.getEmail(), us.clone());
+    }
+    public void removeUser(User u){
+        if(existeEmail(u.getEmail()))
+            this.users.remove(u.getEmail());
+    }
+
+    public int sizeUsers(){
         return users.size();
     }
 }

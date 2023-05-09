@@ -9,7 +9,7 @@ public class ControllerStats {
         Scanner input = new Scanner(System.in);
         while(!exit){
             int opcao = -1;
-            while (opcao < 0 || opcao > 7){
+            while (opcao < 0 || opcao > 8){
                 opcao = Menu.menuStats();
             }
 
@@ -32,8 +32,11 @@ public class ControllerStats {
                     break;
                 case 3:
                     Menu.limpaTerminal();
-                    System.out.println("Não implementado");
-                    break;
+                    System.out.println("Lista de Transportadoras:\n\n");
+                    String transportadoras = vintage.printTransportadoras();
+                    System.out.println(transportadoras);
+                    input.nextLine();
+                    Menu.pressToContinue();
                 case 4:
                     Menu.limpaTerminal();
                     System.out.println("Não implementado");
@@ -47,6 +50,10 @@ public class ControllerStats {
                     System.out.println("Não implementado");
                     break;
                 case 7:
+                    Menu.limpaTerminal();
+                    System.out.println("Não implementado");
+                    break;
+                case 8:
                     Menu.limpaTerminal();
                     System.out.println("Não implementado");
                     break;
