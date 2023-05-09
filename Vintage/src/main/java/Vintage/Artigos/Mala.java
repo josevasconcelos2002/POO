@@ -138,6 +138,7 @@ public class Mala extends Artigo implements Serializable {
     @Override
     public Mala clone(){
         Mala m = new Mala();
+        m.codigo = super.getCodigo();
         m.altura = this.altura;
         m.dataColecao = this.dataColecao;
         m.desconto = this.desconto;

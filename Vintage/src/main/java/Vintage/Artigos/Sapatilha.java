@@ -98,6 +98,7 @@ public class Sapatilha extends Artigo implements Serializable {
     @Override
     public Sapatilha clone(){
         Sapatilha s = new Sapatilha();
+        s.codigo = super.getCodigo();
         s.atacadores = this.atacadores;
         s.cor = this.cor;
         s.dataColecao = this.dataColecao;

@@ -74,9 +74,7 @@ public class User implements Serializable {
     }
 
     public void removeProdutoVendido(Artigo artigo){
-        if(this.produtosVendidos.contains(artigo)){
-            this.produtosVendidos.remove(artigo);
-        }
+        this.produtosVendidos.remove(artigo);
     }
 
     public void addProdutoVenda(Artigo artigo){
@@ -84,9 +82,7 @@ public class User implements Serializable {
     }
 
     public void removeProdutoVenda(Artigo artigo){
-        if(this.produtosVenda.contains(artigo)){
-            this.produtosVenda.remove(artigo);
-        }
+        this.produtosVenda.remove(artigo); // ja verifica se existe o elemento na lista
     }
 
     public void addProdutoComprado(Artigo artigo){
@@ -94,9 +90,7 @@ public class User implements Serializable {
     }
 
     public void removeProdutoComprado(Artigo artigo){
-        if(this.produtosComprados.contains(artigo)){
-            this.produtosComprados.remove(artigo);
-        }
+        this.produtosComprados.remove(artigo);
     }
 
     public int getCodigo() {

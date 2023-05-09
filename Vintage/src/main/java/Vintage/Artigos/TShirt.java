@@ -78,6 +78,7 @@ public class TShirt extends Artigo implements Serializable {
     @Override
     public TShirt clone(){
         TShirt t = new TShirt();
+        t.codigo = super.getCodigo();
         t.padrao = this.padrao;
         t.tamanho = this.tamanho;
         t.desconto = this.desconto;
