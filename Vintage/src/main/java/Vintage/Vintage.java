@@ -37,6 +37,10 @@ public class Vintage implements Serializable {
         return this.estado.getUserByEmail(email);
     }
 
+    public void addUser(String email){
+        this.estado.addUser(getUserByEmail(email));
+    }
+
     public String printAllUsers(){
         return estado.printAllUsers();
     }
@@ -88,6 +92,9 @@ public class Vintage implements Serializable {
         return estado.printProdutosVenda(email);
     }
 
+    public String produtosVendaUsers(){
+        return estado.produtosVendaUsers();
+    }
 
     /*public void mostrarLogs() {
         estado.loadEstadoLogs();

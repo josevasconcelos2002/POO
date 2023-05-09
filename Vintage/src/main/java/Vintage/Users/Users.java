@@ -47,6 +47,23 @@ public class Users implements Serializable {
         return sb.toString();
     }
 
+    public String stringUsers(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Contas:\n");
+        for (User user : users.values()) {
+            sb.append("\t").append(user.stringUser()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    public String produtosVendaUsers(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Produtos para venda: \n\n");
+        for(User user : users.values()){
+            sb.append("\t").append(user.stringProdutosVenda()).append("\n");
+        }
+        return sb.toString();
+    }
 
     public Users clone(){
         return new Users(this);
@@ -54,7 +71,7 @@ public class Users implements Serializable {
 
     public User getUserByEmail(String email){
         if (this.users.containsKey(email))
-            return this.users.get(email);  //IMPORTANTE!!! USAR .clone() ou não!
+            return this.users.get(email).clone();  //IMPORTANTE!!! USAR .clone() ou não!
         return null;
     }
 

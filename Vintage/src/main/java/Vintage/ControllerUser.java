@@ -43,7 +43,7 @@ public class ControllerUser {
                     break;
                 case 0:
                     exit = true;
-                    vintage.logout();
+                    //vintage.logout();
                     Menu.limpaTerminal();
                     Menu.menuPrincipal();
                     break;

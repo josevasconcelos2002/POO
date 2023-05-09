@@ -194,6 +194,9 @@ public class User implements Serializable {
                 "}";
     }
 
+    public String stringUser(){
+        return "{Email: " + email + ", Nome: " + nome + "}";
+    }
     public String stringProdutosComprados(){
         return produtosComprados.toString();
     }

@@ -3,7 +3,7 @@ package Vintage.Artigos;
 import Vintage.IArtigo;
 
 import java.io.*;
-
+import java.util.UUID;
 public abstract class Artigo implements IArtigo, Serializable {
 
     protected enum Estado {
@@ -21,7 +21,8 @@ public abstract class Artigo implements IArtigo, Serializable {
     private double precoCorrigido;
 
     public Artigo(){
-        this.codigo = "";
+        String codigoCompleto = UUID.randomUUID().toString();
+        this.codigo = codigoCompleto.replaceAll("-", "").substring(0, 15);
         this.estado = Estado.NOVO;
         this.avaliacao = -1;
         this.nDonos = -1;

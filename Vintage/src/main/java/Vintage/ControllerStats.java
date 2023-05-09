@@ -1,10 +1,12 @@
 package Vintage;
 
+import java.util.Scanner;
+
 public class ControllerStats {
     public static void run(Vintage vintage){
 
         boolean exit = false;
-
+        Scanner input = new Scanner(System.in);
         while(!exit){
             int opcao = -1;
             while (opcao < 0 || opcao > 7){
@@ -15,13 +17,17 @@ public class ControllerStats {
                 case 1:
                     Menu.limpaTerminal();
                     System.out.println("Todos os utilizadores:\n");
-                    System.out.println(vintage.printAllUsers());
+                    String resultado = vintage.printAllUsers();
+                    System.out.println(resultado);
+                    input.nextLine();
                     Menu.pressToContinue();
                     break;
                 case 2:
                     Menu.limpaTerminal();
-                    System.out.println("Todos os artigos:\n");
-                    System.out.println(vintage.printAllUsers());
+                    System.out.println("Todos os artigos disponiveis para venda:\n");
+                    String produtos = vintage.produtosVendaUsers();
+                    System.out.println(produtos);
+                    input.nextLine();
                     Menu.pressToContinue();
                     break;
                 case 3:

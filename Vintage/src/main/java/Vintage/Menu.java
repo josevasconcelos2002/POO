@@ -272,6 +272,7 @@ public class Menu {
         if (i == 1) sb.append(ANSI_GREEN).append("--- NOME atualizado com sucesso! ---\n").append(ANSI_RESET);
         else if(i == 2) sb.append(ANSI_GREEN).append("--- MORADA atualizado com sucesso! ---\n").append(ANSI_RESET);
         else if(i == 3) sb.append(ANSI_GREEN).append("--- NIF atualizado com sucesso! ---\n").append(ANSI_RESET);
+        else if(i == 4) sb.append(ANSI_GREEN).append("--- Alteracoes guardadas com sucesso! ---\n").append(ANSI_RESET);
         //else if(i == 4) sb.append(ANSI_GREEN).append("!!!! Erro associado a classes !!!!\n").append(ANSI_RESET);
         //else if(i == 5) sb.append(ANSI_GREEN).append("!!!! Não foi possivel carregar o estado !!!!\n").append(ANSI_RESET);
         //else if(i == 6) sb.append(ANSI_GREEN).append("!!!! Email nao encontrado !!!!\n").append(ANSI_RESET);

@@ -101,9 +101,12 @@ public class Estado implements Serializable {
     }
 
     public String printAllUsers(){
-        return listaDeUtilizadores.toString();
+        return listaDeUtilizadores.stringUsers();
     }
 
+    public String produtosVendaUsers(){
+        return listaDeUtilizadores.produtosVendaUsers();
+    }
     public String printAllArtigos(){
         return listaDeArtigos.toString();
     }
@@ -114,6 +117,10 @@ public class Estado implements Serializable {
 
     public User getUserByEmail(String email){
         return this.listaDeUtilizadores.getUserByEmail(email);
+    }
+
+    public void addUser(String email){
+        this.listaDeUtilizadores.addUser(getUserByEmail(email));
     }
 
     // Função que guarda o estado da aplicação(guarda os objetos)

@@ -96,14 +96,14 @@ public class ControllerPerfil {
                     break;
 
                 case 4:
-
+                    vintage.addUser(vintage.getUserByEmail(email)); // substitui no map o user que tinha email igual
+                    Menu.success(4);
                     // isto tem haver com fazer alterações no clone e ir ao map dos users e colocar o novo perfil lá
                     break;
 
                 case 0:
-                    
                     Menu.limpaTerminal();
-                    Menu.menuUser(vintage.getUserNameByKey(email));
+                    Menu.menuUser(user.getNome());
                     break;
             }
         }
