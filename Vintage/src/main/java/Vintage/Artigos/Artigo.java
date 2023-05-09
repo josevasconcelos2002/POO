@@ -1,6 +1,7 @@
 package Vintage.Artigos;
 
 import Vintage.IArtigo;
+import Vintage.Transportadoras.Transportadora;
 
 import java.io.*;
 import java.util.UUID;
@@ -19,6 +20,7 @@ public abstract class Artigo implements IArtigo, Serializable {
     private String marca;
     private double precoBase;
     private double precoCorrigido;
+    private Transportadora transportadora;
 
     public Artigo(){
         String codigoCompleto = UUID.randomUUID().toString();
@@ -30,6 +32,7 @@ public abstract class Artigo implements IArtigo, Serializable {
         this.marca = "";
         this.precoBase = -1;
         this.precoCorrigido = -1.0;
+        this.transportadora = null;
     }
 
     public Artigo(String codigo, String descricao, String marca, double precoBase) {
@@ -41,7 +44,7 @@ public abstract class Artigo implements IArtigo, Serializable {
         this.precoCorrigido = -1.0;
     }
 
-    public Artigo(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase) {
+    public Artigo(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, Transportadora t) {
         this.codigo = codigo;
         this.estado = Estado.USADO;
         this.avaliacao = avaliacao;
@@ -50,11 +53,20 @@ public abstract class Artigo implements IArtigo, Serializable {
         this.marca = marca;
         this.precoBase = precoBase;
         this.precoCorrigido = -1.0;
+        this.transportadora = t;
     }
 
     @Override
     public String getCodigo() {
         return this.codigo;
+    }
+
+    public Transportadora getArtigoTransportadora(){
+        return this.transportadora;
+    }
+
+    public void setArtigoTransportadora(Transportadora t){
+        this.transportadora = t;
     }
 
     public void setCodigo(String codigo) {

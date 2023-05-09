@@ -9,6 +9,10 @@ import java.io.*;
 public class Vintage implements Serializable {
     private User user;
     private Estado estado;
+    private static double baseExpedicaoPequenas = 2.0;
+    private static double baseExpedicaoMedias = 1.5;
+    private static double baseExpedicaoGrandes = 1.0;
+    public static double imposto = 0.23;
 
     public Vintage(){
         this.estado = new Estado();
@@ -67,6 +71,22 @@ public class Vintage implements Serializable {
 
     public String printTransportadoras(){
         return estado.printTransportadoras();
+    }
+
+    public static double getBaseExpedicaoPequenas(){
+        return baseExpedicaoPequenas;
+    }
+
+    public static double getBaseExpedicaoMedias(){
+        return baseExpedicaoMedias;
+    }
+
+    public static double getBaseExpedicaoGrandes(){
+        return baseExpedicaoGrandes;
+    }
+
+    public static double getExpedicaoImposto(){
+        return imposto;
     }
 
 

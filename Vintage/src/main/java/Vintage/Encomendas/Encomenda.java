@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Vintage.Artigos.Artigo;
+import Vintage.Vintage;
 
 public class Encomenda implements Serializable {
     
@@ -124,13 +125,22 @@ public class Encomenda implements Serializable {
         return resultado;
     }
 
+    public double calculaPrecoExpedicao(){
+        int size = artigos.size();
+        double resultado = 0.0;
+        if(size == 1) resultado += Vintage.getBaseExpedicaoPequenas();
+        else if(size >= 2 && size <= 5) resultado += Vintage.getBaseExpedicaoMedias();
+        else if(size > 5) resultado += Vintage.getBaseExpedicaoGrandes();
+        return resultado;
+    }
+
     public double calculaPrecoFinal(){
-        // falta ter em conta os precos de cada transportadora (colocar uma Transportadora associada a encomenda?)
         double resultado = 0.0;
         for(Artigo artigo : artigos){
             if(artigo.getEstado() == Artigo.Estado.NOVO) resultado += 0.5;
             if(artigo.getEstado() == Artigo.Estado.USADO) resultado += 0.25;
         }
+        resultado += calculaPrecoExpedicao() * (1 + Vintage.getExpedicaoImposto()); // qual formula usar?
         return resultado;
     }
 
