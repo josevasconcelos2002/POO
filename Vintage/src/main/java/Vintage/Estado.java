@@ -91,7 +91,7 @@ public class Estado implements Serializable {
     }
 
     public String printProdutosComprados(String email){
-        String resultado = "A lista está vazia!\n";
+        String resultado;
         try{
             resultado = listaDeUtilizadores.getUserByEmail(email).stringProdutosComprados();
         }
@@ -102,7 +102,7 @@ public class Estado implements Serializable {
     }
 
     public String printProdutosVendidos(String email){
-        String resultado = "A lista está vazia!\n";
+        String resultado;
         try{
             resultado = listaDeUtilizadores.getUserByEmail(email).stringProdutosVendidos();
         }
@@ -113,7 +113,7 @@ public class Estado implements Serializable {
     }
 
     public String printProdutosVenda(String email){
-        String resultado = "A lista está vazia!\n";
+        String resultado;
         try{
             resultado = listaDeUtilizadores.getUserByEmail(email).stringProdutosVenda();
         }
