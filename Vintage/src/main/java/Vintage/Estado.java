@@ -2,7 +2,7 @@ package Vintage;
 
 import Vintage.Artigos.Artigo;
 import Vintage.Artigos.Artigos;
-import Vintage.Encomendas.Encomendas;
+import Vintage.Encomendas.Encomenda;
 import Vintage.Transportadoras.Transportadora;
 import Vintage.Transportadoras.Transportadoras;
 import Vintage.Users.User;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 
 public class Estado implements Serializable {
     private Users listaDeUtilizadores;
-    private Encomendas listaDeEncomendas;
+    private Encomenda listaDeEncomendas;
     private Artigos listaDeArtigos;
     private Transportadoras listaDeTransportadoras;
     private LocalDate tempoAtual;
@@ -22,7 +22,7 @@ public class Estado implements Serializable {
 
     public Estado(){
         this.listaDeUtilizadores = new Users();
-        this.listaDeEncomendas = new Encomendas();
+        this.listaDeEncomendas = new Encomenda();
         this.listaDeArtigos = new Artigos();
         this.listaDeTransportadoras = new Transportadoras();
     }
@@ -160,8 +160,6 @@ public class Estado implements Serializable {
         out.writeObject(this);
         out.close();
         fileOut.close();
-
-        System.out.println("Estado guardado com sucesso!!");
     }
 
     public void carregaEstado(String nomeFicheiro) throws IOException, ClassNotFoundException {
@@ -178,17 +176,4 @@ public class Estado implements Serializable {
         this.tempoAtual = estado.tempoAtual;
     }
 
-    public static void writeOnFile(String file){
-        try{
-            File myFile = new File(file);
-            if(myFile.createNewFile()){
-                System.out.println("File created: " + myFile.getName());
-            } else {
-                System.out.println("File already exists.");
-            }
-
-        }catch (IOException e){
-            System.out.println("Nao se consegui escrever num ficheiro");
-        }
-    }
 }

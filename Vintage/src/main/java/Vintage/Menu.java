@@ -27,7 +27,7 @@ public class Menu {
                 \t\t\t\t\t -MENU INICIAL-
 
                 [1] - Iniciar a sessao.
-                [2] - Registar conta.
+                [2] - Criar.
                 [3] - Mostrar Logs.
                 [4] - Guardar estado.
                 [5] - Carregar estado.
@@ -60,7 +60,7 @@ public class Menu {
                 [6] - Listar as encomendas emitidas por um vendedor.
                 [7] - Fornecer uma ordenacao dos maiores compradores/vendedoresdo sistema durante um período a determinar.
                 [8] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.
-                [0] - Sair.
+                [0] - Voltar.
 
                 Selecione a opcao pretendida:\s""";
         System.out.println(sb);
@@ -100,6 +100,37 @@ public class Menu {
         }
         return resultado;
     }
+
+
+    public static int menuCriar(Vintage vintage){
+        int i = 0;
+        limpaTerminal();
+        String sb = """
+                \t\t\t\t\t -CRIAR-\s
+
+                [1] Criar USER.
+                [2] Criar ARTIGO.
+                [3] Criar TRANSPORTADORA.
+                [4] Criar ENCOMENDA.
+                [0] Voltar.
+                """;
+        System.out.println(sb);
+        try{
+            if(input.hasNextInt())
+                i  = input.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(7);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e1){
+                e.printStackTrace();
+            }
+        }
+        return i;
+    }
+
+
 
     public static int menuGerirPerfil(User user){
         int i = 0;
@@ -183,18 +214,19 @@ public class Menu {
 
     public static int nifValido(int nif){
         System.out.println("\nNIF: ");
-        input.nextLine();
+        //input.nextLine();
         try{
             if(input.hasNextInt())
                 nif = input.nextInt();
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(11);
+            /*
             try{
                 Thread.sleep(1000);
             } catch (InterruptedException e1){
                 e.printStackTrace();
-            }
+            }*/
         }
         return nif;
     }
@@ -238,6 +270,7 @@ public class Menu {
     public static String save(){
         String save = " ";
         System.out.println("Escreve o nome do ficheiro onde vao ser guardados os dados: ");
+        input.nextLine();
         if(input.hasNextLine())
             save = input.nextLine();
         return save;
@@ -246,6 +279,7 @@ public class Menu {
     public static String load(){
         String load = " ";
         System.out.println("Escreve o nome do ficheiro de onde vao ser carregados os dados: ");
+        input.nextLine();
         if(input.hasNextLine())
             load = input.nextLine();
         return load;
@@ -278,13 +312,8 @@ public class Menu {
         else if(i == 4) sb.append(ANSI_GREEN).append("--- Alteracoes guardadas com sucesso! ---\n").append(ANSI_RESET);
         else if(i == 5) sb.append(ANSI_GREEN).append("--Transportadora adicionado com successo!--\n").append(ANSI_RESET);
         else if(i == 6) sb.append(ANSI_GREEN).append("--Utilizador adicionado com successo!--\n").append(ANSI_RESET);
-        //else if(i == 4) sb.append(ANSI_GREEN).append("!!!! Erro associado a classes !!!!\n").append(ANSI_RESET);
-        //else if(i == 5) sb.append(ANSI_GREEN).append("!!!! Não foi possivel carregar o estado !!!!\n").append(ANSI_RESET);
-        //else if(i == 6) sb.append(ANSI_GREEN).append("!!!! Email nao encontrado !!!!\n").append(ANSI_RESET);
-        //else if(i == 7) sb.append(ANSI_GREEN).append("!!!! Introduza uma opção valida !!!!\n").append(ANSI_RESET);
-        //else if(i == 8) sb.append(ANSI_GREEN).append("!!!! Erro ao atualizar o NOME !!!!\n").append(ANSI_RESET);
-        //else if(i == 9) sb.append(ANSI_GREEN).append("!!!! Erro ao atualizar a MORADA !!!!\n").append(ANSI_RESET);
-        //else if(i == 10) sb.append(ANSI_GREEN).append("!!!! Erro ao atualizar o NIF !!!!\n").append(ANSI_RESET);
+        else if(i == 7) sb.append(ANSI_GREEN).append("--Estado salvo com successo!--\n").append(ANSI_RESET);
+        else if(i == 8) sb.append(ANSI_GREEN).append("--Ficheiro carregado com successo!--\n").append(ANSI_RESET);
         System.out.println(sb);
     }
 }

@@ -1,5 +1,7 @@
 package Vintage.Artigos;
 
+import Vintage.Transportadoras.Transportadora;
+
 import java.io.*;
 
 public class TShirt extends Artigo implements Serializable {
@@ -32,8 +34,8 @@ public class TShirt extends Artigo implements Serializable {
         this.desconto = desconto;
     }
 
-    public TShirt(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, Tamanho tamanho, Padrao padrao, int desconto){
-        super(codigo, avaliacao, nDonos, descricao, marca, precoBase);
+    public TShirt(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, Transportadora t, Tamanho tamanho, Padrao padrao, int desconto){
+        super(codigo, avaliacao, nDonos, descricao, marca, precoBase,t);
         this.tamanho = tamanho;
         this.padrao = padrao;
         this.desconto = desconto;

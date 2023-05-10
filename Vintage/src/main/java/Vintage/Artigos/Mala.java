@@ -1,5 +1,7 @@
 package Vintage.Artigos;
 
+import Vintage.Transportadoras.Transportadora;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -32,8 +34,8 @@ public class Mala extends Artigo implements Serializable {
         this.edicao = edicao;
     }
 
-    public Mala(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, double largura, double altura, int desconto, String material, LocalDate dataColecao, Edicao edicao) {
-        super(codigo, avaliacao, nDonos, descricao, marca, precoBase);
+    public Mala(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, Transportadora t, double largura, double altura, int desconto, String material, LocalDate dataColecao, Edicao edicao) {
+        super(codigo, avaliacao, nDonos, descricao, marca, precoBase,t);
         this.largura = largura;
         this.altura = altura;
         this.desconto = desconto;

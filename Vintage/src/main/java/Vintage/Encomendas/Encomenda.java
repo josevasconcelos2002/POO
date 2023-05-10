@@ -112,7 +112,6 @@ public class Encomenda implements Serializable {
     @Override
     public boolean equals(Object o){
         boolean resultado = true;
-        if(this == o) resultado = true;
         if(o == null || this.getClass() != o.getClass()) resultado = false;
 
         Encomenda encomenda = (Encomenda) o;
@@ -128,9 +127,18 @@ public class Encomenda implements Serializable {
     public double calculaPrecoExpedicao(){
         int size = artigos.size();
         double resultado = 0.0;
-        if(size == 1) resultado += Vintage.getBaseExpedicaoPequenas();
-        else if(size >= 2 && size <= 5) resultado += Vintage.getBaseExpedicaoMedias();
-        else if(size > 5) resultado += Vintage.getBaseExpedicaoGrandes();
+        if(size == 1){
+            this.setDimensao(Dimensao.PEQUENA);
+            resultado += Vintage.getBaseExpedicaoPequenas();
+        }
+        else if(size >= 2 && size <= 5){
+            this.setDimensao(Dimensao.MEDIA);
+            resultado += Vintage.getBaseExpedicaoMedias();
+        }
+        else if(size > 5){
+            this.setDimensao(Dimensao.GRANDE);
+            resultado += Vintage.getBaseExpedicaoGrandes();
+        }
         return resultado;
     }
 

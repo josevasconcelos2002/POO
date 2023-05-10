@@ -42,8 +42,7 @@ public class ControllerVintage {
                         break;
                     case 2:
                         Menu.limpaTerminal();
-                        User novoUser = Menu.registarNovoUser(vintage.newUserCode());
-                        vintage.addUser(novoUser);
+                        ControllerCriar.run(vintage);
                         break;
                     case 3:
                         //Vintage.mostrarLogs();
@@ -52,7 +51,7 @@ public class ControllerVintage {
                     case 4:
                         Menu.limpaTerminal();
                         String saveName = Menu.save();
-                        try{vintage.guardaEstado(saveName);System.out.println("Ficheiros salvos com sucesso!!!\n");}
+                        try{vintage.guardaEstado(saveName);Menu.success(7);}
                         catch (FileNotFoundException e) {
                             Menu.errors(2);}
                         catch (IOException e) {
@@ -63,7 +62,7 @@ public class ControllerVintage {
                     case 5:
                         Menu.limpaTerminal();
                         String loadName = Menu.load();
-                        try {vintage.carregaEstado(loadName);System.out.println("Ficheiros carregados com sucesso!!!\n");}
+                        try {vintage.carregaEstado(loadName);Menu.success(8);}
                         catch (FileNotFoundException e) {
                             Menu.errors(2);
                         }
