@@ -35,8 +35,7 @@ public class Transportadoras implements Serializable {
     }
 
     public void removeTransportadora(Transportadora t){
-        if(this.transportadoras.containsKey(t.getNome()))
-            this.transportadoras.remove(t.getNome());
+        this.transportadoras.remove(t.getNome());
     }
 
     public boolean existeTransportadoraNome(String nome){

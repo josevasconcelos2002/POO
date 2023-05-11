@@ -31,7 +31,7 @@ public class ControllerVintage {
         while (true) {
             try{
                 int opcao = -1;
-                while (opcao < 0 || opcao > 7) {
+                while (opcao < 0 || opcao > 8) {
                     opcao = Menu.menuPrincipal();
                 }
                 switch (opcao) {
@@ -44,11 +44,16 @@ public class ControllerVintage {
                         Menu.limpaTerminal();
                         ControllerCriar.run(vintage);
                         break;
+
                     case 3:
+                        Menu.limpaTerminal();
+                        ControllerRemover.run(vintage);
+                        break;
+                    case 4:
                         //Vintage.mostrarLogs();
                         Menu.pressToContinue();
                         break;
-                    case 4:
+                    case 5:
                         Menu.limpaTerminal();
                         String saveName = Menu.save();
                         try{vintage.guardaEstado(saveName);Menu.success(7);}
@@ -59,7 +64,7 @@ public class ControllerVintage {
                         }
                         Menu.pressToContinue();
                         break;
-                    case 5:
+                    case 6:
                         Menu.limpaTerminal();
                         String loadName = Menu.load();
                         try {vintage.carregaEstado(loadName);Menu.success(8);}
@@ -74,7 +79,7 @@ public class ControllerVintage {
                         }
                         Menu.pressToContinue();
                         break;
-                    case 6:
+                    case 7:
                         Menu.limpaTerminal();
                         ControllerStats.run(vintage);
                         break;

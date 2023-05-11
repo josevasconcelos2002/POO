@@ -13,10 +13,6 @@ public class Users implements Serializable {
         this.users = new HashMap<String,User>();
     }
 
-    public int getNewCode(){
-        return 0;
-    }
-
     public Users(Map<String,User> Users){
         this.setUsers(Users);
     }
@@ -25,11 +21,11 @@ public class Users implements Serializable {
         this.users = us.getUsers();
     }
 
-    public Map<String, User> getUsers() {
+    public Map<String,User> getUsers() {
         return this.users.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a,b) -> a, HashMap::new));
     }
 
-    public void setUsers(Map<String, User> users){
+    public void setUsers(Map<String,User> users){
         this.users = users.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e->e.getValue().clone(), (a,b)->a, HashMap::new));
     }
 

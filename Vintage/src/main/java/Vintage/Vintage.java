@@ -8,7 +8,7 @@ import java.io.*;
 
 public class Vintage implements Serializable {
     private User user;
-    private Estado estado;
+    Estado estado;
     private static double baseExpedicaoPequenas = 2.0;
     private static double baseExpedicaoMedias = 1.5;
     private static double baseExpedicaoGrandes = 1.0;

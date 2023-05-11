@@ -27,7 +27,7 @@ public class Encomenda implements Serializable {
     private LocalDate dataExpedicao;
 
     public Encomenda(){
-        this.artigos = new ArrayList<Artigo>();;
+        this.artigos = new ArrayList<Artigo>();
         this.precoFinal = 0.0;
         this.dataExpedicao = LocalDate.now();
         this.estado = Estado.PENDENTE;
@@ -107,6 +107,10 @@ public class Encomenda implements Serializable {
                 ", precoFinal=" + this.precoFinal +
                 ", dataExpedicao=" + this.dataExpedicao +
                 '}';
+    }
+
+    public String stringEncomenda(){
+        return "{ Encomenda -> " + this.dimensao +" (" + this.artigos.size() + ") " + ", " + this.estado + ", " + this.dataExpedicao + " }";
     }
 
     @Override

@@ -17,6 +17,11 @@ public class Transportadora implements Serializable {
         this.precoExpedicao = precoExpedicao;
     }
 
+    public Transportadora(String nome){
+        this.nome = nome;
+        this.precoExpedicao = 0;
+    }
+
     public Transportadora(Transportadora t){
         this.nome = t.getNome();
         this.precoExpedicao = t.getPrecoExpedicao();

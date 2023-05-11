@@ -1,5 +1,7 @@
 package Vintage;
 
+import Vintage.Encomendas.Encomenda;
+import Vintage.Transportadoras.Transportadora;
 import Vintage.Users.User;
 
 import java.io.IOException;
@@ -27,11 +29,12 @@ public class Menu {
                 \t\t\t\t\t -MENU INICIAL-
 
                 [1] - Iniciar a sessao.
-                [2] - Criar.
-                [3] - Mostrar Logs.
-                [4] - Guardar estado.
-                [5] - Carregar estado.
-                [6] - Estatisticas.
+                [2] - Criar (User, etc...).
+                [3] - Remover.
+                [4] - Mostrar Logs.
+                [5] - Guardar estado.
+                [6] - Carregar estado.
+                [7] - Estatisticas.
                 [0] - Sair.
 
                 Selecione a opcao pretendida:\s""";
@@ -102,7 +105,7 @@ public class Menu {
     }
 
 
-    public static int menuCriar(Vintage vintage){
+    public static int menuCriar(){
         int i = 0;
         limpaTerminal();
         String sb = """
@@ -129,6 +132,72 @@ public class Menu {
         }
         return i;
     }
+
+    public static int menuRemover(){
+        int i = 0;
+        limpaTerminal();
+        String sb = """
+                \t\t\t\t\t -REMOVER-\s
+
+                [1] Remover USER.
+                [2] Remover ARTIGO.
+                [3] Remover TRANSPORTADORA.
+                [4] Remover ENCOMENDA.
+                [0] Voltar.
+                """;
+        System.out.println(sb);
+        try{
+            if(input.hasNextInt())
+                i  = input.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(7);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e1){
+                e.printStackTrace();
+            }
+        }
+        return i;
+    }
+
+    public static String removerTransportadora(){
+        input.nextLine();
+        System.out.println("\t\t\t\t\t -REMOVER TRANSPORTADORA-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+        System.out.println("Nome: ");
+        String nome = "---";
+        if(input.hasNextLine())
+            nome = input.nextLine();
+        return nome;
+    }
+
+    public static Transportadora registarNovaTransportadora(){
+        input.nextLine();
+        System.out.println("\t\t\t\t\t -REGISTAR NOVA TRANSPORTADORA-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+        System.out.println("Nome: ");
+        String nome = "---";
+        if(input.hasNextLine())
+            nome = input.nextLine();
+        return new Transportadora(nome);
+    }
+
+    // Registar Encomenda -> ver com mais calma
+    /*
+    public static Encomenda registarNovaEncomenda(){
+        input.nextLine();
+        System.out.println("\t\t\t\t\t -REGISTAR NOVA ENCOMENDA-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+
+        System.out.println("Preço final: ");
+        Double precoFinal = 0.0;
+        if(input.hasNextDouble())
+            precoFinal = input.nextDouble();
+
+
+        return new Encomenda();
+    }*/
 
 
 
@@ -295,25 +364,49 @@ public class Menu {
         else if(i == 5) sb.append(ANSI_RED).append("!!!! Não foi possivel carregar o estado !!!!\n").append(ANSI_RESET);
         else if(i == 6) sb.append(ANSI_RED).append("!!!! Email nao encontrado !!!!\n").append(ANSI_RESET);
         else if(i == 7) sb.append(ANSI_RED).append("!!!! Introduza uma opção valida !!!!\n").append(ANSI_RESET);
+        // Erro ao atualizar
         else if(i == 8) sb.append(ANSI_RED).append("!!!! Erro ao atualizar o NOME !!!!\n").append(ANSI_RESET);
         else if(i == 9) sb.append(ANSI_RED).append("!!!! Erro ao atualizar a MORADA !!!!\n").append(ANSI_RESET);
         else if(i == 10) sb.append(ANSI_RED).append("!!!! Erro ao atualizar o NIF !!!!\n").append(ANSI_RESET);
         else if(i == 11) sb.append(ANSI_RED).append("!!!! Volte a introduzir o NIF !!!!\n").append(ANSI_RESET);
         else if (i == 12) sb.append(ANSI_RED).append("!!!! Nome de Transportadora ja existe !!!!\n").append(ANSI_RESET);
+        // Erro Estado
+        else if (i == 13) sb.append(ANSI_RED).append("!!!! Erro ao salvar estado !!!!\n").append(ANSI_RESET);
+        else if (i == 14) sb.append(ANSI_RED).append("!!!! Erro ao carregar estado !!!!\n").append(ANSI_RESET);
+        // Erro ao remover
+        else if(i == 15) sb.append(ANSI_RED).append("--Erro ao remover Transportadora!--\n").append(ANSI_RESET);
+        else if(i == 16) sb.append(ANSI_RED).append("--Erro ao remover Utilizador!--\n").append(ANSI_RESET);
+        else if(i == 17) sb.append(ANSI_RED).append("--Erro ao remover Artigo!--\n").append(ANSI_RESET);
+        else if(i == 18) sb.append(ANSI_RED).append("--Erro ao remover Encomenda!--\n").append(ANSI_RESET);
+        // Erro ao criar
+        else if(i == 19) sb.append(ANSI_RED).append("--Erro ao criar Transportadora!--\n").append(ANSI_RESET);
+        else if(i == 20) sb.append(ANSI_RED).append("--Erro ao criar Utilizador!--\n").append(ANSI_RESET);
+        else if(i == 21) sb.append(ANSI_RED).append("--Erro ao criar Artigo!--\n").append(ANSI_RESET);
+        else if(i == 22) sb.append(ANSI_RED).append("--Erro ao criar Encomenda!--\n").append(ANSI_RESET);
         System.out.println(sb);
     }
 
     public static void success(int i){
         limpaTerminal();
         StringBuilder sb = new StringBuilder();
+        // atualizar
         if (i == 1) sb.append(ANSI_GREEN).append("--- NOME atualizado com sucesso! ---\n").append(ANSI_RESET);
         else if(i == 2) sb.append(ANSI_GREEN).append("--- MORADA atualizado com sucesso! ---\n").append(ANSI_RESET);
         else if(i == 3) sb.append(ANSI_GREEN).append("--- NIF atualizado com sucesso! ---\n").append(ANSI_RESET);
         else if(i == 4) sb.append(ANSI_GREEN).append("--- Alteracoes guardadas com sucesso! ---\n").append(ANSI_RESET);
-        else if(i == 5) sb.append(ANSI_GREEN).append("--Transportadora adicionado com successo!--\n").append(ANSI_RESET);
+        // Criar
+        else if(i == 5) sb.append(ANSI_GREEN).append("--Transportadora adicionada com successo!--\n").append(ANSI_RESET);
         else if(i == 6) sb.append(ANSI_GREEN).append("--Utilizador adicionado com successo!--\n").append(ANSI_RESET);
-        else if(i == 7) sb.append(ANSI_GREEN).append("--Estado salvo com successo!--\n").append(ANSI_RESET);
-        else if(i == 8) sb.append(ANSI_GREEN).append("--Ficheiro carregado com successo!--\n").append(ANSI_RESET);
+        else if(i == 7) sb.append(ANSI_GREEN).append("--Artigo adicionado com successo!--\n").append(ANSI_RESET);
+        else if(i == 8) sb.append(ANSI_GREEN).append("--Encomenda adicionada com successo!--\n").append(ANSI_RESET);
+        // Remover
+        else if(i == 9) sb.append(ANSI_GREEN).append("--Transportadora removida com successo!--\n").append(ANSI_RESET);
+        else if(i == 10) sb.append(ANSI_GREEN).append("--Utilizador removido com successo!--\n").append(ANSI_RESET);
+        else if(i == 11) sb.append(ANSI_GREEN).append("--Artigo removido com successo!--\n").append(ANSI_RESET);
+        else if(i == 12) sb.append(ANSI_GREEN).append("--Encomenda removida com successo!--\n").append(ANSI_RESET);
+        // Guardar / Carregar
+        else if(i == 13) sb.append(ANSI_GREEN).append("--Estado salvo com successo!--\n").append(ANSI_RESET);
+        else if(i == 14) sb.append(ANSI_GREEN).append("--Ficheiro carregado com successo!--\n").append(ANSI_RESET);
         System.out.println(sb);
     }
 }

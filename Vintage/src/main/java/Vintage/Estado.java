@@ -3,6 +3,7 @@ package Vintage;
 import Vintage.Artigos.Artigo;
 import Vintage.Artigos.Artigos;
 import Vintage.Encomendas.Encomenda;
+import Vintage.Encomendas.Encomendas;
 import Vintage.Transportadoras.Transportadora;
 import Vintage.Transportadoras.Transportadoras;
 import Vintage.Users.User;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 
 public class Estado implements Serializable {
     private Users listaDeUtilizadores;
-    private Encomenda listaDeEncomendas;
+    private Encomendas listaDeEncomendas;  // alterar isto para lista de ENCOMENDAS
     private Artigos listaDeArtigos;
     private Transportadoras listaDeTransportadoras;
     private LocalDate tempoAtual;
@@ -22,9 +23,10 @@ public class Estado implements Serializable {
 
     public Estado(){
         this.listaDeUtilizadores = new Users();
-        this.listaDeEncomendas = new Encomenda();
+        this.listaDeEncomendas = new Encomendas();
         this.listaDeArtigos = new Artigos();
         this.listaDeTransportadoras = new Transportadoras();
+        this.tempoAtual = LocalDate.now();
     }
 
     public Estado(Estado es) {
@@ -32,8 +34,61 @@ public class Estado implements Serializable {
         this.listaDeEncomendas = es.listaDeEncomendas;
         this.listaDeArtigos = es.listaDeArtigos;
         this.listaDeTransportadoras = es.listaDeTransportadoras;
+        this.tempoAtual = es.tempoAtual;
     }
 
+    public Users getListaDeUtilizadores(){
+        return this.listaDeUtilizadores;
+    }
+
+    public Encomendas getListaDeEncomendas(){
+        return this.listaDeEncomendas;
+    }
+
+    public Artigos getListaDeArtigos(){
+        return this.listaDeArtigos;
+    }
+
+    public Transportadoras getListaDeTransportadoras(){
+        return this.listaDeTransportadoras;
+    }
+
+    public LocalDate getTempoAtual(){
+        return this.tempoAtual;
+    }
+
+    public void setListaDeUtilizadores(Users u){
+        this.listaDeUtilizadores = u;
+    }
+
+    public void setListaDeEncomendas(Encomendas e){    // alterar isto para lista de Encomendas
+        this.listaDeEncomendas = e;
+    }
+
+    public void setListaDeArtigos(Artigos a){
+        this.listaDeArtigos = a;
+    }
+
+    public void setListaDeTransportadoras(Transportadoras t){
+        this.listaDeTransportadoras = t;
+    }
+
+    public void setTempoAtual(LocalDate time){
+        this.tempoAtual = time;
+    }
+
+    // ENCOMENDAS
+    public void addEncomenda(Encomenda e){
+        listaDeEncomendas.addEncomenda(e);
+    }
+
+    public void removeEncomenda(Encomenda e){
+        listaDeEncomendas.removeEncomenda(e);
+    }
+
+    public String printEncomendas(){
+        return this.listaDeEncomendas.printEncomendas();
+    }
 
 
     // TRANSPORTADORAS
