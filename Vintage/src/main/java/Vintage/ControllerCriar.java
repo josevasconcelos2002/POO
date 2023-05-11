@@ -23,6 +23,12 @@ public class ControllerCriar {
                         Menu.limpaTerminal();
                         User novoUser = Menu.registarNovoUser(vintage.newUserCode());
                         vintage.addUser(novoUser);
+                        if(vintage.estado.existeEmail(novoUser.getEmail())) {
+                            vintage.estado.escreverLog(Menu.success(6).replace("\n", " ") + " " + vintage.estado.getTempoAtual() + " \n");
+                            vintage.estado.escreverLog("Novo user-> " + novoUser.getEmail() + " " + vintage.estado.getTempoAtual() +"\n");
+                        }
+                        else
+                            vintage.estado.escreverLog(Menu.errors(20).replace("\n"," ")+ " " + vintage.estado.getTempoAtual() + " \n");
                         break;
 
                     case 2:
@@ -35,6 +41,12 @@ public class ControllerCriar {
                         // menu para inserir dados da Transportadora
                         Transportadora t = Menu.registarNovaTransportadora();
                         vintage.addTransportadora(t);
+                        if(vintage.estado.existeTransportadoraNome(t.getNome())){
+                            vintage.estado.escreverLog(Menu.success(5).replace("\n"," ")+ " " + vintage.estado.getTempoAtual() + "\n");
+                            vintage.estado.escreverLog("Nova transportadora-> " + t.getNome() + " " + vintage.estado.getTempoAtual() + "\n");
+                        }
+                        else
+                            vintage.estado.escreverLog(Menu.errors(19).replace("\n"," ")+ " " + vintage.estado.getTempoAtual() + "\n");
                         break;
                     case 4:
                         Menu.limpaTerminal();

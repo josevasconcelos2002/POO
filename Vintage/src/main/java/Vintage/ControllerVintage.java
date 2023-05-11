@@ -1,6 +1,7 @@
 package Vintage;
 
 import java.io.*;
+import java.util.Scanner;
 
 import Vintage.Artigos.Artigo;
 import Vintage.Artigos.Mala;
@@ -12,22 +13,28 @@ import Vintage.Users.User;
 public class ControllerVintage {
     public static void run() throws IOException {
         Vintage vintage = new Vintage();
-
+        Scanner input = new Scanner(System.in);
         // colocar isto num ficheiro à parte?
         User user1 = new User(1,"pedro02@gmail.com","Pedro","---", 264333300);
         Transportadora t = new Transportadora("DHL", 5.0);
         File file = new File("logs/logs.txt");
         file.delete();
         vintage.addUser(user1);
-        if(vintage.estado.existeEmail(user1.getEmail()))
-            vintage.estado.escreverLog(Menu.success(6)+ " " + vintage.estado.getTempoAtual() + " \n");
-        else
-            vintage.estado.escreverLog(Menu.errors(1)+ " " + vintage.estado.getTempoAtual() + " \n");
+        if(vintage.estado.existeEmail(user1.getEmail())) {
+            vintage.estado.escreverLog(Menu.success(6).replace("\n", " ") + " " + vintage.estado.getTempoAtual() + " \n");
+            vintage.estado.escreverLog("Novo user-> " + user1.getEmail() + " " + vintage.estado.getTempoAtual() +"\n");
+        }
+        else {
+            vintage.estado.escreverLog(Menu.errors(1).replace("\n", " ") + " " + vintage.estado.getTempoAtual() + " \n");
+        }
         vintage.addTransportadora(t);
-        if(vintage.estado.existeTransportadoraNome(t.getNome()))
-            vintage.estado.escreverLog(Menu.success(5)+ " " + vintage.estado.getTempoAtual() + " \n");
-        else
-            vintage.estado.escreverLog(Menu.errors(12) + vintage.estado.getTempoAtual() + " \n");
+        if(vintage.estado.existeTransportadoraNome(t.getNome())) {
+            vintage.estado.escreverLog(Menu.success(5).replace("\n", " ") + " " + vintage.estado.getTempoAtual() + " \n");
+            vintage.estado.escreverLog("Nova transportadora-> " + t.getNome() + " " + vintage.estado.getTempoAtual() + "\n");
+        }
+        else {
+            vintage.estado.escreverLog(Menu.errors(12).replace("\n", " ") + vintage.estado.getTempoAtual() + " \n");
+        }
         Artigo artigo1 = new Mala();
         vintage.estado.escreverLog("Nova Mala-> codigo: " + artigo1.getCodigo() + " "+ vintage.estado.getTempoAtual() + " \n");
         Artigo artigo2 = new TShirt();
@@ -37,8 +44,6 @@ public class ControllerVintage {
         vintage.addProdutoComprado(artigo1,user1.getEmail());
         vintage.addProdutoVendido(artigo2,user1.getEmail());
         vintage.addProdutoVenda(artigo3,user1.getEmail());
-        //boolean Erro = false;
-
         Menu.printLogo();
 
         while (true) {
@@ -64,9 +69,9 @@ public class ControllerVintage {
                         break;
                     case 4:
                         Menu.limpaTerminal();
-                        System.out.println(Menu.printLogs());
-                        //Menu.printLogs();
-                        //Menu.pressToContinue();
+                        System.out.println("\t\t\t\t\t - LOGS -\n\n" + Menu.printLogs());
+                        input.nextLine();
+                        Menu.pressToContinue();
                         break;
                     case 5:
                         Menu.limpaTerminal();
@@ -99,8 +104,14 @@ public class ControllerVintage {
                         ControllerStats.run(vintage);
                         break;
                     case 0:
-                        System.exit(0);
                         Menu.success(15);
+                        try{
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
+                        Menu.limpaTerminal();
+                        System.exit(0);
                         break;
                 }
             }
