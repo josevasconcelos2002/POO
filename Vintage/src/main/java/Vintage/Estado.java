@@ -206,6 +206,24 @@ public class Estado implements Serializable {
 
 
 
+    // LOGS
+    public void escreverLog(String s) {
+        try {
+            File file = new File("logs/logs.txt");
+
+            if (!file.exists()) {
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+            }
+
+            try (FileWriter writer = new FileWriter(file, true)) {
+                writer.write(s);
+            }
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro ao escrever a string no arquivo.");
+            e.printStackTrace();
+        }
+    }
 
 
     // GUARDAR

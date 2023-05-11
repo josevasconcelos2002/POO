@@ -3,6 +3,7 @@ package Vintage;
 import Vintage.Artigos.Artigo;
 import Vintage.Users.User;
 
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class ControllerUser {

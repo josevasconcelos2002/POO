@@ -1,9 +1,10 @@
 package Vintage;
 
-import Vintage.Encomendas.Encomenda;
 import Vintage.Transportadoras.Transportadora;
 import Vintage.Users.User;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -327,7 +328,8 @@ public class Menu {
     public static int menuVenderArtigo(String name){
         limpaTerminal();
         int i = 0;
-        String sb = "\t\t\t\t\t -MENU VENDAS (Nome: " + name + ")-\n\n" + "[1] Vender Artigo.\n" +
+        String sb = "\t\t\t\t\t -MENU VENDAS (Nome: " + name + ")-\n\n" +
+                "[1] Vender Artigo.\n" +
                 "[2] Listar Artigos vendidos por mim.\n" +
                 "[0] Cancelar.\n\n" +
                 "Selecione a opcao pretendida: ";
@@ -347,7 +349,8 @@ public class Menu {
     public static int menuComprarArtigo(String name){
         limpaTerminal();
         int i = 0;
-        String sb = "\t\t\t\t\t -MENU COMPRAS (Nome: " + name + ")-\n\n" + "[1] Listar os artigos que pode comprar." +
+        String sb = "\t\t\t\t\t -MENU COMPRAS (Nome: " + name + ")-\n\n" +
+                "[1] Listar os artigos que pode comprar." +
                 "[0] Cancelar.\n\n";
         System.out.println(sb);
         try{
@@ -378,7 +381,28 @@ public class Menu {
         return load;
     }
 
-    public static void errors(int i){
+    public static String printLogs() {
+        StringBuilder logs = new StringBuilder();
+        try {
+            FileReader fileReader = new FileReader("logs/logs.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String linha;
+            while ((linha = bufferedReader.readLine()) != null) {
+                logs.append(linha).append("\n");
+            }
+
+            bufferedReader.close();
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return logs.toString();
+    }
+
+
+    public static String errors(int i){
         limpaTerminal();
         StringBuilder sb = new StringBuilder();
         if (i == 1) sb.append(ANSI_RED).append("!!!! Email ja existe !!!!\n").append(ANSI_RESET);
@@ -408,9 +432,10 @@ public class Menu {
         else if(i == 21) sb.append(ANSI_RED).append("--Erro ao criar Artigo!--\n").append(ANSI_RESET);
         else if(i == 22) sb.append(ANSI_RED).append("--Erro ao criar Encomenda!--\n").append(ANSI_RESET);
         System.out.println(sb);
+        return sb.toString();
     }
 
-    public static void success(int i){
+    public static String success(int i){
         limpaTerminal();
         StringBuilder sb = new StringBuilder();
         // atualizar
@@ -431,6 +456,8 @@ public class Menu {
         // Guardar / Carregar
         else if(i == 13) sb.append(ANSI_GREEN).append("--Estado salvo com successo!--\n").append(ANSI_RESET);
         else if(i == 14) sb.append(ANSI_GREEN).append("--Ficheiro carregado com successo!--\n").append(ANSI_RESET);
+        else if(i == 15) sb.append(ANSI_GREEN).append("\n--Programa terminado com sucesso!--\n").append(ANSI_RESET);
         System.out.println(sb);
+        return sb.toString();
     }
 }

@@ -3,6 +3,7 @@ package Vintage;
 import Vintage.Transportadoras.Transportadora;
 import Vintage.Users.User;
 
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class ControllerCriar {

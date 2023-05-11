@@ -1,7 +1,6 @@
 package Vintage;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 import Vintage.Artigos.Artigo;
 import Vintage.Artigos.Mala;
@@ -11,16 +10,30 @@ import Vintage.Transportadoras.Transportadora;
 import Vintage.Users.User;
 
 public class ControllerVintage {
-    public static void run() {
+    public static void run() throws IOException {
         Vintage vintage = new Vintage();
+
         // colocar isto num ficheiro à parte?
         User user1 = new User(1,"pedro02@gmail.com","Pedro","---", 264333300);
         Transportadora t = new Transportadora("DHL", 5.0);
+        File file = new File("logs/logs.txt");
+        file.delete();
         vintage.addUser(user1);
+        if(vintage.estado.existeEmail(user1.getEmail()))
+            vintage.estado.escreverLog(Menu.success(6)+ " " + vintage.estado.getTempoAtual() + " \n");
+        else
+            vintage.estado.escreverLog(Menu.errors(1)+ " " + vintage.estado.getTempoAtual() + " \n");
         vintage.addTransportadora(t);
+        if(vintage.estado.existeTransportadoraNome(t.getNome()))
+            vintage.estado.escreverLog(Menu.success(5)+ " " + vintage.estado.getTempoAtual() + " \n");
+        else
+            vintage.estado.escreverLog(Menu.errors(12) + vintage.estado.getTempoAtual() + " \n");
         Artigo artigo1 = new Mala();
+        vintage.estado.escreverLog("Nova Mala-> codigo: " + artigo1.getCodigo() + " "+ vintage.estado.getTempoAtual() + " \n");
         Artigo artigo2 = new TShirt();
+        vintage.estado.escreverLog("Nova TShirt-> codigo: " + artigo2.getCodigo()+ " " + vintage.estado.getTempoAtual() + " \n");
         Artigo artigo3 = new Sapatilha();
+        vintage.estado.escreverLog("Nova Sapatilha-> codigo: " + artigo3.getCodigo()+ " " + vintage.estado.getTempoAtual() +" \n");
         vintage.addProdutoComprado(artigo1,user1.getEmail());
         vintage.addProdutoVendido(artigo2,user1.getEmail());
         vintage.addProdutoVenda(artigo3,user1.getEmail());
@@ -50,8 +63,10 @@ public class ControllerVintage {
                         ControllerRemover.run(vintage);
                         break;
                     case 4:
-                        //Vintage.mostrarLogs();
-                        Menu.pressToContinue();
+                        Menu.limpaTerminal();
+                        System.out.println(Menu.printLogs());
+                        //Menu.printLogs();
+                        //Menu.pressToContinue();
                         break;
                     case 5:
                         Menu.limpaTerminal();
@@ -85,6 +100,7 @@ public class ControllerVintage {
                         break;
                     case 0:
                         System.exit(0);
+                        Menu.success(15);
                         break;
                 }
             }

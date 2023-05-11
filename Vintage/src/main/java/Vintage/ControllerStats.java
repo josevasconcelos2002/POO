@@ -1,5 +1,6 @@
 package Vintage;
 
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class ControllerStats {
