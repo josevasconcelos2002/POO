@@ -161,6 +161,55 @@ public class Menu {
         return i;
     }
 
+    public static String removerArtigo(){
+        input.nextLine();
+        System.out.println("\t\t\t\t\t -REMOVER ARTIGO-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+        System.out.println("Código: ");
+        String codigo = "---";
+        if(input.hasNextLine())
+            codigo = input.nextLine();
+        return codigo;
+    }
+
+    public static String removerUser(){
+        input.nextLine();
+        System.out.println("\t\t\t\t\t -REMOVER UTILIZADOR-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+        System.out.println("Email: ");
+        String email = "---";
+        if(input.hasNextLine())
+            email = input.nextLine();
+        return email;
+    }
+
+
+    public static User registarNovoUser(int codigo){
+        input.nextLine();
+        System.out.println("\t\t\t\t\t -REGISTAR NOVO UTILIZADOR-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+        System.out.println("Email: ");
+        String email = "---";
+        if(input.hasNextLine())
+            email = input.nextLine();
+
+        System.out.println("\nNome: ");
+        String nome = "---";
+        if(input.hasNextLine())
+            nome = input.nextLine();
+
+        System.out.println("\nMorada: ");
+        String morada = "---";
+        if(input.hasNextLine())
+            morada = input.nextLine();
+
+        int nif = 0;
+        while (nif <= 0){
+            nif = nifValido(nif);
+        }
+        return new User(codigo, email, nome, morada, nif);
+    }
+
     public static String removerTransportadora(){
         input.nextLine();
         System.out.println("\t\t\t\t\t -REMOVER TRANSPORTADORA-\n\n");
@@ -239,7 +288,8 @@ public class Menu {
     public static int menuUser(String name){
         limpaTerminal();
         int i = 0;
-        String sb = "\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n" + "[1] Gerir vendas.\n" +
+        String sb = "\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n" +
+                "[1] Gerir vendas.\n" +
                 "[2] Gerir compras.\n" +
                 "[3] Gerir perfil.\n" +
                 "[0] Logout.\n\n" +
@@ -253,32 +303,6 @@ public class Menu {
             Menu.errors(7);
         }
         return i;
-    }
-
-    public static User registarNovoUser(int codigo){
-        input.nextLine();
-        System.out.println("\t\t\t\t\t -REGISTAR NOVO UTILIZADOR-\n\n");
-        System.out.println("Introduza os dados pedidos.\n\n");
-        System.out.println("Email: ");
-        String email = "---";
-        if(input.hasNextLine())
-            email = input.nextLine();
-
-        System.out.println("\nNome: ");
-        String nome = "---";
-        if(input.hasNextLine())
-            nome = input.nextLine();
-
-        System.out.println("\nMorada: ");
-        String morada = "---";
-        if(input.hasNextLine())
-            morada = input.nextLine();
-
-        int nif = 0;
-        while (nif <= 0){
-            nif = nifValido(nif);
-        }
-        return new User(codigo, email, nome, morada, nif);
     }
 
     public static int nifValido(int nif){

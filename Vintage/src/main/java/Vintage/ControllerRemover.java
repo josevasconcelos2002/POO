@@ -18,19 +18,33 @@ public class ControllerRemover {
                 switch (opcao) {
 
                     case 1:
+                        // Remove User
                         Menu.limpaTerminal();
-                        User novoUser = Menu.registarNovoUser(vintage.newUserCode());
-                        vintage.addUser(novoUser);
+                        String email = Menu.removerUser();
+                        if(vintage.estado.existeEmail(email)){
+                            vintage.estado.getListaDeUtilizadores().removeUser(vintage.estado.getUserByEmail(email));
+                            Menu.success(10);
+                        }
+                        else{
+                            Menu.errors(16);
+                        }
                         break;
 
                     case 2:
+                        // Remove Artigo
                         Menu.limpaTerminal();
-                        // menu para escolher o tipo de artigo
-                        // depois, outro "menu" para o utilizador inserir os dados do Artigo
-
+                        String codigo = Menu.removerArtigo();
+                        if(vintage.estado.getListaDeArtigos().getListaDeArtigos().containsKey(codigo)){
+                            vintage.estado.getListaDeArtigos().removeArtigo(vintage.estado.getListaDeArtigos().getArtigoByCodigo(codigo));
+                            Menu.success(11);
+                        }
+                        else{
+                            Menu.errors(17);
+                        }
+                        break;
                     case 3:
+                        // Remove Transportadora
                         Menu.limpaTerminal();
-                        // menu para inserir dados da Transportadora
                         String nome = Menu.removerTransportadora();
                         if(vintage.estado.getListaDeTransportadoras().getTransportadoras().containsKey(nome)){
                             vintage.estado.removeTransportadora(vintage.estado.getListaDeTransportadoras().getTransportadoraByName(nome));

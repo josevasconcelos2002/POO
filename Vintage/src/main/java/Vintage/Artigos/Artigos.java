@@ -38,6 +38,10 @@ public class Artigos implements Serializable {
         this.listaDeArtigos.put(a.getCodigo(), (Artigo) a.clone());
     }
 
+    public void removeArtigo(Artigo a){
+        this.listaDeArtigos.remove(a.getCodigo());
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Lista de artigos {\n");
