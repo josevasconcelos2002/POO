@@ -63,7 +63,7 @@ public class Users implements Serializable {
 
     public User getUserByEmail(String email){
         if (this.users.containsKey(email))
-            return this.users.get(email).clone();  //IMPORTANTE!!! USAR .clone() ou não!
+            return this.users.get(email);  //IMPORTANTE!!! USAR .clone() ou não!
         return null;
     }
 

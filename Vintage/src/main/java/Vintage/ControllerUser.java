@@ -40,7 +40,8 @@ public class ControllerUser {
                     break;
                 case 3:
                     Menu.limpaTerminal();
-                    ControllerPerfil.run(vintage, vintage.getUserByEmail(email), email);
+                    User clone = vintage.getUserByEmail(email).clone();
+                    ControllerPerfil.run(vintage, clone ,email);
                     break;
                 case 0:
                     exit = true;

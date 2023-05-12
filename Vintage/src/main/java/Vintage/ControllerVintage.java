@@ -56,7 +56,17 @@ public class ControllerVintage {
                     case 1:
                         Menu.limpaTerminal();
                         String email = Menu.login();
-                        ControllerUser.run(vintage, email);
+                        if(vintage.estado.getListaDeUtilizadores().getUsers().containsKey(email)){
+                            Menu.limpaTerminal();
+                            Menu.success(16);
+                            Menu.pressToContinue();
+                            ControllerUser.run(vintage, email);
+                        }
+                        else {
+                            Menu.limpaTerminal();
+                            Menu.errors(23);
+                            Menu.pressToContinue();
+                        }
                         break;
                     case 2:
                         Menu.limpaTerminal();

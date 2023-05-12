@@ -27,7 +27,7 @@ public class Menu {
 
     public static int menuPrincipal(){
         limpaTerminal();
-        int i = 0; // default value for i
+        int i = -1; // default value for i
         String sb = """
                 \t\t\t\t\t -MENU INICIAL-
 
@@ -43,10 +43,17 @@ public class Menu {
                 Selecione a opcao pretendida:\s""";
         System.out.println(sb);
         try{
-            i = input.nextInt();
+                i = input.nextInt();
         }
         catch(java.util.InputMismatchException e){
+            Menu.limpaTerminal();
             Menu.errors(7);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e1){
+                e.printStackTrace();
+            }
+            Menu.pressToContinue();
         }
         return i;
     }
@@ -316,9 +323,10 @@ public class Menu {
 
 
     public static int menuGerirPerfil(User user){
-        int i = 0;
+        int i = -1;
         limpaTerminal();
-        String sb = "\t\t\t\t\t -GERIR PERFIL-\n\n" + "DADOS DO UTILIZADOR: \n\n" +
+        String sb = "\t\t\t\t\t -GERIR PERFIL-\n\n" +
+                "DADOS DO UTILIZADOR: \n\n" +
                 "EMAIL: " + user.getEmail() + "\n\n" +
                 "NOME: " + user.getNome() + "\n\n" +
                 "MORADA: " + user.getMorada() + "\n\n" +
@@ -331,16 +339,17 @@ public class Menu {
                 "Selecione a opcao pretendida: ";
         System.out.println(sb);
         try{
-            if(input.hasNextInt())
                 i  = input.nextInt();
         }
         catch(java.util.InputMismatchException e){
+            Menu.limpaTerminal();
             Menu.errors(7);
             try{
                 Thread.sleep(1000);
             } catch (InterruptedException e1){
                 e.printStackTrace();
             }
+            Menu.pressToContinue();
         }
         return i;
     }
@@ -352,7 +361,7 @@ public class Menu {
 
     public static int menuUser(String name){
         limpaTerminal();
-        int i = 0;
+        int i = -1;
         String sb = "\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n" +
                 "[1] Gerir vendas.\n" +
                 "[2] Gerir compras.\n" +
@@ -361,11 +370,17 @@ public class Menu {
                 "Selecione a opcao pretendida: ";
         System.out.println(sb);
         try{
-            if(input.hasNextInt())
                 i = input.nextInt();
         }
         catch(java.util.InputMismatchException e){
+            Menu.limpaTerminal();
             Menu.errors(7);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e1){
+                e.printStackTrace();
+            }
+            Menu.pressToContinue();
         }
         return i;
     }
@@ -414,7 +429,7 @@ public class Menu {
         limpaTerminal();
         int i = 0;
         String sb = "\t\t\t\t\t -MENU COMPRAS (Nome: " + name + ")-\n\n" +
-                "[1] Listar os artigos que pode comprar." +
+                "[1] Listar os artigos que pode comprar.\n" +
                 "[0] Cancelar.\n\n";
         System.out.println(sb);
         try{
@@ -495,6 +510,7 @@ public class Menu {
         else if(i == 20) sb.append(ANSI_RED).append("--Erro ao criar Utilizador!--\n").append(ANSI_RESET);
         else if(i == 21) sb.append(ANSI_RED).append("--Erro ao criar Artigo!--\n").append(ANSI_RESET);
         else if(i == 22) sb.append(ANSI_RED).append("--Erro ao criar Encomenda!--\n").append(ANSI_RESET);
+        else if(i == 23) sb.append(ANSI_RED).append("--Utilizador com esse email não existe!--\n").append(ANSI_RESET);
         System.out.println(sb);
         return sb.toString();
     }
@@ -521,6 +537,8 @@ public class Menu {
         else if(i == 13) sb.append(ANSI_GREEN).append("--Estado salvo com successo!--\n").append(ANSI_RESET);
         else if(i == 14) sb.append(ANSI_GREEN).append("--Ficheiro carregado com successo!--\n").append(ANSI_RESET);
         else if(i == 15) sb.append(ANSI_GREEN).append("\n--Programa terminado com sucesso!--\n").append(ANSI_RESET);
+        // Perfil User
+        else if(i == 16) sb.append(ANSI_GREEN).append("\n--Seja bem-vindo!--\n").append(ANSI_RESET);
         System.out.println(sb);
         return sb.toString();
     }
