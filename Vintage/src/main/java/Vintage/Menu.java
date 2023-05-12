@@ -1,11 +1,13 @@
 package Vintage;
 
+import Vintage.Artigos.Sapatilha;
 import Vintage.Transportadoras.Transportadora;
 import Vintage.Users.User;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Menu {
@@ -105,6 +107,33 @@ public class Menu {
         return resultado;
     }
 
+    public static int menuCriarArtigo(){
+        int i = 0;
+        limpaTerminal();
+        String sb = """
+                \t\t\t\t\t -CRIAR-\s
+
+                [1] Criar SAPATILHA.
+                [2] Criar MALA.
+                [3] Criar T-SHIRT.
+                [0] Voltar.
+                """;
+        System.out.println(sb);
+        try{
+            if(input.hasNextInt())
+                i  = input.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(7);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e1){
+                e.printStackTrace();
+            }
+        }
+        return i;
+    }
+
 
     public static int menuCriar(){
         int i = 0;
@@ -160,6 +189,41 @@ public class Menu {
             }
         }
         return i;
+    }
+
+    public static Sapatilha criarSapatilha(int codigo){
+        input.nextLine();
+        System.out.println("\t\t\t\t\t -CRIAR SAPATILHA-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+        System.out.println("Tamanho: ");
+        int tamanho= 35;
+        if(input.hasNextInt())
+            tamanho = input.nextInt();
+
+        System.out.println("\nTem atacadores? ");
+        boolean atacadores = true;
+        if(input.hasNextBoolean())
+            atacadores = input.nextBoolean();
+
+        System.out.println("\nCor: ");
+        String cor = "red";
+        if(input.hasNextLine())
+            cor = input.nextLine();
+
+        System.out.println("\nData da coleção: ");
+        String data = " ";  // depois converter para LocalDate ( se for válida )
+        if(input.hasNextLine())
+            data = input.nextLine();
+
+        int desconto = 23;
+        if(input.hasNextInt())
+            desconto = input.nextInt();
+
+        String edicao = "STANDARD";
+        if(input.hasNextLine())
+            edicao = input.nextLine();
+
+        return new Sapatilha();
     }
 
     public static String removerArtigo(){
