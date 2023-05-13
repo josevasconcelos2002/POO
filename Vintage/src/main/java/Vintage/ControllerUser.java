@@ -47,7 +47,7 @@ public class ControllerUser {
                     exit = true;
                     //vintage.logout();
                     Menu.limpaTerminal();
-                    Menu.menuPrincipal();
+                    Menu.menuPrincipal(vintage);
                     break;
             }
         }

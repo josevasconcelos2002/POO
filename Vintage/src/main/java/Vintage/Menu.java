@@ -7,8 +7,12 @@ import Vintage.Users.User;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+//import java.time.LocalDate;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
+import static Vintage.ControllerTempo.dataValida;
 
 public class Menu {
     public static final String ANSI_RESET = "\u001B[0m";
@@ -25,22 +29,22 @@ public class Menu {
         }
     }
 
-    public static int menuPrincipal(){
+    public static int menuPrincipal(Vintage vintage){
         limpaTerminal();
         int i = -1; // default value for i
-        String sb = """
-                \t\t\t\t\t -MENU INICIAL-
+        String sb = "\t\t\t\t\t -MENU INICIAL-  \t\t\t Data atual: " + vintage.getEstado().getTempoAtual() + "\n\n\n" +
 
-                [1] - Iniciar a sessao.
-                [2] - Criar (User, etc...).
-                [3] - Remover.
-                [4] - Mostrar Logs.
-                [5] - Guardar estado.
-                [6] - Carregar estado.
-                [7] - Estatisticas.
-                [0] - Sair.
+                "[1] - Iniciar a sessao.\n" +
+                "[2] - Criar (User, etc...).\n" +
+                "[3] - Remover.\n" +
+                "[4] - Avançar tempo.\n" +
+                "[5] - Mostrar Logs.\n" +
+                "[6] - Guardar estado.\n" +
+                "[7] - Carregar estado.\n" +
+                "[8] - Estatisticas.\n" +
+                "[0] - Sair.\n" +
 
-                Selecione a opcao pretendida:\s""";
+                "\n\nSelecione a opcao pretendida: ";
         System.out.println(sb);
         try{
                 i = input.nextInt();
@@ -57,6 +61,62 @@ public class Menu {
         }
         return i;
     }
+
+    public static int menuAvancarTempo(Vintage vintage){
+        limpaTerminal();
+        int i = -1; // default value for i
+        String sb = "\t\t\t\t\t -MÁQUINA DO TEMPO-  \t\t\t Data atual: " + vintage.getEstado().getTempoAtual() + "\n\n\n" +
+
+                "[1] - Avançar 1 dia.\n" +
+                "[2] - Avançar 5 dias.\n" +
+                "[3] - Avançar para uma determinada data.\n" +
+                "[0] - Voltar.\n" +
+
+                "\n\nSelecione a opcao pretendida: ";
+        System.out.println(sb);
+        try{
+            i = input.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.limpaTerminal();
+            Menu.errors(7);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e1){
+                e.printStackTrace();
+            }
+            Menu.pressToContinue();
+        }
+        return i;
+    }
+
+    public static void menuAvancarData(Vintage vintage){
+        limpaTerminal();
+        String s;
+        String sb = "\t\t\t\t\t -MÁQUINA DO TEMPO-  \t\t\t Data atual: " + vintage.getEstado().getTempoAtual() + "\n\n\n"+
+
+                "Introduza a data pretendida (YYYY-MM-DD): ";
+        System.out.println(sb);
+        input.nextLine();
+        s = input.nextLine();
+        Menu.limpaTerminal();
+        if(!dataValida(s,vintage.getEstado().getTempoAtual()))
+            Menu.errors(24);
+        else{
+            LocalDate data;
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+            data = LocalDate.parse(s, formatter);
+            vintage.getEstado().setTempoAtual(data);
+            vintage.getEstado().escreverLog("Data avançou para o dia : " + vintage.getEstado().getTempoAtual() + "\n");
+        }
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        Menu.pressToContinue();
+    }
+
     
 
     public static int menuStats(){
@@ -511,6 +571,7 @@ public class Menu {
         else if(i == 21) sb.append(ANSI_RED).append("--Erro ao criar Artigo!--\n").append(ANSI_RESET);
         else if(i == 22) sb.append(ANSI_RED).append("--Erro ao criar Encomenda!--\n").append(ANSI_RESET);
         else if(i == 23) sb.append(ANSI_RED).append("--Utilizador com esse email não existe!--\n").append(ANSI_RESET);
+        else if(i == 24) sb.append(ANSI_RED).append("--Data inválida!--\n").append(ANSI_RESET);
         System.out.println(sb);
         return sb.toString();
     }

@@ -98,7 +98,7 @@ public class ControllerPerfil {
                     break;
 
                 case 4:
-                    vintage.estado.getListaDeUtilizadores().getUsers().put(user.getEmail(),user); // substitui no map o user que tinha email igual
+                    vintage.getEstado().getListaDeUtilizadores().getUsers().put(user.getEmail(),user); // substitui no map o user que tinha email igual
                     Menu.limpaTerminal();
                     Menu.success(4);
                     try{

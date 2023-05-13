@@ -20,27 +20,27 @@ public class ControllerVintage {
         File file = new File("logs/logs.txt");
         file.delete();
         vintage.addUser(user1);
-        if(vintage.estado.existeEmail(user1.getEmail())) {
-            vintage.estado.escreverLog(Menu.success(6).replace("\n", " ") + " " + vintage.estado.getTempoAtual() + " \n");
-            vintage.estado.escreverLog("Novo user-> " + user1.getEmail() + " " + vintage.estado.getTempoAtual() +"\n");
+        if(vintage.getEstado().existeEmail(user1.getEmail())) {
+            vintage.getEstado().escreverLog(Menu.success(6).replace("\n", " ") + " " + vintage.getEstado().getTempoAtual() + " \n");
+            vintage.getEstado().escreverLog("Novo user-> " + user1.getEmail() + " " + vintage.getEstado().getTempoAtual() +"\n");
         }
         else {
-            vintage.estado.escreverLog(Menu.errors(1).replace("\n", " ") + " " + vintage.estado.getTempoAtual() + " \n");
+            vintage.getEstado().escreverLog(Menu.errors(1).replace("\n", " ") + " " + vintage.getEstado().getTempoAtual() + " \n");
         }
         vintage.addTransportadora(t);
-        if(vintage.estado.existeTransportadoraNome(t.getNome())) {
-            vintage.estado.escreverLog(Menu.success(5).replace("\n", " ") + " " + vintage.estado.getTempoAtual() + " \n");
-            vintage.estado.escreverLog("Nova transportadora-> " + t.getNome() + " " + vintage.estado.getTempoAtual() + "\n");
+        if(vintage.getEstado().existeTransportadoraNome(t.getNome())) {
+            vintage.getEstado().escreverLog(Menu.success(5).replace("\n", " ") + " " + vintage.getEstado().getTempoAtual() + " \n");
+            vintage.getEstado().escreverLog("Nova transportadora-> " + t.getNome() + " " + vintage.getEstado().getTempoAtual() + "\n");
         }
         else {
-            vintage.estado.escreverLog(Menu.errors(12).replace("\n", " ") + vintage.estado.getTempoAtual() + " \n");
+            vintage.getEstado().escreverLog(Menu.errors(12).replace("\n", " ") + vintage.getEstado().getTempoAtual() + " \n");
         }
         Artigo artigo1 = new Mala();
-        vintage.estado.escreverLog("Nova Mala-> codigo: " + artigo1.getCodigo() + " "+ vintage.estado.getTempoAtual() + " \n");
+        vintage.getEstado().escreverLog("Nova Mala-> codigo: " + artigo1.getCodigo() + " "+ vintage.getEstado().getTempoAtual() + " \n");
         Artigo artigo2 = new TShirt();
-        vintage.estado.escreverLog("Nova TShirt-> codigo: " + artigo2.getCodigo()+ " " + vintage.estado.getTempoAtual() + " \n");
+        vintage.getEstado().escreverLog("Nova TShirt-> codigo: " + artigo2.getCodigo()+ " " + vintage.getEstado().getTempoAtual() + " \n");
         Artigo artigo3 = new Sapatilha();
-        vintage.estado.escreverLog("Nova Sapatilha-> codigo: " + artigo3.getCodigo()+ " " + vintage.estado.getTempoAtual() +" \n");
+        vintage.getEstado().escreverLog("Nova Sapatilha-> codigo: " + artigo3.getCodigo()+ " " + vintage.getEstado().getTempoAtual() +" \n");
         vintage.addProdutoComprado(artigo1,user1.getEmail());
         vintage.addProdutoVendido(artigo2,user1.getEmail());
         vintage.addProdutoVenda(artigo3,user1.getEmail());
@@ -49,14 +49,14 @@ public class ControllerVintage {
         while (true) {
             try{
                 int opcao = -1;
-                while (opcao < 0 || opcao > 8) {
-                    opcao = Menu.menuPrincipal();
+                while (opcao < 0 || opcao > 9) {
+                    opcao = Menu.menuPrincipal(vintage);
                 }
                 switch (opcao) {
                     case 1:
                         Menu.limpaTerminal();
                         String email = Menu.login();
-                        if(vintage.estado.getListaDeUtilizadores().getUsers().containsKey(email)){
+                        if(vintage.getEstado().getListaDeUtilizadores().getUsers().containsKey(email)){
                             Menu.limpaTerminal();
                             Menu.success(16);
                             Menu.pressToContinue();
@@ -77,13 +77,18 @@ public class ControllerVintage {
                         Menu.limpaTerminal();
                         ControllerRemover.run(vintage);
                         break;
+
                     case 4:
+                        Menu.limpaTerminal();
+                        ControllerTempo.run(vintage);
+                        break;
+                    case 5:
                         Menu.limpaTerminal();
                         System.out.println("\t\t\t\t\t - LOGS -\n\n" + Menu.printLogs());
                         input.nextLine();
                         Menu.pressToContinue();
                         break;
-                    case 5:
+                    case 6:
                         Menu.limpaTerminal();
                         String saveName = Menu.save();
                         try{vintage.guardaEstado(saveName);Menu.success(7);}
@@ -94,7 +99,7 @@ public class ControllerVintage {
                         }
                         Menu.pressToContinue();
                         break;
-                    case 6:
+                    case 7:
                         Menu.limpaTerminal();
                         String loadName = Menu.load();
                         try {vintage.carregaEstado(loadName);Menu.success(8);}
@@ -109,7 +114,7 @@ public class ControllerVintage {
                         }
                         Menu.pressToContinue();
                         break;
-                    case 7:
+                    case 8:
                         Menu.limpaTerminal();
                         ControllerStats.run(vintage);
                         break;

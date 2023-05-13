@@ -22,12 +22,12 @@ public class ControllerCriarArtigo {
                             Menu.limpaTerminal();
                             User novoUser = Menu.registarNovoUser(vintage.newUserCode());
                             vintage.addUser(novoUser);
-                            if(vintage.estado.existeEmail(novoUser.getEmail())) {
-                                vintage.estado.escreverLog(Menu.success(6).replace("\n", " ") + " " + vintage.estado.getTempoAtual() + " \n");
-                                vintage.estado.escreverLog("Novo user-> " + novoUser.getEmail() + " " + vintage.estado.getTempoAtual() +"\n");
+                            if(vintage.getEstado().existeEmail(novoUser.getEmail())) {
+                                vintage.getEstado().escreverLog(Menu.success(6).replace("\n", " ") + " " + vintage.getEstado().getTempoAtual() + " \n");
+                                vintage.getEstado().escreverLog("Novo user-> " + novoUser.getEmail() + " " + vintage.getEstado().getTempoAtual() +"\n");
                             }
                             else
-                                vintage.estado.escreverLog(Menu.errors(20).replace("\n"," ")+ " " + vintage.estado.getTempoAtual() + " \n");
+                                vintage.getEstado().escreverLog(Menu.errors(20).replace("\n"," ")+ " " + vintage.getEstado().getTempoAtual() + " \n");
                             break;
 
                         case 2:
@@ -40,12 +40,12 @@ public class ControllerCriarArtigo {
                             // menu para inserir dados da Transportadora
                             Transportadora t = Menu.registarNovaTransportadora();
                             vintage.addTransportadora(t);
-                            if(vintage.estado.existeTransportadoraNome(t.getNome())){
-                                vintage.estado.escreverLog(Menu.success(5).replace("\n"," ")+ " " + vintage.estado.getTempoAtual() + "\n");
-                                vintage.estado.escreverLog("Nova transportadora-> " + t.getNome() + " " + vintage.estado.getTempoAtual() + "\n");
+                            if(vintage.getEstado().existeTransportadoraNome(t.getNome())){
+                                vintage.getEstado().escreverLog(Menu.success(5).replace("\n"," ")+ " " + vintage.getEstado().getTempoAtual() + "\n");
+                                vintage.getEstado().escreverLog("Nova transportadora-> " + t.getNome() + " " + vintage.getEstado().getTempoAtual() + "\n");
                             }
                             else
-                                vintage.estado.escreverLog(Menu.errors(19).replace("\n"," ")+ " " + vintage.estado.getTempoAtual() + "\n");
+                                vintage.getEstado().escreverLog(Menu.errors(19).replace("\n"," ")+ " " + vintage.getEstado().getTempoAtual() + "\n");
                             break;
                         case 4:
                             Menu.limpaTerminal();
@@ -54,7 +54,7 @@ public class ControllerCriarArtigo {
                         case 0:
                             exit = true;
                             Menu.limpaTerminal();
-                            Menu.menuPrincipal();
+                            Menu.menuPrincipal(vintage);
 
                     }
                 }

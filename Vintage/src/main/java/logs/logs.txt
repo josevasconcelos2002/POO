@@ -1,7 +1,8 @@
-[32m--Utilizador adicionado com successo!-- [0m 2023-05-12 
-Novo user-> pedro02@gmail.com 2023-05-12
-[32m--Transportadora adicionada com successo!-- [0m 2023-05-12 
-Nova transportadora-> DHL 2023-05-12
-Nova Mala-> codigo: e511f8b4e720405 2023-05-12 
-Nova TShirt-> codigo: 0bc0c7744a564ad 2023-05-12 
-Nova Sapatilha-> codigo: 51d824e241db4b9 2023-05-12 
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user-> pedro02@gmail.com 2023-05-13
+[32m--Transportadora adicionada com successo!-- [0m 2023-05-13 
+Nova transportadora-> DHL 2023-05-13
+Nova Mala-> codigo: 7d5512e87487477 2023-05-13 
+Nova TShirt-> codigo: 3852df1779294d5 2023-05-13 
+Nova Sapatilha-> codigo: 5fa49dbe63e3474 2023-05-13 
+Data avançou para o dia : 2023-12-15
