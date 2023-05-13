@@ -7,7 +7,7 @@ public class ControllerStats {
     public static void run(Vintage vintage){
 
         boolean exit = false;
-        Scanner input = new Scanner(System.in);
+
         while(!exit){
             int opcao = -1;
             while (opcao < 0 || opcao > 8){
@@ -20,7 +20,6 @@ public class ControllerStats {
                     System.out.println("Todos os utilizadores:\n");
                     String resultado = vintage.printAllUsers();
                     System.out.println(resultado);
-                    input.nextLine();
                     Menu.pressToContinue();
                     break;
                 case 2:
@@ -28,7 +27,6 @@ public class ControllerStats {
                     System.out.println("Todos os artigos disponiveis para venda:\n");
                     String produtos = vintage.produtosVendaUsers();
                     System.out.println(produtos);
-                    input.nextLine();
                     Menu.pressToContinue();
                     break;
                 case 3:
@@ -36,7 +34,6 @@ public class ControllerStats {
                     System.out.println("Lista de Transportadoras:\n\n");
                     String transportadoras = vintage.printTransportadoras();
                     System.out.println(transportadoras);
-                    input.nextLine();
                     Menu.pressToContinue();
                 case 4:
                     Menu.limpaTerminal();

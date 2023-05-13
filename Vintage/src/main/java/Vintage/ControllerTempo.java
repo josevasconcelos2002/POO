@@ -36,13 +36,13 @@ public class ControllerTempo {
                     case 1:
                         Menu.limpaTerminal();
                         vintage.getEstado().setTempoAtual(vintage.getEstado().getTempoAtual().plusDays(1));
-                        vintage.getEstado().escreverLog("Data avançou 1 dia. \n");
+                        vintage.getEstado().escreverLog("Data avancou 1 dia. \n");
                         break;
 
                     case 2:
                         Menu.limpaTerminal();
                         vintage.getEstado().setTempoAtual(vintage.getEstado().getTempoAtual().plusDays(5));
-                        vintage.getEstado().escreverLog("Data avançou 5 dias. \n");
+                        vintage.getEstado().escreverLog("Data avancou 5 dias. \n");
                         break;
 
                     case 3:
@@ -53,13 +53,13 @@ public class ControllerTempo {
                     case 0:
                         exit = true;
                         Menu.limpaTerminal();
-                        Menu.menuPrincipal(vintage);
-
+                        break;
                 }
             }
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(7);
+            Menu.pressToContinue();
         }
     }
 }

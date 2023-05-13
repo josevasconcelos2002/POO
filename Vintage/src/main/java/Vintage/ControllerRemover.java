@@ -68,13 +68,13 @@ public class ControllerRemover {
                     case 0:
                         exit = true;
                         Menu.limpaTerminal();
-                        Menu.menuPrincipal(vintage);
-
+                        break;
                 }
             }
         }
         catch (java.util.InputMismatchException e) {
             Menu.errors(7);
+            Menu.pressToContinue();
         }
     }
 }

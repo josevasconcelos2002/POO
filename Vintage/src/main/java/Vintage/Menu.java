@@ -31,13 +31,14 @@ public class Menu {
 
     public static int menuPrincipal(Vintage vintage){
         limpaTerminal();
+        Scanner input = new Scanner(System.in);
         int i = -1; // default value for i
         String sb = "\t\t\t\t\t -MENU INICIAL-  \t\t\t Data atual: " + vintage.getEstado().getTempoAtual() + "\n\n\n" +
 
                 "[1] - Iniciar a sessao.\n" +
                 "[2] - Criar (User, etc...).\n" +
                 "[3] - Remover.\n" +
-                "[4] - Avançar tempo.\n" +
+                "[4] - Avancar tempo.\n" +
                 "[5] - Mostrar Logs.\n" +
                 "[6] - Guardar estado.\n" +
                 "[7] - Carregar estado.\n" +
@@ -65,7 +66,7 @@ public class Menu {
     public static int menuAvancarTempo(Vintage vintage){
         limpaTerminal();
         int i = -1; // default value for i
-        String sb = "\t\t\t\t\t -MÁQUINA DO TEMPO-  \t\t\t Data atual: " + vintage.getEstado().getTempoAtual() + "\n\n\n" +
+        String sb = "\t\t\t\t\t -MAQUINA DO TEMPO-  \t\t\t Data atual: " + vintage.getEstado().getTempoAtual() + "\n\n\n" +
 
                 "[1] - Avançar 1 dia.\n" +
                 "[2] - Avançar 5 dias.\n" +
@@ -93,7 +94,7 @@ public class Menu {
     public static void menuAvancarData(Vintage vintage){
         limpaTerminal();
         String s;
-        String sb = "\t\t\t\t\t -MÁQUINA DO TEMPO-  \t\t\t Data atual: " + vintage.getEstado().getTempoAtual() + "\n\n\n"+
+        String sb = "\t\t\t\t\t -MAQUINA DO TEMPO-  \t\t\t Data atual: " + vintage.getEstado().getTempoAtual() + "\n\n\n"+
 
                 "Introduza a data pretendida (YYYY-MM-DD): ";
         System.out.println(sb);
@@ -107,7 +108,7 @@ public class Menu {
             DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
             data = LocalDate.parse(s, formatter);
             vintage.getEstado().setTempoAtual(data);
-            vintage.getEstado().escreverLog("Data avançou para o dia : " + vintage.getEstado().getTempoAtual() + "\n");
+            vintage.getEstado().escreverLog("Data avancou para o dia : " + vintage.getEstado().getTempoAtual() + "\n");
         }
         try{
             Thread.sleep(1000);
@@ -121,6 +122,7 @@ public class Menu {
 
     public static int menuStats(){
         limpaTerminal();
+        Scanner input = new Scanner(System.in);
         int i = 0;
         String sb = """
                 \t\t\t\t\t -MENU ESTATISTICAS-
@@ -132,7 +134,7 @@ public class Menu {
                 [5] - Qual o transportador com maior volume de facturacao.
                 [6] - Listar as encomendas emitidas por um vendedor.
                 [7] - Fornecer uma ordenacao dos maiores compradores/vendedoresdo sistema durante um período a determinar.
-                [8] - Determinar quanto dinheiro ganhou o Vintage.Vintage no seu funcionamento.
+                [8] - Determinar quanto dinheiro ganhou o Vintage no seu funcionamento.
                 [0] - Voltar.
 
                 Selecione a opcao pretendida:\s""";
@@ -143,6 +145,7 @@ public class Menu {
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(7);
+            Menu.pressToContinue();
         }
         return i;
     }
@@ -162,7 +165,6 @@ public class Menu {
 
     public static String login(){
         String resultado = null;
-        input.nextLine();
         System.out.println("Introduza o seu email: ");
         try{
             if(input.hasNextLine())
@@ -203,8 +205,9 @@ public class Menu {
 
 
     public static int menuCriar(){
-        int i = 0;
         limpaTerminal();
+        Scanner input = new Scanner(System.in);
+        int i = 0;
         String sb = """
                 \t\t\t\t\t -CRIAR-\s
 
@@ -231,8 +234,9 @@ public class Menu {
     }
 
     public static int menuRemover(){
-        int i = 0;
         limpaTerminal();
+        Scanner input = new Scanner(System.in);
+        int i = 0;
         String sb = """
                 \t\t\t\t\t -REMOVER-\s
 
@@ -259,7 +263,7 @@ public class Menu {
     }
 
     public static Sapatilha criarSapatilha(int codigo){
-        input.nextLine();
+        Scanner input = new Scanner(System.in);
         System.out.println("\t\t\t\t\t -CRIAR SAPATILHA-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
         System.out.println("Tamanho: ");
@@ -297,7 +301,7 @@ public class Menu {
         input.nextLine();
         System.out.println("\t\t\t\t\t -REMOVER ARTIGO-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
-        System.out.println("Código: ");
+        System.out.println("Codigo: ");
         String codigo = "---";
         if(input.hasNextLine())
             codigo = input.nextLine();
@@ -305,7 +309,7 @@ public class Menu {
     }
 
     public static String removerUser(){
-        input.nextLine();
+        Scanner input = new Scanner(System.in);
         System.out.println("\t\t\t\t\t -REMOVER UTILIZADOR-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
         System.out.println("Email: ");
@@ -317,7 +321,7 @@ public class Menu {
 
 
     public static User registarNovoUser(int codigo){
-        input.nextLine();
+        Scanner input = new Scanner(System.in);
         System.out.println("\t\t\t\t\t -REGISTAR NOVO UTILIZADOR-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
         System.out.println("Email: ");
@@ -332,6 +336,7 @@ public class Menu {
 
         System.out.println("\nMorada: ");
         String morada = "---";
+
         if(input.hasNextLine())
             morada = input.nextLine();
 
@@ -343,7 +348,7 @@ public class Menu {
     }
 
     public static String removerTransportadora(){
-        input.nextLine();
+        Scanner input = new Scanner(System.in);
         System.out.println("\t\t\t\t\t -REMOVER TRANSPORTADORA-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
         System.out.println("Nome: ");
@@ -354,7 +359,7 @@ public class Menu {
     }
 
     public static Transportadora registarNovaTransportadora(){
-        input.nextLine();
+        Scanner input = new Scanner(System.in);
         System.out.println("\t\t\t\t\t -REGISTAR NOVA TRANSPORTADORA-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
         System.out.println("Nome: ");
@@ -421,6 +426,7 @@ public class Menu {
 
     public static int menuUser(String name){
         limpaTerminal();
+        Scanner input = new Scanner(System.in);
         int i = -1;
         String sb = "\t\t\t\t\t -MENU UTILIZADOR (Nome: " + name + ")-\n\n" +
                 "[1] Gerir vendas.\n" +
@@ -446,20 +452,13 @@ public class Menu {
     }
 
     public static int nifValido(int nif){
+        Scanner input = new Scanner(System.in);
         System.out.println("\nNIF: ");
-        //input.nextLine();
         try{
-            if(input.hasNextInt())
-                nif = input.nextInt();
+            nif = input.nextInt();
         }
         catch(java.util.InputMismatchException e){
             Menu.errors(11);
-            /*
-            try{
-                Thread.sleep(1000);
-            } catch (InterruptedException e1){
-                e.printStackTrace();
-            }*/
         }
         return nif;
     }
@@ -550,7 +549,7 @@ public class Menu {
         else if(i == 4) sb.append(ANSI_RED).append("!!!! Erro associado a classes !!!!\n").append(ANSI_RESET);
         else if(i == 5) sb.append(ANSI_RED).append("!!!! Não foi possivel carregar o estado !!!!\n").append(ANSI_RESET);
         else if(i == 6) sb.append(ANSI_RED).append("!!!! Email nao encontrado !!!!\n").append(ANSI_RESET);
-        else if(i == 7) sb.append(ANSI_RED).append("!!!! Introduza uma opção valida !!!!\n").append(ANSI_RESET);
+        else if(i == 7) sb.append(ANSI_RED).append("!!!! Introduza uma opcao valida !!!!\n").append(ANSI_RESET);
         // Erro ao atualizar
         else if(i == 8) sb.append(ANSI_RED).append("!!!! Erro ao atualizar o NOME !!!!\n").append(ANSI_RESET);
         else if(i == 9) sb.append(ANSI_RED).append("!!!! Erro ao atualizar a MORADA !!!!\n").append(ANSI_RESET);
@@ -570,8 +569,8 @@ public class Menu {
         else if(i == 20) sb.append(ANSI_RED).append("--Erro ao criar Utilizador!--\n").append(ANSI_RESET);
         else if(i == 21) sb.append(ANSI_RED).append("--Erro ao criar Artigo!--\n").append(ANSI_RESET);
         else if(i == 22) sb.append(ANSI_RED).append("--Erro ao criar Encomenda!--\n").append(ANSI_RESET);
-        else if(i == 23) sb.append(ANSI_RED).append("--Utilizador com esse email não existe!--\n").append(ANSI_RESET);
-        else if(i == 24) sb.append(ANSI_RED).append("--Data inválida!--\n").append(ANSI_RESET);
+        else if(i == 23) sb.append(ANSI_RED).append("--Utilizador com esse email nao existe!--\n").append(ANSI_RESET);
+        else if(i == 24) sb.append(ANSI_RED).append("--Data invalida!--\n").append(ANSI_RESET);
         System.out.println(sb);
         return sb.toString();
     }

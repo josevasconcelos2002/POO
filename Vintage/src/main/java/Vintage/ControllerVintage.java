@@ -13,8 +13,8 @@ import Vintage.Users.User;
 public class ControllerVintage {
     public static void run() throws IOException {
         Vintage vintage = new Vintage();
-        Scanner input = new Scanner(System.in);
-        // colocar isto num ficheiro à parte?
+
+        /* colocar isto num ficheiro à parte?
         User user1 = new User(1,"pedro02@gmail.com","Pedro","---", 264333300);
         Transportadora t = new Transportadora("DHL", 5.0);
         File file = new File("logs/logs.txt");
@@ -44,6 +44,7 @@ public class ControllerVintage {
         vintage.addProdutoComprado(artigo1,user1.getEmail());
         vintage.addProdutoVendido(artigo2,user1.getEmail());
         vintage.addProdutoVenda(artigo3,user1.getEmail());
+        */
         Menu.printLogo();
 
         while (true) {
@@ -72,12 +73,10 @@ public class ControllerVintage {
                         Menu.limpaTerminal();
                         ControllerCriar.run(vintage);
                         break;
-
                     case 3:
                         Menu.limpaTerminal();
                         ControllerRemover.run(vintage);
                         break;
-
                     case 4:
                         Menu.limpaTerminal();
                         ControllerTempo.run(vintage);
@@ -85,17 +84,19 @@ public class ControllerVintage {
                     case 5:
                         Menu.limpaTerminal();
                         System.out.println("\t\t\t\t\t - LOGS -\n\n" + Menu.printLogs());
-                        input.nextLine();
                         Menu.pressToContinue();
                         break;
                     case 6:
                         Menu.limpaTerminal();
                         String saveName = Menu.save();
-                        try{vintage.guardaEstado(saveName);Menu.success(7);}
+                        try {vintage.guardaEstado(saveName);Menu.success(7);}
                         catch (FileNotFoundException e) {
-                            Menu.errors(2);}
+                            Menu.errors(2);
+                            Menu.pressToContinue();
+                        }
                         catch (IOException e) {
                             Menu.errors(3);
+                            Menu.pressToContinue();
                         }
                         Menu.pressToContinue();
                         break;
@@ -132,6 +133,7 @@ public class ControllerVintage {
             }
             catch(java.util.InputMismatchException e){
                 Menu.errors(7);
+                Menu.pressToContinue();
             }
         }
     }

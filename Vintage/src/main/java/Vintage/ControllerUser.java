@@ -20,11 +20,6 @@ public class ControllerUser {
             switch(opcao){
                 case 1:
                     Menu.limpaTerminal();
-                    Menu.menuComprarArtigo(vintage.getUserNameByKey(email));
-                    System.out.println("Não implementado (Gerir compras)");
-                    break;
-                case 2:
-                    Menu.limpaTerminal();
                     int i = Menu.menuVenderArtigo(vintage.getUserNameByKey(email));
                     if(i == 1){
                         // listar Artigos disponíveis para venda e pedir para o user dizer qual quer vender
@@ -38,6 +33,9 @@ public class ControllerUser {
                         Menu.pressToContinue();
                     }
                     break;
+                case 2:
+                    Menu.limpaTerminal();
+                    Menu.menuComprarArtigo(vintage.getUserNameByKey(email));
                 case 3:
                     Menu.limpaTerminal();
                     User clone = vintage.getUserByEmail(email).clone();
@@ -45,9 +43,8 @@ public class ControllerUser {
                     break;
                 case 0:
                     exit = true;
-                    //vintage.logout();
+                    vintage.logout();
                     Menu.limpaTerminal();
-                    Menu.menuPrincipal(vintage);
                     break;
             }
         }

@@ -2,11 +2,37 @@
 Novo user-> pedro02@gmail.com 2023-05-13
 [32m--Transportadora adicionada com successo!-- [0m 2023-05-13 
 Nova transportadora-> DHL 2023-05-13
-Nova Mala-> codigo: 3ef33af0c8fe42b 2023-05-13 
-Nova TShirt-> codigo: 98852e0110de4bb 2023-05-13 
-Nova Sapatilha-> codigo: f5638cd1d7f8483 2023-05-13 
-Data avançou 5 dia. 
-Data avançou 5 dia. 
-Data avançou 5 dia. 
-Data avançou 5 dia. 
-Data avançou para o dia : 2023-06-03
+Nova Mala-> codigo: 3e51f5e94dd6491 2023-05-13 
+Nova TShirt-> codigo: 552662660b6b4de 2023-05-13 
+Nova Sapatilha-> codigo: 12b344ade4b04b3 2023-05-13 
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user-> asd 2023-05-13
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user-> asd 2023-05-13
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user -> a 2023-05-13
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user -> pau 2023-05-13
+[32m--Transportadora adicionada com successo!-- [0m 2023-05-13
+Nova transportadora -> transp1 2023-05-13
+[32m--Transportadora adicionada com successo!-- [0m 2023-05-13
+Nova transportadora -> ddd 2023-05-13
+[32m--Transportadora adicionada com successo!-- [0m 2023-05-13
+Nova transportadora -> qqq 2023-05-13
+Data avancou 1 dia. 
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user -> oaus 2023-05-13
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user -> paulo 2023-05-13
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user -> paul 2023-05-13
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user -> paul 2023-05-13
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user -> paul 2023-05-13
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user -> paulo 2023-05-13
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user -> paulo 2023-05-13
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-13 
+Novo user -> paulo 2023-05-13

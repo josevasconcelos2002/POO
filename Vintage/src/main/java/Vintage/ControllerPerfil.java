@@ -18,9 +18,7 @@ public class ControllerPerfil {
             }
 
             switch(opcao){
-
                 case 1:
-
                     Menu.limpaTerminal();
                     String sb = "\t\t\t\t\t -Alterar NOME-\n\n" +
                             "NOME atual: " + user.getNome() + "\n\n" +
@@ -36,17 +34,16 @@ public class ControllerPerfil {
                             e.printStackTrace();
                         }
                     }
-                    else 
+                    else {
                         Menu.errors(8);
-                        try{
+                        try {
                             Thread.sleep(1000);
-                        } catch (InterruptedException e){
+                        } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+                    }
                     break;
-
                 case 2:
-
                     Menu.limpaTerminal();
                     String sb1 = "\t\t\t\t\t -Alterar MORADA-\n\n" +
                             "MORADA atual: " + user.getMorada() + "\n\n" +
@@ -62,17 +59,16 @@ public class ControllerPerfil {
                             e.printStackTrace();
                         }
                     }
-                    else 
+                    else {
                         Menu.errors(9);
                         try{
                             Thread.sleep(1000);
                         } catch (InterruptedException e){
                             e.printStackTrace();
                         }
+                    }
                     break;
-
-                case 3: 
-
+                case 3:
                     Menu.limpaTerminal();
                     String sb2 = "\t\t\t\t\t -Alterar NIF-\n\n" +
                             "NIF atual: " + user.getNif() + "\n\n" +
@@ -88,15 +84,15 @@ public class ControllerPerfil {
                             e.printStackTrace();
                         }
                     }
-                    else 
+                    else {
                         Menu.errors(10);
                         try{
                             Thread.sleep(1000);
                         } catch (InterruptedException e){
                             e.printStackTrace();
                         }
+                    }
                     break;
-
                 case 4:
                     vintage.getEstado().getListaDeUtilizadores().getUsers().put(user.getEmail(),user); // substitui no map o user que tinha email igual
                     Menu.limpaTerminal();
@@ -109,11 +105,9 @@ public class ControllerPerfil {
                     Menu.pressToContinue();
                     // isto tem haver com fazer alterações no clone e ir ao map dos users e colocar o novo perfil lá
                     break;
-
                 case 0:
                     exit = true;
                     Menu.limpaTerminal();
-                    Menu.menuUser(user.getNome());
                     break;
             }
         }

@@ -39,6 +39,7 @@ public class Vintage implements Serializable {
         } else {
             Menu.limpaTerminal();
             Menu.errors(1);
+            Menu.pressToContinue();
         }
     }
 
