@@ -42,7 +42,7 @@ public class ControllerTempo {
                     case 2:
                         Menu.limpaTerminal();
                         vintage.getEstado().setTempoAtual(vintage.getEstado().getTempoAtual().plusDays(5));
-                        vintage.getEstado().escreverLog("Data avançou 5 dia. \n");
+                        vintage.getEstado().escreverLog("Data avançou 5 dias. \n");
                         break;
 
                     case 3:

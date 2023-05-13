@@ -2,7 +2,11 @@
 Novo user-> pedro02@gmail.com 2023-05-13
 [32m--Transportadora adicionada com successo!-- [0m 2023-05-13 
 Nova transportadora-> DHL 2023-05-13
-Nova Mala-> codigo: 7d5512e87487477 2023-05-13 
-Nova TShirt-> codigo: 3852df1779294d5 2023-05-13 
-Nova Sapatilha-> codigo: 5fa49dbe63e3474 2023-05-13 
-Data avançou para o dia : 2023-12-15
+Nova Mala-> codigo: 3ef33af0c8fe42b 2023-05-13 
+Nova TShirt-> codigo: 98852e0110de4bb 2023-05-13 
+Nova Sapatilha-> codigo: f5638cd1d7f8483 2023-05-13 
+Data avançou 5 dia. 
+Data avançou 5 dia. 
+Data avançou 5 dia. 
+Data avançou 5 dia. 
+Data avançou para o dia : 2023-06-03
