@@ -35,13 +35,14 @@ public abstract class Artigo implements IArtigo, Serializable {
         this.transportadora = null;
     }
 
-    public Artigo(String codigo, String descricao, String marca, double precoBase) {
+    public Artigo(String codigo, String descricao, String marca, double precoBase,Transportadora t) {
         this.codigo = codigo;
         this.estado = Estado.NOVO;
         this.descricao = descricao;
         this.marca = marca;
         this.precoBase = precoBase;
         this.precoCorrigido = -1.0;
+        this.transportadora = t;
     }
 
     public Artigo(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, Transportadora t) {

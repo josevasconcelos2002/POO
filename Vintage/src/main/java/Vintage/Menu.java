@@ -2,6 +2,7 @@ package Vintage;
 
 import Vintage.Artigos.Mala;
 import Vintage.Artigos.Sapatilha;
+import Vintage.Artigos.TShirt;
 import Vintage.Transportadoras.Transportadora;
 import Vintage.Users.User;
 
@@ -290,6 +291,7 @@ public class Menu {
     }
 
     public static Sapatilha criarSapatilhaNova(String codigo) {
+        limpaTerminal();
         System.out.println("\t\t\t\t\t -CRIAR SAPATILHA (NOVA)-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
         input.nextLine();
@@ -307,6 +309,7 @@ public class Menu {
     }
 
     public static Sapatilha criarSapatilhaUsada(String codigo) {
+        limpaTerminal();
         System.out.println("\t\t\t\t\t -CRIAR SAPATILHA (USADA)-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
 
@@ -327,7 +330,8 @@ public class Menu {
     }
 
     public static Mala criarMalaNova(String codigo){
-        System.out.println("\t\t\t\t\t -CRIAR SAPATILHA (NOVA)-\n\n");
+        limpaTerminal();
+        System.out.println("\t\t\t\t\t -CRIAR MALA (NOVA)-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
         input.nextLine();
         String descricao = lerString("Descricao: ");
@@ -344,7 +348,8 @@ public class Menu {
     }
 
     public static Mala criarMalaUsada(String codigo){
-        System.out.println("\t\t\t\t\t -CRIAR SAPATILHA (USADA)-\n\n");
+        limpaTerminal();
+        System.out.println("\t\t\t\t\t -CRIAR MALA (USADA)-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
 
         double avaliacao = lerDouble("Avaliacao: ");
@@ -361,6 +366,50 @@ public class Menu {
         Mala.Edicao edicao = Mala.Edicao.STANDARD;
 
         return new Mala(codigo,avaliacao,nDonos,descricao,marca,preco,null,largura,altura,desconto,tamanho,dataColecao,edicao);
+    }
+
+
+    public static TShirt criarTShirtNova(String codigo){
+        limpaTerminal();
+        System.out.println("\t\t\t\t\t -CRIAR TSHIRT (NOVA)-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+
+        String descricao = lerString("Descricao: ");
+        String marca = lerString("Marca: ");
+        double preco = lerDouble("Preco: ");
+
+
+        //LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
+
+        int desconto = lerInteiro("Desconto: ");
+
+        TShirt.Padrao padrao = TShirt.Padrao.LISO;
+        TShirt.Tamanho tamanho = TShirt.Tamanho.M;
+
+        return new TShirt(codigo,descricao,marca,preco,null,tamanho,padrao,desconto);
+    }
+
+
+    public static TShirt criarTShirtUsada(String codigo){
+        limpaTerminal();
+        System.out.println("\t\t\t\t\t -CRIAR TSHIRT (USADA)-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+
+        double avaliacao = lerDouble("Avaliacao: ");
+        int nDonos = lerInteiro("Numero de Donos: ");
+        String descricao = lerString("Descricao: ");
+        String marca = lerString("Marca: ");
+        double preco = lerDouble("Preco: ");
+
+
+        //LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
+
+        int desconto = lerInteiro("Desconto: ");
+
+        TShirt.Padrao padrao = TShirt.Padrao.LISO;
+        TShirt.Tamanho tamanho = TShirt.Tamanho.M;
+
+        return new TShirt(codigo,avaliacao,nDonos,descricao,marca,preco,null,tamanho,padrao,desconto);
     }
 
     private static double lerDouble(String prompt) {

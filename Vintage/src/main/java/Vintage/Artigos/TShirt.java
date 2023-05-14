@@ -27,8 +27,8 @@ public class TShirt extends Artigo implements Serializable {
         super();
     }
 
-    public TShirt(String codigo, String descricao, String marca, double precoBase, Tamanho tamanho, Padrao padrao, int desconto){
-        super(codigo,descricao,marca,precoBase);
+    public TShirt(String codigo, String descricao, String marca, double precoBase, Transportadora t,  Tamanho tamanho, Padrao padrao, int desconto){
+        super(codigo,descricao,marca,precoBase,t);
         this.tamanho = tamanho;
         this.padrao = padrao;
         this.desconto = desconto;
