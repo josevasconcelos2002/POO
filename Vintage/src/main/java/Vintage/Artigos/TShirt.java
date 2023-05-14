@@ -87,6 +87,15 @@ public class TShirt extends Artigo implements Serializable {
         return t;
     }
 
+    @Override
+    public String toString() {
+        return "TShirt{" +
+                "tamanho=" + tamanho +
+                ", padrao=" + padrao +
+                ", desconto=" + desconto +
+                '}';
+    }
+
     public void setPrecoCorrigido(){
         TShirt t = (TShirt) this;
         if(Estado.USADO == super.getEstado()){

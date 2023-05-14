@@ -1,5 +1,6 @@
 package Vintage;
 
+import Vintage.Artigos.Mala;
 import Vintage.Artigos.Sapatilha;
 import Vintage.Transportadoras.Transportadora;
 import Vintage.Users.User;
@@ -68,9 +69,9 @@ public class Menu {
         int i = -1; // default value for i
         String sb = "\t\t\t\t\t -MAQUINA DO TEMPO-  \t\t\t Data atual: " + vintage.getEstado().getTempoAtual() + "\n\n\n" +
 
-                "[1] - Avançar 1 dia.\n" +
-                "[2] - Avançar 5 dias.\n" +
-                "[3] - Avançar para uma determinada data.\n" +
+                "[1] - Avancar 1 dia.\n" +
+                "[2] - Avancar 5 dias.\n" +
+                "[3] - Avancar para uma determinada data.\n" +
                 "[0] - Voltar.\n" +
 
                 "\n\nSelecione a opcao pretendida: ";
@@ -98,7 +99,6 @@ public class Menu {
 
                 "Introduza a data pretendida (YYYY-MM-DD): ";
         System.out.println(sb);
-        input.nextLine();
         s = input.nextLine();
         Menu.limpaTerminal();
         if(!dataValida(s,vintage.getEstado().getTempoAtual()))
@@ -262,39 +262,152 @@ public class Menu {
         return i;
     }
 
-    public static Sapatilha criarSapatilha(int codigo){
+    public static int tipoArtigo(){
+        limpaTerminal();
         Scanner input = new Scanner(System.in);
-        System.out.println("\t\t\t\t\t -CRIAR SAPATILHA-\n\n");
+        int i = 0;
+        String sb = """
+                \t\t\t\t\t -ESCOLHER TIPO-\s
+
+                [1] Adicionar Usado.
+                [2] Adicionar Novo.
+                [0] Voltar.
+                """;
+        System.out.println(sb);
+        try{
+            if(input.hasNextInt())
+                i  = input.nextInt();
+        }
+        catch(java.util.InputMismatchException e){
+            Menu.errors(7);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e1){
+                e.printStackTrace();
+            }
+        }
+        return i;
+    }
+
+    public static Sapatilha criarSapatilhaNova(String codigo) {
+        System.out.println("\t\t\t\t\t -CRIAR SAPATILHA (NOVA)-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
-        System.out.println("Tamanho: ");
-        int tamanho= 35;
-        if(input.hasNextInt())
-            tamanho = input.nextInt();
+        input.nextLine();
+        String descricao = lerString("Descricao: ");
+        String marca = lerString("Marca: ");
+        double preco = lerDouble("Preco: ");
+        int tamanho = lerInteiro("Tamanho: ");
+        boolean atacadores = lerBooleano("Tem atacadores? [true/false]: ");
+        String cor = lerString("Cor: ");
+        LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
 
-        System.out.println("\nTem atacadores? ");
-        boolean atacadores = true;
-        if(input.hasNextBoolean())
-            atacadores = input.nextBoolean();
+        Sapatilha.Edicao edicao = Sapatilha.Edicao.STANDARD; // se houver tempo ver opcao primium...
 
-        System.out.println("\nCor: ");
-        String cor = "red";
-        if(input.hasNextLine())
-            cor = input.nextLine();
+        return new Sapatilha(codigo, descricao, marca, preco, tamanho, atacadores, cor, dataColecao, 0, edicao);
+    }
 
-        System.out.println("\nData da coleção: ");
-        String data = " ";  // depois converter para LocalDate ( se for válida )
-        if(input.hasNextLine())
-            data = input.nextLine();
+    public static Sapatilha criarSapatilhaUsada(String codigo) {
+        System.out.println("\t\t\t\t\t -CRIAR SAPATILHA (USADA)-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
 
-        int desconto = 23;
-        if(input.hasNextInt())
-            desconto = input.nextInt();
+        double avaliacao = lerDouble("Avaliacao: ");
+        int nDonos = lerInteiro("Numero de Donos: ");
+        String descricao = lerString("Descricao: ");
+        String marca = lerString("Marca: ");
+        double preco = lerDouble("Preco: ");
+        int tamanho = lerInteiro("Tamanho: ");
+        boolean atacadores = lerBooleano("Tem atacadores? [true/false]: ");
+        String cor = lerString("Cor: ");
+        LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
+        int desconto = lerInteiro("Desconto: ");
 
-        String edicao = "STANDARD";
-        if(input.hasNextLine())
-            edicao = input.nextLine();
+        Sapatilha.Edicao edicao = Sapatilha.Edicao.STANDARD; // se houver tempo ver opcao primium...
 
-        return new Sapatilha();
+        return new Sapatilha(codigo, avaliacao, nDonos, descricao, marca, preco, null, tamanho, atacadores, cor, dataColecao, desconto, edicao);
+    }
+
+    public static Mala criarMalaNova(String codigo){
+        System.out.println("\t\t\t\t\t -CRIAR SAPATILHA (NOVA)-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+        input.nextLine();
+        String descricao = lerString("Descricao: ");
+        String marca = lerString("Marca: ");
+        double preco = lerDouble("Preco: ");
+        double largura = lerDouble("largura: ");
+        double altura = lerDouble("Altura: ");
+        String tamanho = lerString("Material: ");
+        LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
+
+        Mala.Edicao edicao = Mala.Edicao.STANDARD;
+
+        return new Mala(codigo,descricao,marca,preco,largura,altura,0,tamanho,dataColecao,edicao);
+    }
+
+    public static Mala criarMalaUsada(String codigo){
+        System.out.println("\t\t\t\t\t -CRIAR SAPATILHA (USADA)-\n\n");
+        System.out.println("Introduza os dados pedidos.\n\n");
+
+        double avaliacao = lerDouble("Avaliacao: ");
+        int nDonos = lerInteiro("Numero de Donos: ");
+        String descricao = lerString("Descricao: ");
+        String marca = lerString("Marca: ");
+        double preco = lerDouble("Preco: ");
+        double largura = lerDouble("largura: ");
+        double altura = lerDouble("Altura: ");
+        String tamanho = lerString("Material: ");
+        LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
+        int desconto = lerInteiro("Desconto: ");
+
+        Mala.Edicao edicao = Mala.Edicao.STANDARD;
+
+        return new Mala(codigo,avaliacao,nDonos,descricao,marca,preco,null,largura,altura,desconto,tamanho,dataColecao,edicao);
+    }
+
+    private static double lerDouble(String prompt) {
+        System.out.println(prompt);
+        while (!input.hasNextDouble()) {
+            input.nextLine(); // Limpa o buffer de entrada
+            System.out.println("Entrada invalida. Digite um numero decimal.");
+            System.out.println(prompt);
+        }
+        double valor = input.nextDouble();
+        input.nextLine(); // Limpa o buffer de entrada
+        return valor;
+    }
+
+    private static int lerInteiro(String prompt) {
+        System.out.println(prompt);
+        while (!input.hasNextInt()) {
+            input.nextLine(); // Limpa o buffer de entrada
+            System.out.println("Entrada invalida. Digite um numero inteiro.");
+            System.out.println(prompt);
+        }
+        int valor = input.nextInt();
+        input.nextLine(); // Limpa o buffer de entrada
+        return valor;
+    }
+
+    private static boolean lerBooleano(String prompt) {
+        System.out.println(prompt);
+        while (!input.hasNextBoolean()) {
+            input.nextLine(); // Limpa o buffer de entrada
+            System.out.println("Entrada invalida. Digite 'true' ou 'false'.");
+            System.out.println(prompt);
+        }
+        boolean valor = input.nextBoolean();
+        input.nextLine(); // Limpa o buffer de entrada
+        return valor;
+    }
+
+    private static String lerString(String prompt) {
+        System.out.println(prompt);
+        return input.nextLine();
+    }
+
+    private static LocalDate lerData(String prompt) {
+        System.out.println(prompt);
+        String dataString = input.nextLine();
+        return ControllerTempo.dataConverter(dataString);
     }
 
     public static String removerArtigo(){
@@ -399,7 +512,7 @@ public class Menu {
                 "[1] Alterar NOME.\n" +
                 "[2] Alterar MORADA.\n" +
                 "[3] Alterar NIF.\n" +
-                "[4] Salvar alterações.\n" +
+                "[4] Salvar alteracoes.\n" +
                 "[0] Voltar.\n\n" +
                 "Selecione a opcao pretendida: ";
         System.out.println(sb);

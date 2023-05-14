@@ -14,6 +14,22 @@ public class Vintage implements Serializable {
     private static double baseExpedicaoGrandes = 1.0;
     public static double imposto = 0.23;
 
+    public Estado getEstado(){
+        return this.estado;
+    }
+
+    public void setEstado(Estado estado){
+        this.estado = estado;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Vintage(){
         this.estado = new Estado();
         this.user = null;
@@ -23,12 +39,8 @@ public class Vintage implements Serializable {
         return estado.getNewUserCode();
     }
 
-    public Estado getEstado(){
-        return this.estado;
-    }
-
-    public void setEstado(Estado estado){
-        this.estado = estado;
+    public String newArtigoCode(){
+        return estado.getNewArtigoCode();
     }
 
     public void addUser(User u){
@@ -44,7 +56,7 @@ public class Vintage implements Serializable {
     }
 
     public String getUserNameByKey(String email){
-        return this.estado.getUserNameByKey(email);
+        return this.user.getNome();
     }
 
     public User getUserByEmail(String email){
@@ -58,9 +70,6 @@ public class Vintage implements Serializable {
     public String printAllUsers(){
         return estado.printAllUsers();
     }
-
-
-
 
     // TRANSPORTADORA(s)
     public void addTransportadora(Transportadora t){
@@ -98,14 +107,13 @@ public class Vintage implements Serializable {
         return imposto;
     }
 
-
-
     public void addProdutoComprado(Artigo artigo, String email){
         estado.getUserByEmail(email).addProdutoComprado(artigo);
     }
 
-    public void addProdutoVenda(Artigo artigo, String email){
-        estado.getUserByEmail(email).addProdutoVenda(artigo);
+    public void addProdutoVenda(Artigo artigo){
+        this.user.addProdutoVenda(artigo);
+        estado.addProdutoVenda(artigo);
     }
 
     public void addProdutoVendido(Artigo artigo, String email){
@@ -139,8 +147,8 @@ public class Vintage implements Serializable {
         return estado.printProdutosComprados(email);
     }
 
-    public String printProdutosVendidos(String email){
-        return estado.printProdutosVendidos(email);
+    public String printProdutosVendidos(){
+        return this.user.stringProdutosVenda();
     }
 
     public String printProdutosVenda(String email){
@@ -150,11 +158,6 @@ public class Vintage implements Serializable {
     public String produtosVendaUsers(){
         return estado.produtosVendaUsers();
     }
-
-
-    /*public void mostrarLogs() {
-        estado.loadEstadoLogs();
-    }*/
 
     public void guardaEstado(String saveName) throws IOException {
         this.estado.guardarEstado(saveName);
@@ -174,6 +177,7 @@ public class Vintage implements Serializable {
     }
 
     public void logout(){
+        estado.addUser(this.user);
         this.user = null;
     }
 

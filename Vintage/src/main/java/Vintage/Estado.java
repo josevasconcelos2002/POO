@@ -11,6 +11,7 @@ import Vintage.Users.Users;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Estado implements Serializable {
     private Users listaDeUtilizadores;
@@ -113,6 +114,10 @@ public class Estado implements Serializable {
         return listaDeUtilizadores.sizeUsers() + 1;
     }
 
+    public String getNewArtigoCode() {
+        return listaDeArtigos.getNewCode();
+    }
+
     public void addUser(User u){
         listaDeUtilizadores.addUser(u);
     }
@@ -123,10 +128,6 @@ public class Estado implements Serializable {
 
     public void addProdutoComprado(Artigo artigo, String email){
         listaDeUtilizadores.getUserByEmail(email).addProdutoComprado(artigo);
-    }
-
-    public void addProdutoVenda(Artigo artigo, String email){
-        listaDeUtilizadores.getUserByEmail(email).addProdutoVenda(artigo);
     }
 
     public void addProdutoVendido(Artigo artigo, String email){
@@ -149,17 +150,6 @@ public class Estado implements Serializable {
         String resultado;
         try{
             resultado = listaDeUtilizadores.getUserByEmail(email).stringProdutosComprados();
-        }
-        catch(java.lang.NullPointerException e){
-            resultado = "A lista está vazia!\n";
-        }
-        return resultado;
-    }
-
-    public String printProdutosVendidos(String email){
-        String resultado;
-        try{
-            resultado = listaDeUtilizadores.getUserByEmail(email).stringProdutosVendidos();
         }
         catch(java.lang.NullPointerException e){
             resultado = "A lista está vazia!\n";
@@ -204,7 +194,9 @@ public class Estado implements Serializable {
         return listaDeArtigos.toString();
     }
 
-
+    public void addProdutoVenda(Artigo artigo){
+        listaDeArtigos.addArtigo(artigo);
+    }
 
     // LOGS
     public void escreverLog(String s) {

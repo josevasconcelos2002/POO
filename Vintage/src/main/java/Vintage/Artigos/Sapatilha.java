@@ -4,6 +4,7 @@ import Vintage.Transportadoras.Transportadora;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Sapatilha extends Artigo implements Serializable {
 
@@ -40,7 +41,7 @@ public class Sapatilha extends Artigo implements Serializable {
     }
 
     public Sapatilha(String codigo, double avaliacao, int nDonos, String descricao, String marca, double precoBase, Transportadora t, int tamanho, boolean atacadores, String cor, LocalDate dataColecao, int desconto, Edicao edicao) {
-        super(codigo, avaliacao, nDonos, descricao, marca, precoBase,t);
+        super(codigo, avaliacao, nDonos, descricao, marca, precoBase, t);
         this.tamanho = tamanho;
         this.atacadores = atacadores;
         this.cor = cor;
@@ -108,6 +109,38 @@ public class Sapatilha extends Artigo implements Serializable {
         s.edicao = this.edicao;
         s.tamanho = this.tamanho;
         return s;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Sapatilha sapatilha = (Sapatilha) o;
+        return tamanho == sapatilha.tamanho && atacadores == sapatilha.atacadores && desconto == sapatilha.desconto && Objects.equals(cor, sapatilha.cor) && Objects.equals(dataColecao, sapatilha.dataColecao) && edicao == sapatilha.edicao;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), tamanho, atacadores, cor, dataColecao, desconto, edicao);
+    }
+
+    @Override
+    public String toString() {
+        String atacadores = null;
+        if(this.atacadores){
+            atacadores = "sim";
+        }else{
+            atacadores = "não";
+        }
+        return "Sapatilha {" +
+                "tamanho=" + tamanho +
+                ", atacadores=" + atacadores +
+                ", cor='" + cor + '\'' +
+                ", dataColecao=" + dataColecao +
+                ", desconto=" + desconto +
+                ", edicao=" + edicao +
+                '}';
     }
 
     public void calculaPrecoSapatilha(){

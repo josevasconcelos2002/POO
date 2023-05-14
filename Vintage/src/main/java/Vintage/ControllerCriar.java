@@ -31,8 +31,7 @@ public class ControllerCriar {
                         break;
                     case 2:
                         Menu.limpaTerminal();
-                        // menu para escolher o tipo de artigo
-                        // depois, outro "menu" para o utilizador inserir os dados do Artigo
+                        // criar artigo
                         break;
                     case 3:
                         Menu.limpaTerminal();

@@ -25,7 +25,7 @@ public class ControllerStats {
                 case 2:
                     Menu.limpaTerminal();
                     System.out.println("Todos os artigos disponiveis para venda:\n");
-                    String produtos = vintage.produtosVendaUsers();
+                    String produtos = vintage.printAllArtigos();
                     System.out.println(produtos);
                     Menu.pressToContinue();
                     break;

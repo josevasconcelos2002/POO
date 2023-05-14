@@ -5,6 +5,7 @@ import Vintage.Users.User;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class Artigos implements Serializable {
@@ -22,8 +23,16 @@ public class Artigos implements Serializable {
         this.listaDeArtigos = as.getListaDeArtigos();
     }
 
-    public int getNewCode(){
-        return 0;
+    public String getNewCode(){
+        String codigoCompleto;
+        String codigo;
+
+        do {
+            codigoCompleto = UUID.randomUUID().toString();
+            codigo = codigoCompleto.replaceAll("-", "").substring(0, 15);
+        } while (listaDeArtigos.containsKey(codigo));
+
+        return codigo;
     }
 
     public Map<String, Artigo> getListaDeArtigos() {

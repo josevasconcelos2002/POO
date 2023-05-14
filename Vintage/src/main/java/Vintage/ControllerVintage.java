@@ -58,6 +58,7 @@ public class ControllerVintage {
                         Menu.limpaTerminal();
                         String email = Menu.login();
                         if(vintage.getEstado().getListaDeUtilizadores().getUsers().containsKey(email)){
+                            vintage.login(email);
                             Menu.limpaTerminal();
                             Menu.success(16);
                             Menu.pressToContinue();

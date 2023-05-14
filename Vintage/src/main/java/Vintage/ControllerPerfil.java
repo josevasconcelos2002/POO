@@ -14,7 +14,7 @@ public class ControllerPerfil {
         while(!exit){
             int opcao = -1;
             while (opcao < 0 || opcao > 4){
-                opcao = Menu.menuGerirPerfil(user); //alterar para o user em estado
+                opcao = Menu.menuGerirPerfil(user);
             }
 
             switch(opcao){
@@ -94,7 +94,7 @@ public class ControllerPerfil {
                     }
                     break;
                 case 4:
-                    vintage.getEstado().getListaDeUtilizadores().getUsers().put(user.getEmail(),user); // substitui no map o user que tinha email igual
+                    vintage.setUser(user);
                     Menu.limpaTerminal();
                     Menu.success(4);
                     try{
@@ -103,7 +103,6 @@ public class ControllerPerfil {
                         e.printStackTrace();
                     }
                     Menu.pressToContinue();
-                    // isto tem haver com fazer alterações no clone e ir ao map dos users e colocar o novo perfil lá
                     break;
                 case 0:
                     exit = true;

@@ -8,17 +8,23 @@ import java.util.Scanner;
 
 public class ControllerTempo {
 
+    // Tenta converter a string para LocalDate
     public static boolean dataValida(String dataString, LocalDate now) {;
-        LocalDate data;
+        LocalDate data = dataConverter(dataString);
+        return data.isAfter(now);
+    }
+
+    public static LocalDate dataConverter(String dataString){
+        LocalDate data = LocalDate.of(2000,1,1);
         try {
-            // Tenta converter a string para LocalDate
             DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
             data = LocalDate.parse(dataString, formatter);
         } catch (Exception e) {
-            return false;
+            Menu.errors(24);
+            Menu.pressToContinue();
+            return data;
         }
-
-        return data.isAfter(now);
+        return data;
     }
 
     public static void run(Vintage vintage){
