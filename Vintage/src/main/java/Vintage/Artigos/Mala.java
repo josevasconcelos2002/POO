@@ -24,8 +24,8 @@ public class Mala extends Artigo implements Serializable {
         super();
     }
 
-    public Mala(String codigo, String descricao, String marca, double precoBase, double largura, double altura, int desconto, String material, LocalDate dataColecao, Edicao edicao) {
-        super(codigo, descricao, marca, precoBase);
+    public Mala(String codigo, String descricao, String marca, double precoBase, Transportadora t, double largura, double altura, int desconto, String material, LocalDate dataColecao, Edicao edicao) {
+        super(codigo, descricao, marca, precoBase,t);
         this.largura = largura;
         this.altura = altura;
         this.desconto = desconto;

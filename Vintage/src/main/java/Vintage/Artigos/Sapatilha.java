@@ -30,8 +30,8 @@ public class Sapatilha extends Artigo implements Serializable {
         this.edicao = Edicao.STANDARD;
     }
 
-    public Sapatilha(String codigo,String descricao, String marca, double precoBase, int tamanho, boolean atacadores, String cor, LocalDate dataColecao, int desconto, Edicao edicao){
-        super(codigo, descricao, marca, precoBase);
+    public Sapatilha(String codigo,String descricao, String marca, double precoBase, Transportadora t, int tamanho, boolean atacadores, String cor, LocalDate dataColecao, int desconto, Edicao edicao){
+        super(codigo, descricao, marca, precoBase,t);
         this.tamanho = tamanho;
         this.atacadores = atacadores;
         this.cor = cor;

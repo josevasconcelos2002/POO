@@ -305,7 +305,7 @@ public class Menu {
 
         Sapatilha.Edicao edicao = Sapatilha.Edicao.STANDARD; // se houver tempo ver opcao primium...
 
-        return new Sapatilha(codigo, descricao, marca, preco, tamanho, atacadores, cor, dataColecao, 0, edicao);
+        return new Sapatilha(codigo, descricao, marca, preco, null, tamanho, atacadores, cor, dataColecao, 0, edicao);
     }
 
     public static Sapatilha criarSapatilhaUsada(String codigo) {
@@ -344,7 +344,7 @@ public class Menu {
 
         Mala.Edicao edicao = Mala.Edicao.STANDARD;
 
-        return new Mala(codigo,descricao,marca,preco,largura,altura,0,tamanho,dataColecao,edicao);
+        return new Mala(codigo,descricao,marca,preco,null,largura,altura,0,tamanho,dataColecao,edicao);
     }
 
     public static Mala criarMalaUsada(String codigo){
