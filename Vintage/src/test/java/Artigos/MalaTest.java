@@ -1,7 +1,7 @@
 package Artigos;
 
 import Vintage.Artigos.Mala;
-import Vintage.Artigos.Mala.Edicao;
+import Vintage.Artigos.ArtigoSpecs.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -5,10 +5,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Vintage.Artigos.Artigo;
+import Vintage.Artigos.ArtigoSpecs;
 import Vintage.Vintage;
 
 public class Encomenda implements Serializable {
-    
+
     protected enum Dimensao{
         GRANDE,
         MEDIA,
@@ -149,8 +150,8 @@ public class Encomenda implements Serializable {
     public double calculaPrecoFinal(){
         double resultado = 0.0;
         for(Artigo artigo : artigos){
-            if(artigo.getEstado() == Artigo.Estado.NOVO) resultado += 0.5;
-            if(artigo.getEstado() == Artigo.Estado.USADO) resultado += 0.25;
+            if(artigo.getEstado() == ArtigoSpecs.Estado.NOVO) resultado += 0.5;
+            if(artigo.getEstado() == ArtigoSpecs.Estado.USADO) resultado += 0.25;
         }
         resultado += calculaPrecoExpedicao() * (1 + Vintage.getExpedicaoImposto()); // qual formula usar?
         return resultado;

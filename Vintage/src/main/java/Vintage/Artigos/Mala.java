@@ -1,17 +1,13 @@
 package Vintage.Artigos;
 
 import Vintage.Transportadoras.Transportadora;
+import Vintage.Artigos.ArtigoSpecs.*;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Mala extends Artigo implements Serializable {
-
-    public enum Edicao{
-        STANDARD,
-        PREMIUM
-    }
 
     private double largura;
     private double altura;

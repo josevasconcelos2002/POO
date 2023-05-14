@@ -11,3 +11,13 @@ Novo user -> Paulo@gmail 2023-05-14
 Novo user -> paulo 2023-05-14
 [32m--Utilizador adicionado com successo!-- [0m 2023-05-14 
 Novo user -> p 2023-05-14
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-14 
+Novo user -> pau 2023-05-14
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-14 
+Novo user -> a 2023-05-14
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-14 
+Novo user -> a 2023-05-14
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-14 
+Novo user -> a 2023-05-14
+[32m--Utilizador adicionado com successo!-- [0m 2023-05-14 
+Novo user -> a 2023-05-14

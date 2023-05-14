@@ -1,23 +1,11 @@
 package Vintage.Artigos;
 
 import Vintage.Transportadoras.Transportadora;
+import Vintage.Artigos.ArtigoSpecs.*;
 
 import java.io.*;
 
 public class TShirt extends Artigo implements Serializable {
-
-    public /*private*/ enum Tamanho{
-        S,
-        M,
-        L,
-        XL
-    }
-
-    public /*private*/ enum Padrao{
-        LISO,
-        RISCAS,
-        PALMEIRAS
-    }
 
     private Tamanho tamanho;
     private Padrao padrao;
@@ -27,7 +15,7 @@ public class TShirt extends Artigo implements Serializable {
         super();
     }
 
-    public TShirt(String codigo, String descricao, String marca, double precoBase, Transportadora t,  Tamanho tamanho, Padrao padrao, int desconto){
+    public TShirt(String codigo, String descricao, String marca, double precoBase, Transportadora t, Tamanho tamanho, Padrao padrao, int desconto){
         super(codigo,descricao,marca,precoBase,t);
         this.tamanho = tamanho;
         this.padrao = padrao;

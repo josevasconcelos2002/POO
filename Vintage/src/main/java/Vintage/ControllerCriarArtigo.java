@@ -15,6 +15,7 @@ public class ControllerCriarArtigo {
             try {
                 while (!exit) {
                     int opcao = -1;
+                    int i;
                     while (opcao < 0 || opcao > 3) {
                         opcao = Menu.menuCriarArtigo();
                     }
@@ -23,32 +24,35 @@ public class ControllerCriarArtigo {
 
                         case 1:
                             Menu.limpaTerminal();
-                            if(Menu.tipoArtigo() == 1){
+                            i = Menu.tipoArtigo();
+                            if(i == 1){
                                 Sapatilha newSapatilha = Menu.criarSapatilhaUsada(vintage.newArtigoCode());
                                 vintage.addProdutoVenda(newSapatilha);
-                            } else if (Menu.tipoArtigo() == 2) {
+                            } else if (i == 2) {
                                 Sapatilha usedSapatilha = Menu.criarSapatilhaNova(vintage.newArtigoCode());
                                 vintage.addProdutoVenda(usedSapatilha);
                             }
                             break;
                         case 2:
                             Menu.limpaTerminal();
-                            if(Menu.tipoArtigo() == 1){
+                            i = Menu.tipoArtigo();
+                            if(i == 1){
                                 Mala newMala = Menu.criarMalaUsada(vintage.newArtigoCode());
                                 vintage.addProdutoVenda(newMala);
-                            } else if (Menu.tipoArtigo() == 2) {
+                            } else if (i == 2) {
                                 Mala usedMala = Menu.criarMalaNova(vintage.newArtigoCode());
                                 vintage.addProdutoVenda(usedMala);
                             }
                             break;
                         case 3:
                             Menu.limpaTerminal();
-                            if(Menu.tipoArtigo() == 1){
-                                TShirt newSapatilha = Menu.criarTShirtUsada(vintage.newArtigoCode());
-                                vintage.addProdutoVenda(newSapatilha);
-                            } else if (Menu.tipoArtigo() == 2) {
-                                TShirt usedSapatilha = Menu.criarTShirtNova(vintage.newArtigoCode());
-                                vintage.addProdutoVenda(usedSapatilha);
+                            i = Menu.tipoArtigo();
+                            if(i == 1){
+                                TShirt newTShirt = Menu.criarTShirtUsada(vintage.newArtigoCode());
+                                vintage.addProdutoVenda(newTShirt);
+                            } else if (i == 2) {
+                                TShirt usedTShirt = Menu.criarTShirtNova(vintage.newArtigoCode());
+                                vintage.addProdutoVenda(usedTShirt);
                             }
                             break;
                         case 0:

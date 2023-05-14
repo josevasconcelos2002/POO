@@ -2,15 +2,11 @@ package Vintage.Artigos;
 
 import Vintage.IArtigo;
 import Vintage.Transportadoras.Transportadora;
+import Vintage.Artigos.ArtigoSpecs.*;
 
 import java.io.*;
 import java.util.UUID;
 public abstract class Artigo implements IArtigo, Serializable {
-
-    public enum Estado {
-        NOVO,
-        USADO
-    }
 
     protected String codigo;
     private Estado estado;

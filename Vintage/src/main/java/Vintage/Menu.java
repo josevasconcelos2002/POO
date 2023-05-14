@@ -5,6 +5,7 @@ import Vintage.Artigos.Sapatilha;
 import Vintage.Artigos.TShirt;
 import Vintage.Transportadoras.Transportadora;
 import Vintage.Users.User;
+import Vintage.Artigos.ArtigoSpecs.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -303,7 +304,7 @@ public class Menu {
         String cor = lerString("Cor: ");
         LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
 
-        Sapatilha.Edicao edicao = Sapatilha.Edicao.STANDARD; // se houver tempo ver opcao primium...
+        Edicao edicao = Edicao.STANDARD; // se houver tempo ver opcao primium...
 
         return new Sapatilha(codigo, descricao, marca, preco, null, tamanho, atacadores, cor, dataColecao, 0, edicao);
     }
@@ -324,7 +325,7 @@ public class Menu {
         LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
         int desconto = lerInteiro("Desconto: ");
 
-        Sapatilha.Edicao edicao = Sapatilha.Edicao.STANDARD; // se houver tempo ver opcao primium...
+        Edicao edicao = Edicao.STANDARD; // se houver tempo ver opcao primium...
 
         return new Sapatilha(codigo, avaliacao, nDonos, descricao, marca, preco, null, tamanho, atacadores, cor, dataColecao, desconto, edicao);
     }
@@ -342,7 +343,7 @@ public class Menu {
         String tamanho = lerString("Material: ");
         LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
 
-        Mala.Edicao edicao = Mala.Edicao.STANDARD;
+        Edicao edicao = Edicao.STANDARD;
 
         return new Mala(codigo,descricao,marca,preco,null,largura,altura,0,tamanho,dataColecao,edicao);
     }
@@ -363,7 +364,7 @@ public class Menu {
         LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
         int desconto = lerInteiro("Desconto: ");
 
-        Mala.Edicao edicao = Mala.Edicao.STANDARD;
+        Edicao edicao = Edicao.STANDARD;
 
         return new Mala(codigo,avaliacao,nDonos,descricao,marca,preco,null,largura,altura,desconto,tamanho,dataColecao,edicao);
     }
@@ -374,17 +375,17 @@ public class Menu {
         System.out.println("\t\t\t\t\t -CRIAR TSHIRT (NOVA)-\n\n");
         System.out.println("Introduza os dados pedidos.\n\n");
 
+        input.nextLine();
         String descricao = lerString("Descricao: ");
         String marca = lerString("Marca: ");
         double preco = lerDouble("Preco: ");
-
 
         //LocalDate dataColecao = lerData("Data da Colecao [YYYY-MM-DD]: ");
 
         int desconto = lerInteiro("Desconto: ");
 
-        TShirt.Padrao padrao = TShirt.Padrao.LISO;
-        TShirt.Tamanho tamanho = TShirt.Tamanho.M;
+        Padrao padrao = Padrao.LISO;
+        Tamanho tamanho = Tamanho.M;
 
         return new TShirt(codigo,descricao,marca,preco,null,tamanho,padrao,desconto);
     }
@@ -406,8 +407,8 @@ public class Menu {
 
         int desconto = lerInteiro("Desconto: ");
 
-        TShirt.Padrao padrao = TShirt.Padrao.LISO;
-        TShirt.Tamanho tamanho = TShirt.Tamanho.M;
+        Padrao padrao = Padrao.LISO;
+        Tamanho tamanho = Tamanho.M;
 
         return new TShirt(codigo,avaliacao,nDonos,descricao,marca,preco,null,tamanho,padrao,desconto);
     }

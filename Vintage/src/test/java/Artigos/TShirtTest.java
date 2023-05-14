@@ -1,8 +1,7 @@
 package Artigos;
 
 import Vintage.Artigos.TShirt;
-import Vintage.Artigos.TShirt.Tamanho;
-import Vintage.Artigos.TShirt.Padrao;
+import Vintage.Artigos.ArtigoSpecs.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
